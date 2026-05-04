@@ -1,6 +1,25 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { CATEGORIES } from "@/data/products";
+import { CATEGORIES, type CategoryKey } from "@/data/products";
+import imgQuartz from "@/assets/cat-quartz.jpg";
+import imgRareearth from "@/assets/cat-rareearth.jpg";
+import imgZirconia from "@/assets/cat-zirconia.jpg";
+import imgAlumina from "@/assets/cat-alumina.jpg";
+import imgCarbide from "@/assets/cat-carbide.jpg";
+import imgMetal from "@/assets/cat-metal.jpg";
+import imgNano from "@/assets/cat-nano.jpg";
+import imgOthers from "@/assets/cat-others.jpg";
+
+const CAT_IMG: Record<CategoryKey, string> = {
+  quartz: imgQuartz,
+  rareearth: imgRareearth,
+  zirconia: imgZirconia,
+  alumina: imgAlumina,
+  carbide: imgCarbide,
+  metal: imgMetal,
+  nano: imgNano,
+  others: imgOthers,
+};
 
 const ProductCategories = () => {
   return (
@@ -24,33 +43,41 @@ const ProductCategories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {CATEGORIES.map((c, i) => (
             <Link
               key={c.key}
               to={`/products/${c.key}`}
-              className="group relative flex min-h-[260px] flex-col justify-between bg-background p-8 transition-colors duration-500 hover:bg-ink"
+              className="group flex flex-col overflow-hidden border border-border bg-background transition-all duration-300 hover:border-accent hover:shadow-[0_18px_40px_rgba(34,211,238,0.18)]"
             >
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-xs font-semibold tracking-widest text-muted-foreground transition-colors group-hover:text-accent">
+              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                <img
+                  src={CAT_IMG[c.key]}
+                  alt={`${c.kr} ${c.en}`}
+                  loading="lazy"
+                  width={800}
+                  height={500}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute left-4 top-4 bg-background/85 px-2.5 py-1 font-mono text-[10px] font-semibold tracking-widest text-ink backdrop-blur">
                   {String(i + 1).padStart(2, "0")}
-                </span>
-                <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent" />
+                </div>
               </div>
-              <div>
-                <div className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors group-hover:text-accent">
+              <div className="flex flex-1 flex-col p-6">
+                <div className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
                   {c.en}
                 </div>
-                <h3 className="mb-3 text-2xl font-medium tracking-tight text-ink transition-colors group-hover:text-white">
+                <h3 className="mb-3 text-xl font-semibold tracking-tight text-ink">
                   {c.kr}
                 </h3>
-                <div className="mt-6 flex items-baseline gap-2">
-                  <span className="text-3xl font-semibold text-ink transition-colors group-hover:text-accent">
-                    {String(c.items.length).padStart(2, "0")}
-                  </span>
-                  <span className="text-xs text-muted-foreground transition-colors group-hover:text-white/40">
-                    products
-                  </span>
+                <div className="mt-auto flex items-end justify-between pt-4">
+                  <div className="flex items-baseline gap-1.5">
+                    <span className="text-2xl font-semibold text-ink">
+                      {String(c.items.length).padStart(2, "0")}
+                    </span>
+                    <span className="text-xs text-muted-foreground">products</span>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                 </div>
               </div>
             </Link>
@@ -58,7 +85,7 @@ const ProductCategories = () => {
 
           <Link
             to="/products"
-            className="group relative flex min-h-[260px] flex-col justify-between gradient-prism p-8 transition-all hover:opacity-90"
+            className="group flex min-h-[260px] flex-col justify-between gradient-prism p-8 transition-all hover:opacity-90"
           >
             <div className="flex items-start justify-between">
               <span className="font-mono text-xs font-semibold tracking-widest text-ink/70">
