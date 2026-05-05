@@ -7,8 +7,9 @@ const Footer = () => {
       <div className="border-b border-border">
         <nav className="mx-auto flex max-w-[1440px] items-center justify-center gap-8 px-6 py-6 text-sm font-medium text-ink/80 lg:px-12 lg:py-8">
           <a href="/#top" className="hover:text-accent">홈</a>
-          <a href="/#products" className="hover:text-accent">제품</a>
           <Link to="/about#top" className="hover:text-accent">회사소개</Link>
+          <a href="/#products" className="hover:text-accent">제품</a>
+          <Link to="/faq" className="hover:text-accent">FAQ</Link>
           <a href="/#contact" className="hover:text-accent">문의하기</a>
         </nav>
       </div>
