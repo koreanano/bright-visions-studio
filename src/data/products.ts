@@ -32,7 +32,7 @@ export const CATEGORIES: Category[] = [
     en: "Fused Silica & Quartz",
     title: "용융석영·규석 / Fused Silica & Quartz",
     items: [
-      { name: "천연 규석 원석", cat: "규석 원석", formula: "SiO₂", desc: "광산 직영 운영으로 안정적인 원료 공급. 용융→분급→분쇄→미분 4단계 자체 생산.", tags: ["광산직영", "ISO인증"], apps: ["도자기/세라믹 원료", "도료 및 코팅 충전재", "광전자 기초 원료", "유리 제조"] },
+      { name: "천연 규석 원석", cat: "규석 원석", formula: "SiO₂", desc: "99~99.9까지 천연 규석을 고객이 원하는 입도로 주문 제작 공급합니다.", tags: ["광산직영", "ISO인증"], apps: ["도자기/세라믹 원료", "도료 및 코팅 충전재", "광전자 기초 원료", "유리 제조"] },
       { name: "용융석영 A등급", cat: "용융석영", formula: "SiO₂", desc: "SiO₂ >99.9%, 최고 순도 등급. 정밀 광학 부품 및 반도체 소재.", tags: ["SiO₂ 99.9%↑", "광학"], apps: ["초정밀 광학 유리 부품", "반도체 봉지재(EMC) 첨가제", "광통신 케이블 소재", "정밀 도가니"] },
       { name: "용융석영 B등급", cat: "용융석영", formula: "SiO₂", desc: "SiO₂ >99.5%, 열진동 안정성 우수. 산업 전반에 폭넓게 적용.", tags: ["SiO₂ 99.5%↑", "내화물"], apps: ["고급 내화물", "전기 절연 부품", "정밀 주조 몰드", "내열 세라믹 기판"] },
       { name: "용융석영 C등급", cat: "용융석영", formula: "SiO₂", desc: "SiO₂ >99%, 비결정형 99%↑. 코팅 및 내화재용 범용 등급.", tags: ["SiO₂ 99%↑", "범용"], apps: ["범용 도료 첨가제", "건축용 내화 캐스터블", "플라스틱/고무 충전재", "주조용 모래"] },
@@ -106,9 +106,9 @@ export const CATEGORIES: Category[] = [
   },
   {
     key: "nano",
-    kr: "나노소재 분말",
+    kr: "나노소재",
     en: "Nano Materials",
-    title: "나노소재 분말 / Nano Materials",
+    title: "나노소재 / Nano Materials",
     items: [
       { name: "나노 알루미나", cat: "나노소재", formula: "nano-Al₂O₃", desc: "수십 나노미터 크기의 알루미나 분말. 고분자 복합재·코팅 강화 소재.", tags: ["나노", "복합재"], apps: ["스크래치 복원 컴파운드", "폴리머 복합재 강도 향상", "정밀 광학 렌즈 폴리싱", "배터리 전해액 첨가제"] },
       { name: "나노 지르코니아", cat: "나노소재", formula: "nano-ZrO₂", desc: "나노 스케일 지르코니아 분말. 의치·코팅·광학 소재 분야 핵심 소재.", tags: ["나노", "광학"], apps: ["광통신 페룰(Ferrule)", "스마트폰 세라믹 백커버", "초박형 열차폐 코팅막", "고강도 치과용 시멘트"] },
