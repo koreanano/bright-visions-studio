@@ -5,14 +5,14 @@ const Footer = () => {
     <footer className="border-t border-border bg-background py-10">
       <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 lg:flex-row lg:items-end lg:justify-between lg:px-12">
         {/* Left brand */}
-        <div className="flex flex-col leading-tight">
+        <Link to="/" className="flex flex-col leading-tight">
           <span className="text-lg font-bold tracking-tight text-ink">
             NANO<span className="gradient-text-prism">KOREA</span>
           </span>
           <span className="mt-0.5 text-[10px] font-semibold tracking-[0.2em] text-muted-foreground">
             첨단소재공급기업
           </span>
-        </div>
+        </Link>
 
         {/* Center legal */}
         <div className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
