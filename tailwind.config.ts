@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Outfit', 'system-ui', 'sans-serif'],
+        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Segoe UI', 'sans-serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       colors: {
