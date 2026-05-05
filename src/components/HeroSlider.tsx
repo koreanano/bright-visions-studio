@@ -22,9 +22,9 @@ const slides: Slide[] = [
     type: "video",
     src: hero1.url,
     eyebrow: "차세대 초정밀 소재 솔루션",
-    titleEn: "Mastering Matter at",
-    highlight: "Atomic",
-    titleEnEnd: "Resolution.",
+    titleEn: "Empowering Industries with",
+    highlight: "Superior",
+    titleEnEnd: "Materials.",
     subtitleKr: "정밀 제어된 첨단 소재로 미래를 설계합니다",
     description:
       "고순도 용융규석부터 희토류, 맞춤형 소재까지 — 반도체와 항공우주를 위한 정밀 소재를 공급합니다.",
@@ -39,7 +39,7 @@ const slides: Slide[] = [
     titleEnEnd: "Performance.",
     subtitleKr: "검증된 품질, 안정적인 성능",
     description:
-      "글로벌 첨단소재 제조사와의 정식 파트너십을 통해 검증된 소재와 첨단 화합물을 한국 산업에 공급합니다.",
+      "글로벌 첨단소재 제조사의 검증된 소재와 첨단 화합물을 국내 산업에 공급합니다.",
   },
   {
     id: "03",
@@ -51,7 +51,7 @@ const slides: Slide[] = [
     titleEnEnd: "Tomorrow.",
     subtitleKr: "내일을 만드는 산업과 함께",
     description:
-      "반도체, 디스플레이, 항공우주, 첨단 세라믹 — 까다로운 산업 표준을 충족하는 B2B 전문 공급망을 운영합니다.",
+      "산업 표준에 충족하는 B2B 전문 공급망을 운영합니다.",
   },
 ];
 
