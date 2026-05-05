@@ -3,8 +3,9 @@ import { Building2, Mail } from "lucide-react";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { CATEGORIES } from "@/data/products";
-import { supabase } from "@/integrations/supabase/client";
 import contactBg from "@/assets/contact-bg.jpg";
+
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/" + ["nanokorea2019", "gmail.com"].join("@");
 
 const schema = z.object({
   company: z.string().trim().min(1, "회사명을 입력해 주세요").max(100),
@@ -30,8 +31,22 @@ const ContactForm = () => {
     }
     setLoading(true);
     try {
-      const { error } = await supabase.functions.invoke("send-contact", { body: parsed.data });
-      if (error) throw error;
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `[NANOKOREA 문의] ${parsed.data.company} - ${parsed.data.name}`,
+          _template: "table",
+          _captcha: "false",
+          회사명: parsed.data.company,
+          담당자: parsed.data.name,
+          이메일: parsed.data.email,
+          연락처: parsed.data.phone || "-",
+          관심카테고리: parsed.data.category || "-",
+          문의내용: parsed.data.message,
+        }),
+      });
+      if (!res.ok) throw new Error("send failed");
       setDone(true);
       toast({ title: "문의가 접수되었습니다", description: "담당자가 빠른 시일 내에 연락드리겠습니다." });
       (e.target as HTMLFormElement).reset();

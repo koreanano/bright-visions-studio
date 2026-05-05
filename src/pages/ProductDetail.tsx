@@ -48,7 +48,7 @@ const ProductDetail = () => {
               <div className="mt-3 font-mono text-base text-muted-foreground">{product.formula}</div>
             </div>
             {getProductImage(product.name) && (
-              <div className="overflow-hidden border border-border bg-ink">
+              <div className="overflow-hidden border border-border bg-white">
                 <img
                   src={getProductImage(product.name)}
                   alt={product.name}
