@@ -113,11 +113,6 @@ const ContactForm = () => {
                 </div>
               </div>
             </div>
-
-            <div className="border border-accent/30 bg-accent/5 p-5">
-              <div className="text-sm font-semibold text-accent">💡 파트너사 전 제품 라인 공급 가능합니다.</div>
-              <div className="mt-1 text-sm text-white/70">필요 소재가 목록에 없어도 문의 주세요.</div>
-            </div>
           </div>
         </div>
 

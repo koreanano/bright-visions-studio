@@ -20,6 +20,9 @@ const Navigation = () => {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
+          <Link to="/about" className="text-sm font-medium text-ink/80 hover:text-accent">
+            나노코리아
+          </Link>
           <div
             className="relative"
             onMouseEnter={() => setOpen(true)}
@@ -53,9 +56,6 @@ const Navigation = () => {
               </div>
             )}
           </div>
-          <Link to="/about" className="text-sm font-medium text-ink/80 hover:text-accent">
-            나노코리아
-          </Link>
           <Link to="/faq" className="text-sm font-medium text-ink/80 hover:text-accent">
             FAQ
           </Link>
