@@ -39,7 +39,7 @@ const ProductCategories = () => {
           </div>
           <p className="max-w-md text-base leading-relaxed text-muted-foreground">
             카테고리를 선택하면 해당 제품 목록을 확인할 수 있습니다. 글로벌 첨단소재
-            제조사의 정식 파트너로서 검증된 원료를 안정적으로 공급합니다.
+            제조사와 협력하여 검증된 원료를 안정적으로 공급합니다.
           </p>
         </div>
 

@@ -1,49 +1,203 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import aboutHero from "@/assets/about-hero.jpg";
+import aboutGlobal from "@/assets/about-global.jpg";
 
 type Kind = "about" | "service" | "faq";
 
-const CONTENT: Record<Kind, { eyebrow: string; title: string; intro: string; sections: { h: string; b: React.ReactNode }[] }> = {
-  about: {
-    eyebrow: "About · 회사소개",
-    title: "NANOKOREA — 첨단소재공급기업",
-    intro:
-      "나노코리아는 글로벌 첨단소재 제조사의 정식 파트너로서, 반도체·디스플레이·항공우주·세라믹 산업에 검증된 고순도 소재를 안정적으로 공급하는 B2B 전문 기업입니다.",
-    sections: [
-      { h: "비전", b: "정밀 제어된 소재로 한국 첨단 산업의 신뢰할 수 있는 공급 파트너가 되겠습니다." },
-      { h: "사업 영역", b: "용융석영·규석, 희토류, 지르코니아, 알루미나, 탄화물·질화물, 고순도 금속, 나노소재, 기타 첨단 소재 등 8개 카테고리의 전 라인업을 공급합니다." },
-      { h: "본사", b: "경기도 화성시 남양읍 수작이길 55, 2층 (주식회사 디솔루션)" },
-      { h: "중국 사무소", b: "江苏徐州新沂经济开发区北京西路89号" },
-    ],
-  },
-  service: {
-    eyebrow: "Service · 서비스",
-    title: "Tech Support + Reference Access",
-    intro: "단순 공급을 넘어 소재 선정·사양 검토·맞춤 가공·레퍼런스 자료까지 — 실무에 필요한 전 과정을 지원합니다.",
-    sections: [
-      { h: "맞춤 입도 주문 제작", b: "고객이 요구하는 순도(99~99.9%)와 입도 사양에 맞춰 천연 규석 및 첨단 소재를 주문 제작 공급합니다." },
-      { h: "엔지니어 기술지원", b: "용도·공정에 적합한 소재 선정 컨설팅과 샘플 평가, 적용 후 트러블슈팅까지 전담 엔지니어가 지원합니다." },
-      { h: "레퍼런스 자료 제공", b: "산업별 실제 적용 사례, 사양서(TDS), MSDS 등 의사결정에 필요한 자료를 제공합니다." },
-      { h: "안정적인 공급망", b: "광산 직영 운영과 글로벌 정식 파트너십을 통해 장기 공급의 안정성을 보장합니다." },
-    ],
-  },
-  faq: {
-    eyebrow: "FAQ · 자주 묻는 질문",
-    title: "자주 묻는 질문",
-    intro: "고객이 자주 문의하시는 내용을 정리했습니다. 더 궁금한 점은 언제든 문의해 주세요.",
-    sections: [
-      { h: "Q. 최소 주문 수량(MOQ)이 있나요?", b: "소재와 사양에 따라 상이합니다. 샘플 단위부터 톤 단위 대량 공급까지 가능하니 문의해 주세요." },
-      { h: "Q. 목록에 없는 소재도 공급 가능한가요?", b: "네, 파트너사 전 제품 라인 공급이 가능합니다. 필요 소재명·사양을 알려주시면 견적을 회신 드립니다." },
-      { h: "Q. 샘플 요청은 어떻게 하나요?", b: "문의하기 폼에서 회사·담당자·필요 소재·사양을 기재해 주시면 담당자가 빠르게 회신 드립니다." },
-      { h: "Q. 납기는 얼마나 걸리나요?", b: "재고 보유 품목은 1~3일, 주문 제작 품목은 사양에 따라 2~6주가 소요됩니다." },
-      { h: "Q. 해외 배송도 가능한가요?", b: "한국·중국 거점을 통해 글로벌 공급이 가능합니다." },
-    ],
-  },
+const SERVICE = {
+  eyebrow: "Service · 서비스",
+  title: "Tech Support + Reference Access",
+  intro:
+    "단순 공급을 넘어 소재 선정·사양 검토·맞춤 가공·레퍼런스 자료까지 — 실무에 필요한 전 과정을 지원합니다.",
+  sections: [
+    { h: "맞춤 입도 주문 제작", b: "고객이 요구하는 순도(99~99.9%)와 입도 사양에 맞춰 천연 규석 및 첨단 소재를 주문 제작 공급합니다." },
+    { h: "엔지니어 기술지원", b: "용도·공정에 적합한 소재 선정 컨설팅과 샘플 평가, 적용 후 트러블슈팅까지 전담 엔지니어가 지원합니다." },
+    { h: "레퍼런스 자료 제공", b: "산업별 실제 적용 사례, 사양서(TDS), MSDS 등 의사결정에 필요한 자료를 제공합니다." },
+    { h: "안정적인 공급망", b: "광산 직영 운영과 글로벌 협력 네트워크를 통해 장기 공급의 안정성을 보장합니다." },
+  ],
 };
 
+const FAQ = {
+  eyebrow: "FAQ · 자주 묻는 질문",
+  title: "자주 묻는 질문",
+  intro: "고객이 자주 문의하시는 내용을 정리했습니다. 더 궁금한 점은 언제든 문의해 주세요.",
+  sections: [
+    { h: "Q. 최소 주문 수량(MOQ)이 있나요?", b: "소재와 사양에 따라 상이합니다. 샘플 단위부터 톤 단위 대량 공급까지 가능하니 문의해 주세요." },
+    { h: "Q. 목록에 없는 소재도 공급 가능한가요?", b: "네, 협력사 전 제품 라인 공급이 가능합니다. 필요 소재명·사양을 알려주시면 견적을 회신 드립니다." },
+    { h: "Q. 샘플 요청은 어떻게 하나요?", b: "문의하기 폼에서 회사·담당자·필요 소재·사양을 기재해 주시면 담당자가 빠르게 회신 드립니다." },
+    { h: "Q. 납기는 얼마나 걸리나요?", b: "재고 보유 품목은 1~3일, 주문 제작 품목은 사양에 따라 2~6주가 소요됩니다." },
+    { h: "Q. 해외 배송도 가능한가요?", b: "한국·중국 거점을 통해 글로벌 공급이 가능합니다." },
+  ],
+};
+
+const InquiryCTA = () => (
+  <div className="mt-16 flex flex-col items-start justify-between gap-4 border border-border bg-muted/40 p-7 md:flex-row md:items-center">
+    <div>
+      <div className="text-xs font-semibold uppercase tracking-widest text-accent">Inquiry</div>
+      <h3 className="mt-1 text-lg font-medium text-ink">제품·견적·기술 문의를 환영합니다</h3>
+    </div>
+    <Link to="/#contact" className="bg-ink px-6 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-accent">
+      문의하기
+    </Link>
+  </div>
+);
+
+const AboutPage = () => (
+  <>
+    {/* Hero */}
+    <section className="relative h-[60vh] min-h-[440px] w-full overflow-hidden">
+      <img
+        src={aboutHero}
+        alt="NANOKOREA 첨단소재 연구 환경"
+        className="absolute inset-0 h-full w-full object-cover"
+        width={1920}
+        height={1080}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink/80" />
+      <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col justify-end px-6 pb-16 lg:px-12">
+        <div className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-accent">
+          About · 회사소개
+        </div>
+        <h1 className="mt-4 max-w-3xl text-balance text-4xl font-medium leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+          신뢰를 기반으로 <br className="hidden md:block" />
+          한국 산업의 공급망을 잇습니다.
+        </h1>
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/80 md:text-lg">
+          NANOKOREA — 글로벌 첨단소재 공급 파트너
+        </p>
+      </div>
+    </section>
+
+    {/* Story */}
+    <section className="py-24">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 px-6 lg:grid-cols-12 lg:px-12">
+        <div className="lg:col-span-4">
+          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+            Our Story
+          </div>
+          <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
+            구조적 한계를<br />합리적으로 극복합니다.
+          </h2>
+        </div>
+        <div className="space-y-6 text-base leading-relaxed text-ink/75 lg:col-span-8 lg:text-lg">
+          <p>
+            국내 1차 산업의 기반이 상대적으로 취약하고 자원이 제한적인 환경 속에서, 당사는 이러한
+            구조적 한계를 합리적으로 극복하고 안정적인 공급망을 구축하고자 원료 수입 사업을
+            시작하게 되었습니다. 급변하는 글로벌 시장 속에서 경쟁력을 확보하기 위해서는 단순한
+            거래를 넘어, 신뢰를 기반으로 한 지속적인 파트너십이 무엇보다 중요하다고 판단하고
+            있습니다.
+          </p>
+          <p>
+            이에 따라 당사는 글로벌 소재 기업들과의 긴밀한 협력 관계를 바탕으로, 품질과 안정성을
+            최우선으로 하는 원료 공급 체계를 구축해 나가고 있습니다. 또한 끊임없는 시장 조사와
+            정보 수집, 그리고 축적된 경험을 바탕으로 고객의 다양한 요구에 유연하게 대응하며, 보다
+            효율적이고 신뢰할 수 있는 서비스를 제공하고자 노력하고 있습니다.
+          </p>
+          <p>
+            앞으로도 당사는 지속적인 연구와 개발, 그리고 글로벌 네트워크 확장을 통해 더욱 경쟁력
+            있는 기업으로 성장해 나갈 것이며, 고객과 함께 발전하는 신뢰받는 기업이 되기 위해
+            최선을 다하겠습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Pillars */}
+    <section className="border-y border-border bg-muted/40 py-24">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-12">
+        <div className="mb-12 max-w-2xl">
+          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+            Our Values
+          </div>
+          <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
+            세 가지 약속
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 gap-px bg-border md:grid-cols-3">
+          {[
+            {
+              n: "01",
+              h: "신뢰 기반 파트너십",
+              b: "단순한 거래를 넘어 장기적 신뢰 관계를 통해 안정적인 협력 구조를 구축합니다.",
+            },
+            {
+              n: "02",
+              h: "품질과 안정성 우선",
+              b: "글로벌 소재 기업과의 긴밀한 협력으로 검증된 원료만을 공급합니다.",
+            },
+            {
+              n: "03",
+              h: "유연한 고객 대응",
+              b: "끊임없는 시장 조사와 축적된 경험으로 고객의 다양한 요구에 유연하게 대응합니다.",
+            },
+          ].map((p) => (
+            <div key={p.n} className="flex flex-col gap-4 bg-background p-8 md:p-10">
+              <div className="font-mono text-xs font-semibold tracking-[0.2em] text-accent">{p.n}</div>
+              <h3 className="text-xl font-semibold text-ink">{p.h}</h3>
+              <p className="text-sm leading-relaxed text-ink/70">{p.b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Global */}
+    <section className="py-24">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2 lg:px-12">
+        <div className="overflow-hidden">
+          <img
+            src={aboutGlobal}
+            alt="글로벌 공급 네트워크"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            width={1920}
+            height={1080}
+          />
+        </div>
+        <div>
+          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-accent">
+            Global Network
+          </div>
+          <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
+            한국과 중국 거점을 통한<br />글로벌 공급망
+          </h2>
+          <div className="mt-8 space-y-5">
+            <div className="border-l-2 border-accent pl-4">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Headquarters</div>
+              <div className="mt-1 text-base text-ink">경기도 화성시 남양읍 수작이길 55, 2층</div>
+              <div className="text-sm text-muted-foreground">주식회사 디솔루션</div>
+            </div>
+            <div className="border-l-2 border-accent pl-4">
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">China Office</div>
+              <div className="mt-1 text-base text-ink">江苏徐州新沂经济开发区北京西路89号</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* CTA */}
+    <section className="pb-24">
+      <div className="mx-auto max-w-[1200px] px-6 lg:px-12">
+        <InquiryCTA />
+      </div>
+    </section>
+  </>
+);
+
 const InfoPage = ({ kind }: { kind: Kind }) => {
-  const c = CONTENT[kind];
+  if (kind === "about") {
+    return (
+      <main className="min-h-screen bg-background">
+        <Navigation />
+        <AboutPage />
+        <Footer />
+      </main>
+    );
+  }
+  const c = kind === "service" ? SERVICE : FAQ;
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -66,15 +220,7 @@ const InfoPage = ({ kind }: { kind: Kind }) => {
             ))}
           </div>
 
-          <div className="mt-16 flex flex-col items-start justify-between gap-4 border border-border bg-muted/40 p-7 md:flex-row md:items-center">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-accent">Inquiry</div>
-              <h3 className="mt-1 text-lg font-medium text-ink">제품·견적·기술 문의를 환영합니다</h3>
-            </div>
-            <Link to="/#contact" className="bg-ink px-6 py-3 text-xs font-bold uppercase tracking-wider text-white hover:bg-accent">
-              문의하기
-            </Link>
-          </div>
+          <InquiryCTA />
         </div>
       </section>
       <Footer />

@@ -25,7 +25,7 @@ const Footer = () => {
               contact@nano-korea.co.kr
             </a>
             <span className="text-border">|</span>
-            <span>© 2023 nano-korea. All rights reserved.</span>
+            <span>© 2025 nano-korea. All rights reserved.</span>
           </div>
         </div>
 
