@@ -2,9 +2,20 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-background py-10">
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 lg:flex-row lg:items-end lg:justify-between lg:px-12">
-        {/* Left brand */}
+    <footer className="border-t border-border bg-background">
+      {/* Top nav bar */}
+      <div className="border-b border-border">
+        <nav className="mx-auto flex max-w-[1440px] items-center justify-center gap-8 px-6 py-4 text-sm font-medium text-ink/80 lg:px-12">
+          <Link to="/" className="hover:text-accent">홈</Link>
+          <Link to="/products" className="hover:text-accent">제품</Link>
+          <Link to="/about" className="hover:text-accent">회사소개</Link>
+          <Link to="/service" className="hover:text-accent">응용분야</Link>
+          <a href="/#contact" className="hover:text-accent">문의하기</a>
+        </nav>
+      </div>
+
+      {/* Bottom row */}
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 py-10 lg:flex-row lg:items-end lg:justify-between lg:px-12">
         <Link to="/" className="flex flex-col leading-tight">
           <span className="text-lg font-bold tracking-tight text-ink">
             NANO<span className="gradient-text-prism">KOREA</span>
@@ -14,7 +25,6 @@ const Footer = () => {
           </span>
         </Link>
 
-        {/* Center legal */}
         <div className="flex flex-col items-center gap-2 text-center text-sm text-muted-foreground">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link to="/terms" className="hover:text-ink">이용약관</Link>

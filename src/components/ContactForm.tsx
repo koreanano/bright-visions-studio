@@ -122,7 +122,7 @@ const ContactForm = () => {
         </div>
 
         {/* RIGHT — form card */}
-        <div className="rounded-sm bg-background p-7 shadow-2xl md:p-10">
+        <div className="rounded-3xl bg-background p-7 shadow-2xl md:p-10">
           <form onSubmit={onSubmit} className="grid grid-cols-1 gap-5 md:grid-cols-2">
             <Field label="회사명 *">
               <input name="company" required maxLength={100} placeholder="(주)회사명" className={inputCls} />
@@ -159,7 +159,7 @@ const ContactForm = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-sm bg-accent px-6 py-3.5 text-sm font-bold tracking-wider text-ink transition-colors hover:bg-accent/90 disabled:opacity-60"
+                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-accent px-6 py-3.5 text-sm font-bold tracking-wider text-ink transition-colors hover:bg-accent/90 disabled:opacity-60"
               >
                 <Mail className="h-4 w-4" />
                 {loading ? "전송 중..." : "문의 보내기"}
@@ -178,7 +178,7 @@ const ContactForm = () => {
 };
 
 const inputCls =
-  "w-full rounded-sm border border-border bg-muted/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-muted-foreground focus:border-accent focus:bg-background focus:outline-none";
+  "w-full rounded-xl border border-border bg-muted/30 px-3.5 py-2.5 text-sm text-ink placeholder:text-muted-foreground focus:border-accent focus:bg-background focus:outline-none";
 
 const Field = ({ label, children, full }: { label: string; children: React.ReactNode; full?: boolean }) => (
   <div className={full ? "md:col-span-2" : ""}>
