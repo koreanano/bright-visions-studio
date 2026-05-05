@@ -74,7 +74,7 @@ const ProductsList = () => {
                     </div>
                   </div>
                   {/* Right: image (half) */}
-                  <div className="relative w-1/2 overflow-hidden bg-muted">
+                  <div className="relative w-1/2 overflow-hidden bg-ink">
                     {img ? (
                       <img
                         src={img}

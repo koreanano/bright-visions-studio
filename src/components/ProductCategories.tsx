@@ -50,7 +50,7 @@ const ProductCategories = () => {
               to={`/products/${c.key}`}
               className="group flex flex-col overflow-hidden border border-border bg-background transition-all duration-300 hover:border-accent hover:shadow-[0_18px_40px_rgba(34,211,238,0.18)]"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+              <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                 <img
                   src={CAT_IMG[c.key]}
                   alt={`${c.kr} ${c.en}`}
