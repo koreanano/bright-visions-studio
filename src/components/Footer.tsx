@@ -5,17 +5,16 @@ const Footer = () => {
     <footer className="border-t border-border bg-background">
       {/* Top nav bar */}
       <div className="border-b border-border">
-        <nav className="mx-auto flex max-w-[1440px] items-center justify-center gap-8 px-6 py-4 text-sm font-medium text-ink/80 lg:px-12">
-          <Link to="/" className="hover:text-accent">홈</Link>
-          <Link to="/products" className="hover:text-accent">제품</Link>
-          <Link to="/about" className="hover:text-accent">회사소개</Link>
-          <Link to="/service" className="hover:text-accent">응용분야</Link>
+        <nav className="mx-auto flex max-w-[1440px] items-center justify-center gap-8 px-6 py-6 text-sm font-medium text-ink/80 lg:px-12 lg:py-8">
+          <a href="/#top" className="hover:text-accent">홈</a>
+          <a href="/#products" className="hover:text-accent">제품</a>
+          <Link to="/about#top" className="hover:text-accent">회사소개</Link>
           <a href="/#contact" className="hover:text-accent">문의하기</a>
         </nav>
       </div>
 
       {/* Bottom row */}
-      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 py-10 lg:flex-row lg:items-end lg:justify-between lg:px-12">
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-6 py-6 lg:flex-row lg:items-end lg:justify-between lg:px-12">
         <Link to="/" className="flex flex-col leading-tight">
           <span className="text-lg font-bold tracking-tight text-ink">
             NANO<span className="gradient-text-prism">KOREA</span>
