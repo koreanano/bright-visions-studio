@@ -119,6 +119,18 @@ const AboutPage = () => (
           </p>
         </div>
       </div>
+      <div className="mx-auto mt-16 max-w-[1200px] px-6 lg:px-12">
+        <div className="overflow-hidden rounded-lg shadow-lg">
+          <img
+            src={aboutTrust}
+            alt="신뢰를 기반으로 한 비즈니스 파트너십"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            width={1920}
+            height={1080}
+          />
+        </div>
+      </div>
     </section>
 
     {/* Pillars */}
