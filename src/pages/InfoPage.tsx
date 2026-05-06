@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import aboutHero from "@/assets/about-hero.jpg";
 import aboutGlobal from "@/assets/about-global.jpg";
+import aboutTrust from "@/assets/about-trust.jpg";
 
 type Kind = "about" | "service" | "faq";
 
@@ -98,7 +99,8 @@ const AboutPage = () => (
         </div>
         <div className="space-y-6 text-base leading-relaxed text-ink/75 lg:col-span-8 lg:text-lg">
           <p>
-            국내 1차 산업의 기반이 상대적으로 취약하고 자원이 제한적인 환경 속에서, 당사는 이러한
+            세계를 선도하는 첨단 기술 수준에 비하여 국내 1차 산업의 기반이 상대적으로 취약하고
+            자원이 제한적인 환경 속에서, 당사는 이러한
             구조적 한계를 합리적으로 극복하고 안정적인 공급망을 구축하고자 원료 수입 사업을
             시작하게 되었습니다. 급변하는 글로벌 시장 속에서 경쟁력을 확보하기 위해서는 단순한
             거래를 넘어, 신뢰를 기반으로 한 지속적인 파트너십이 무엇보다 중요하다고 판단하고
@@ -115,6 +117,18 @@ const AboutPage = () => (
             있는 기업으로 성장해 나갈 것이며, 고객과 함께 발전하는 신뢰받는 기업이 되기 위해
             최선을 다하겠습니다.
           </p>
+        </div>
+      </div>
+      <div className="mx-auto mt-16 max-w-[1200px] px-6 lg:px-12">
+        <div className="overflow-hidden rounded-lg shadow-lg">
+          <img
+            src={aboutTrust}
+            alt="신뢰를 기반으로 한 비즈니스 파트너십"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            width={1920}
+            height={1080}
+          />
         </div>
       </div>
     </section>

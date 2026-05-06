@@ -39,7 +39,7 @@ const slides: Slide[] = [
     titleEnEnd: "Performance.",
     subtitleKr: "검증된 품질, 안정적인 성능",
     description:
-      "글로벌 첨단소재 제조사의 검증된 소재와 첨단 화합물을 국내 산업에 공급합니다.",
+      "나노코리아는 글로벌 첨단소재 제조사의 검증된 소재와 첨단 화합물을 국내 산업에 공급합니다.",
   },
   {
     id: "03",
@@ -137,12 +137,9 @@ const HeroSlider = () => {
               {current.titleEnEnd}
             </h1>
 
-            <h2 className="mb-3 text-base font-medium tracking-wide text-white/80 md:text-lg">
+            <h2 className="mb-6 text-base font-medium tracking-wide text-white/80 md:text-lg">
               {current.subtitleKr}
             </h2>
-            <p className="mb-8 text-sm font-semibold tracking-[0.25em] text-accent">
-              NANOKOREA
-            </p>
 
             <p className="mb-12 max-w-[55ch] text-pretty text-base leading-relaxed text-white/70 md:text-lg">
               {current.description}
