@@ -44,6 +44,7 @@ import lialh4 from "@/assets/products/lialh4.jpg";
 import magnesium from "@/assets/products/magnesium.jpg";
 import cordierite from "@/assets/products/cordierite.jpg";
 import zrsio4 from "@/assets/products/zrsio4.jpg";
+import magnesiumOxide from "@/assets/products/magnesium-oxide.jpg";
 
 // Match by exact product name (Korean)
 export const PRODUCT_IMAGES: Record<string, string> = {
@@ -93,6 +94,7 @@ export const PRODUCT_IMAGES: Record<string, string> = {
   "마그네슘 비드/그레인": magnesium,
   "근청석 (Cordierite)": cordierite,
   "규산지르코늄": zrsio4,
+  "산화마그네슘": magnesiumOxide,
 };
 
 export const getProductImage = (name: string) => PRODUCT_IMAGES[name];
