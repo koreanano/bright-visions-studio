@@ -137,9 +137,12 @@ const HeroSlider = () => {
               {current.titleEnEnd}
             </h1>
 
-            <h2 className="mb-8 text-base font-medium tracking-wide text-white/80 md:text-lg">
+            <h2 className="mb-3 text-base font-medium tracking-wide text-white/80 md:text-lg">
               {current.subtitleKr}
             </h2>
+            <p className="mb-8 text-sm font-semibold tracking-[0.25em] text-accent">
+              NANOKOREA
+            </p>
 
             <p className="mb-12 max-w-[55ch] text-pretty text-base leading-relaxed text-white/70 md:text-lg">
               {current.description}
