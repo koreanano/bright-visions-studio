@@ -70,9 +70,25 @@ const Navigation = () => {
           <Link to="/faq" className="text-sm font-medium text-ink/80 hover:text-accent">
             FAQ
           </Link>
+          <form onSubmit={submitSearch} className="flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 focus-within:border-accent">
+            <Search className="h-3.5 w-3.5 text-muted-foreground" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="제품 검색"
+              className="w-32 bg-transparent text-xs text-ink placeholder:text-muted-foreground focus:outline-none lg:w-40"
+            />
+          </form>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
+          <button
+            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink hover:border-accent hover:text-accent"
+            onClick={() => setSearchOpen((s) => !s)}
+            aria-label="제품 검색"
+          >
+            <Search className="h-4 w-4" />
+          </button>
           <a
             href="/#contact"
             className="hidden bg-ink px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-accent md:inline-block"
@@ -88,6 +104,26 @@ const Navigation = () => {
           </button>
         </div>
       </div>
+
+      {searchOpen && (
+        <div className="border-t border-border bg-background md:hidden">
+          <form onSubmit={submitSearch} className="mx-auto flex max-w-[1440px] items-center gap-2 px-6 py-3">
+            <div className="flex flex-1 items-center gap-2 rounded-full border border-border bg-background px-4 py-2.5 focus-within:border-accent">
+              <Search className="h-4 w-4 text-muted-foreground" />
+              <input
+                autoFocus
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                placeholder="제품을 검색해 보세요"
+                className="flex-1 bg-transparent text-sm text-ink placeholder:text-muted-foreground focus:outline-none"
+              />
+            </div>
+            <button type="submit" className="rounded-full bg-ink px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white hover:bg-accent">
+              검색
+            </button>
+          </form>
+        </div>
+      )}
 
       {mobile && (
         <div className="border-t border-border bg-background md:hidden">
