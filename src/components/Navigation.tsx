@@ -147,6 +147,7 @@ const Navigation = () => {
             </ul>
             <div className="space-y-1 border-t border-border pt-3">
               <Link to="/about" onClick={() => setMobile(false)} className="block py-1.5 text-sm">나노코리아</Link>
+              <Link to="/about" onClick={() => setMobile(false)} className="block py-1.5 text-sm">회사소개서</Link>
               <Link to="/faq" onClick={() => setMobile(false)} className="block py-1.5 text-sm">FAQ</Link>
               <a href="/#contact" className="mt-2 block bg-ink px-4 py-2 text-center text-xs font-bold uppercase text-white">
                 문의하기
