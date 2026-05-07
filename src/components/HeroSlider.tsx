@@ -51,7 +51,7 @@ const slides: Slide[] = [
     titleEnEnd: "Tomorrow.",
     subtitleKr: "내일을 만드는 산업과 함께",
     description:
-      "산업 표준에 충족하는 B2B 전문 공급망을 운영합니다.",
+      "나노코리아는 산업 표준에 충족하는 B2B 전문 공급망을 운영합니다.",
   },
 ];
 
