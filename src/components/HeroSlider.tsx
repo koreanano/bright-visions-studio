@@ -1,12 +1,12 @@
 import { useEffect, useState, useCallback } from "react";
 import { ChevronRight, Play } from "lucide-react";
-import hero1 from "@/assets/hero-1-cleanroom.mp4.asset.json";
-import hero2 from "@/assets/hero-2-particles.mp4.asset.json";
+import hero1 from "@/assets/hero-1-cleanroom.jpg";
+import hero2 from "@/assets/hero-2-particles.jpg";
 import heroPowder from "@/assets/hero-3-powder.jpg";
 
 type Slide = {
   id: string;
-  type: "video" | "image";
+  type: "image";
   src: string;
   eyebrow: string;
   titleEn: string;
@@ -19,8 +19,8 @@ type Slide = {
 const slides: Slide[] = [
   {
     id: "01",
-    type: "video",
-    src: hero1.url,
+    type: "image",
+    src: hero1,
     eyebrow: "차세대 초정밀 소재 솔루션",
     titleEn: "Empowering Industries with",
     highlight: "Superior",
@@ -31,8 +31,8 @@ const slides: Slide[] = [
   },
   {
     id: "02",
-    type: "video",
-    src: hero2.url,
+    type: "image",
+    src: hero2,
     eyebrow: "Controlled Materials · 1–100nm",
     titleEn: "Controlled Materials,",
     highlight: "Reliable",
@@ -87,30 +87,16 @@ const HeroSlider = () => {
     <section className="relative min-h-screen w-full overflow-hidden bg-background">
       {/* Media stack */}
       <div className="absolute inset-0 z-0">
-        {slides.map((s, i) =>
-          s.type === "video" ? (
-            <video
-              key={s.id}
-              src={s.src}
-              autoPlay
-              muted
-              loop
-              playsInline
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${
-                i === active ? "opacity-100 animate-ken-burns" : "opacity-0"
-              }`}
-            />
-          ) : (
-            <img
-              key={s.id}
-              src={s.src}
-              alt=""
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${
-                i === active ? "opacity-100 animate-ken-burns" : "opacity-0"
-              }`}
-            />
-          )
-        )}
+        {slides.map((s, i) => (
+          <img
+            key={s.id}
+            src={s.src}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${
+              i === active ? "opacity-100 animate-ken-burns" : "opacity-0"
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-white/10" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-side)" }} />
         <div className="absolute inset-0" style={{ background: "var(--gradient-veil)" }} />
