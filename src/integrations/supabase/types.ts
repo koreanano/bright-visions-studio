@@ -47,6 +47,36 @@ export type Database = {
         }
         Relationships: []
       }
+      news: {
+        Row: {
+          author: string
+          content: string
+          created_at: string
+          id: string
+          is_private: boolean
+          password: string | null
+          title: string
+        }
+        Insert: {
+          author?: string
+          content: string
+          created_at?: string
+          id?: string
+          is_private?: boolean
+          password?: string | null
+          title: string
+        }
+        Update: {
+          author?: string
+          content?: string
+          created_at?: string
+          id?: string
+          is_private?: boolean
+          password?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
