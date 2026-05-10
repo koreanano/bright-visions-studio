@@ -9,6 +9,7 @@ const Footer = () => {
           <a href="/#top" className="hover:text-accent">홈</a>
           <Link to="/about#top" className="hover:text-accent">회사소개</Link>
           <a href="/#products" className="hover:text-accent">제품</a>
+          <Link to="/news" className="hover:text-accent">뉴스</Link>
           <Link to="/faq" className="hover:text-accent">FAQ</Link>
           <a href="/#contact" className="hover:text-accent">문의하기</a>
         </nav>

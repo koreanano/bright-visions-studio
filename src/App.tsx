@@ -9,6 +9,9 @@ import ProductsList from "./pages/ProductsList.tsx";
 import ProductDetail from "./pages/ProductDetail.tsx";
 import Legal from "./pages/Legal.tsx";
 import InfoPage from "./pages/InfoPage.tsx";
+import NewsList from "./pages/NewsList.tsx";
+import NewsNew from "./pages/NewsNew.tsx";
+import NewsDetail from "./pages/NewsDetail.tsx";
 import HashScroller from "./components/HashScroller.tsx";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ const App = () => (
           <Route path="/about" element={<InfoPage kind="about" />} />
           <Route path="/service" element={<InfoPage kind="service" />} />
           <Route path="/faq" element={<InfoPage kind="faq" />} />
+          <Route path="/news" element={<NewsList />} />
+          <Route path="/news/new" element={<NewsNew />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
