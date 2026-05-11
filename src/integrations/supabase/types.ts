@@ -82,6 +82,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      delete_news: {
+        Args: { _id: string; _password?: string }
+        Returns: boolean
+      }
       get_news: {
         Args: { _id: string; _password?: string }
         Returns: {

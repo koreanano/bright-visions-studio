@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Calendar, Lock, User, ArrowLeft, KeyRound } from "lucide-react";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { Calendar, Lock, User, ArrowLeft, KeyRound, Trash2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -21,10 +32,14 @@ type News = {
 const NewsDetail = () => {
   const { id } = useParams();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [news, setNews] = useState<News | null>(null);
   const [loading, setLoading] = useState(true);
   const [pw, setPw] = useState("");
   const [trying, setTrying] = useState(false);
+  const [delPw, setDelPw] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [delOpen, setDelOpen] = useState(false);
 
   const load = async (password?: string) => {
     if (!id) return;
@@ -56,12 +71,33 @@ const NewsDetail = () => {
     }
   };
 
+  const onDelete = async () => {
+    if (!id) return;
+    setDeleting(true);
+    const { data, error } = await supabase.rpc("delete_news", {
+      _id: id,
+      _password: news?.is_private ? delPw : null,
+    });
+    setDeleting(false);
+    if (error) {
+      toast({ title: "삭제 실패", description: error.message, variant: "destructive" });
+      return;
+    }
+    if (data === true) {
+      toast({ title: "삭제되었습니다." });
+      setDelOpen(false);
+      navigate("/news");
+    } else {
+      toast({ title: "삭제 실패", description: "비밀번호가 일치하지 않습니다.", variant: "destructive" });
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
       <article className="mx-auto max-w-[820px] px-6 pb-20 pt-28 lg:px-12">
         <Link to="/news" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-accent">
-          <ArrowLeft className="h-3.5 w-3.5" /> 뉴스 목록
+          <ArrowLeft className="h-3.5 w-3.5" /> 게시판 목록
         </Link>
 
         {loading ? (
@@ -71,15 +107,53 @@ const NewsDetail = () => {
         ) : (
           <>
             <header className="mt-6 border-b border-border pb-8">
-              <div className="flex items-center gap-2">
-                {news.is_private && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
-                    <Lock className="h-3 w-3" /> Private
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  {news.is_private && (
+                    <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
+                      <Lock className="h-3 w-3" /> Private
+                    </span>
+                  )}
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                    Board
                   </span>
-                )}
-                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                  News
-                </span>
+                </div>
+                <AlertDialog open={delOpen} onOpenChange={(o) => { setDelOpen(o); if (!o) setDelPw(""); }}>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="outline" size="sm" className="gap-1 text-destructive hover:text-destructive">
+                      <Trash2 className="h-3.5 w-3.5" /> 삭제
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>이 글을 삭제하시겠습니까?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        {news.is_private
+                          ? "비공개 글입니다. 작성 시 설정한 비밀번호를 입력하세요."
+                          : "삭제 후에는 되돌릴 수 없습니다."}
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    {news.is_private && (
+                      <Input
+                        type="password"
+                        value={delPw}
+                        onChange={(e) => setDelPw(e.target.value)}
+                        placeholder="비밀번호"
+                        maxLength={50}
+                      />
+                    )}
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>취소</AlertDialogCancel>
+                      <AlertDialogAction
+                        onClick={(e) => { e.preventDefault(); onDelete(); }}
+                        disabled={deleting || (news.is_private && !delPw)}
+                        className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                      >
+                        {deleting ? "삭제 중…" : "삭제"}
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
               <h1 className="mt-4 text-3xl font-bold leading-tight tracking-tight text-ink lg:text-4xl">
                 {news.title}

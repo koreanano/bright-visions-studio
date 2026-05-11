@@ -33,8 +33,8 @@ const NewsList = () => {
       <section className="mx-auto max-w-[1100px] px-6 pb-16 pt-28 lg:px-12">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">News Board</p>
-            <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink lg:text-4xl">뉴스 게시판</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent">Board</p>
+            <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink lg:text-4xl">게시판</h1>
             <p className="mt-2 text-sm text-muted-foreground">
               공지사항·업계 소식·기술 정보를 자유롭게 공유하세요.
             </p>
