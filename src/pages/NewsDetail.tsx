@@ -32,10 +32,14 @@ type News = {
 const NewsDetail = () => {
   const { id } = useParams();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [news, setNews] = useState<News | null>(null);
   const [loading, setLoading] = useState(true);
   const [pw, setPw] = useState("");
   const [trying, setTrying] = useState(false);
+  const [delPw, setDelPw] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [delOpen, setDelOpen] = useState(false);
 
   const load = async (password?: string) => {
     if (!id) return;
