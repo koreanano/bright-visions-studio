@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Calendar, Lock, User, ArrowLeft, KeyRound, Trash2 } from "lucide-react";
+import { Calendar, User, ArrowLeft, Trash2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -23,10 +23,8 @@ type News = {
   id: string;
   title: string;
   author: string;
-  is_private: boolean;
   created_at: string;
   content: string;
-  unlocked: boolean;
 };
 
 const NewsDetail = () => {
@@ -35,49 +33,28 @@ const NewsDetail = () => {
   const navigate = useNavigate();
   const [news, setNews] = useState<News | null>(null);
   const [loading, setLoading] = useState(true);
-  const [pw, setPw] = useState("");
-  const [trying, setTrying] = useState(false);
   const [delPw, setDelPw] = useState("");
   const [deleting, setDeleting] = useState(false);
   const [delOpen, setDelOpen] = useState(false);
 
-  const load = async (password?: string) => {
-    if (!id) return;
-    const { data, error } = await supabase.rpc("get_news", { _id: id, _password: password ?? null });
-    if (error) {
-      toast({ title: "오류", description: error.message, variant: "destructive" });
-      return;
-    }
-    const row = (data as News[])?.[0] || null;
-    setNews(row);
-    return row;
-  };
-
   useEffect(() => {
     (async () => {
-      await load();
+      if (!id) return;
+      const { data, error } = await supabase.rpc("get_news", { _id: id, _password: null });
+      if (error) {
+        toast({ title: "오류", description: error.message, variant: "destructive" });
+      } else {
+        setNews(((data as News[]) || [])[0] || null);
+      }
       setLoading(false);
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
-  const onUnlock = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setTrying(true);
-    const row = await load(pw);
-    setTrying(false);
-    if (row && !row.unlocked) {
-      toast({ title: "비밀번호가 일치하지 않습니다.", variant: "destructive" });
-    }
-  };
-
   const onDelete = async () => {
     if (!id) return;
     setDeleting(true);
-    const { data, error } = await supabase.rpc("delete_news", {
-      _id: id,
-      _password: news?.is_private ? delPw : null,
-    });
+    const { data, error } = await supabase.rpc("delete_news", { _id: id, _password: delPw });
     setDeleting(false);
     if (error) {
       toast({ title: "삭제 실패", description: error.message, variant: "destructive" });
@@ -108,16 +85,9 @@ const NewsDetail = () => {
           <>
             <header className="mt-6 border-b border-border pb-8">
               <div className="flex items-start justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  {news.is_private && (
-                    <span className="inline-flex items-center gap-1 rounded-full bg-accent/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-accent">
-                      <Lock className="h-3 w-3" /> Private
-                    </span>
-                  )}
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-                    Board
-                  </span>
-                </div>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+                  Board
+                </span>
                 <AlertDialog open={delOpen} onOpenChange={(o) => { setDelOpen(o); if (!o) setDelPw(""); }}>
                   <AlertDialogTrigger asChild>
                     <Button variant="outline" size="sm" className="gap-1 text-destructive hover:text-destructive">
@@ -128,25 +98,22 @@ const NewsDetail = () => {
                     <AlertDialogHeader>
                       <AlertDialogTitle>이 글을 삭제하시겠습니까?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        {news.is_private
-                          ? "비공개 글입니다. 작성 시 설정한 비밀번호를 입력하세요."
-                          : "삭제 후에는 되돌릴 수 없습니다."}
+                        작성 시 설정한 비밀번호를 입력하세요. 삭제 후에는 되돌릴 수 없습니다.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
-                    {news.is_private && (
-                      <Input
-                        type="password"
-                        value={delPw}
-                        onChange={(e) => setDelPw(e.target.value)}
-                        placeholder="비밀번호"
-                        maxLength={50}
-                      />
-                    )}
+                    <Input
+                      type="password"
+                      value={delPw}
+                      onChange={(e) => setDelPw(e.target.value)}
+                      placeholder="비밀번호"
+                      maxLength={50}
+                      autoFocus
+                    />
                     <AlertDialogFooter>
                       <AlertDialogCancel>취소</AlertDialogCancel>
                       <AlertDialogAction
                         onClick={(e) => { e.preventDefault(); onDelete(); }}
-                        disabled={deleting || (news.is_private && !delPw)}
+                        disabled={deleting || !delPw}
                         className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                       >
                         {deleting ? "삭제 중…" : "삭제"}
@@ -170,31 +137,9 @@ const NewsDetail = () => {
             </header>
 
             <div className="prose prose-neutral max-w-none py-10">
-              {news.unlocked ? (
-                <div className="whitespace-pre-wrap text-[15px] leading-8 text-ink/90">
-                  {news.content}
-                </div>
-              ) : (
-                <div className="rounded-lg border border-dashed border-border bg-muted/30 p-8 text-center">
-                  <Lock className="mx-auto h-8 w-8 text-accent" />
-                  <h3 className="mt-3 text-base font-semibold text-ink">비공개 글입니다</h3>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    열람하려면 작성자가 설정한 비밀번호를 입력하세요.
-                  </p>
-                  <form onSubmit={onUnlock} className="mx-auto mt-5 flex max-w-sm gap-2">
-                    <Input
-                      type="password"
-                      value={pw}
-                      onChange={(e) => setPw(e.target.value)}
-                      placeholder="비밀번호"
-                      maxLength={50}
-                    />
-                    <Button type="submit" disabled={trying} className="gap-1 bg-ink text-white hover:bg-accent">
-                      <KeyRound className="h-3.5 w-3.5" /> 열람
-                    </Button>
-                  </form>
-                </div>
-              )}
+              <div className="whitespace-pre-wrap text-[15px] leading-8 text-ink/90">
+                {news.content}
+              </div>
             </div>
           </>
         )}
