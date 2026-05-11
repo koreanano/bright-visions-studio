@@ -68,7 +68,7 @@ const Navigation = () => {
             )}
           </div>
           <Link to="/news" className="text-sm font-medium text-ink/80 hover:text-accent">
-            뉴스
+            게시판
           </Link>
           <Link to="/faq" className="text-sm font-medium text-ink/80 hover:text-accent">
             FAQ
