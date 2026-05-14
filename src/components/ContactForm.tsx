@@ -3,9 +3,8 @@ import { Building2, Mail } from "lucide-react";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { CATEGORIES } from "@/data/products";
+import { supabase } from "@/integrations/supabase/client";
 import contactBg from "@/assets/contact-bg.jpg";
-
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/" + ["cscomm", "naver.com"].join("@");
 
 const schema = z.object({
   company: z.string().trim().min(1, "회사명을 입력해 주세요").max(100),
