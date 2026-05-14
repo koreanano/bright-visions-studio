@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://nanokorea.co.kr/sitemap.xml
+Sitemap: https://nano-korea.co.kr/sitemap.xml

@@ -92,7 +92,7 @@ const ContactForm = () => {
                 </div>
                 <div>
                   <div className="text-base font-semibold text-white">NANOKOREA (나노코리아)</div>
-                  <div className="mt-1 text-sm text-white/70">경기도 화성시 남양읍 수작이길 55, 2층</div>
+                  <div className="mt-1 text-sm text-white/70">경기도 화성시 남양읍 화성로 1196</div>
                   <div className="text-sm text-white/70">주식회사 디솔루션</div>
                 </div>
               </div>
