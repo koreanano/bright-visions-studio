@@ -53,8 +53,10 @@ export type Database = {
           content: string
           created_at: string
           id: string
+          image_url: string | null
           is_private: boolean
           password: string | null
+          source_url: string | null
           title: string
         }
         Insert: {
@@ -62,8 +64,10 @@ export type Database = {
           content: string
           created_at?: string
           id?: string
+          image_url?: string | null
           is_private?: boolean
           password?: string | null
+          source_url?: string | null
           title: string
         }
         Update: {
@@ -71,8 +75,10 @@ export type Database = {
           content?: string
           created_at?: string
           id?: string
+          image_url?: string | null
           is_private?: boolean
           password?: string | null
+          source_url?: string | null
           title?: string
         }
         Relationships: []
@@ -93,7 +99,9 @@ export type Database = {
           content: string
           created_at: string
           id: string
+          image_url: string
           is_private: boolean
+          source_url: string
           title: string
           unlocked: boolean
         }[]
@@ -105,7 +113,9 @@ export type Database = {
           content: string
           created_at: string
           id: string
+          image_url: string
           is_private: boolean
+          source_url: string
           title: string
         }[]
       }
