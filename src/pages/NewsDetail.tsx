@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { Calendar, User, ArrowLeft, Trash2 } from "lucide-react";
+import { Calendar, User, ArrowLeft, Trash2, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,8 @@ type News = {
   author: string;
   created_at: string;
   content: string;
+  image_url?: string | null;
+  source_url?: string | null;
 };
 
 const NewsDetail = () => {
@@ -137,9 +139,31 @@ const NewsDetail = () => {
             </header>
 
             <div className="prose prose-neutral max-w-none py-10">
+              {news.image_url && (
+                <img
+                  src={news.image_url}
+                  alt={news.title}
+                  className="mb-6 max-h-[600px] w-auto rounded border border-border object-contain"
+                  loading="lazy"
+                />
+              )}
               <div className="whitespace-pre-wrap text-[15px] leading-8 text-ink/90">
                 {news.content}
               </div>
+              {news.source_url && (
+                <div className="mt-8 border-t border-border pt-5">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">출처</div>
+                  <a
+                    href={news.source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 break-all text-sm text-accent underline-offset-4 hover:underline"
+                  >
+                    {news.source_url}
+                    <ExternalLink className="h-3.5 w-3.5 shrink-0" />
+                  </a>
+                </div>
+              )}
             </div>
           </>
         )}
