@@ -8,6 +8,7 @@ import imgAlumina from "@/assets/cat-alumina.jpg";
 import imgCarbide from "@/assets/cat-carbide.jpg";
 import imgMetal from "@/assets/cat-metal.jpg";
 import imgNano from "@/assets/cat-nano.jpg";
+import imgBattery from "@/assets/cat-battery.jpg";
 import imgOthers from "@/assets/cat-others.jpg";
 
 const CAT_IMG: Record<CategoryKey, string> = {
@@ -18,7 +19,7 @@ const CAT_IMG: Record<CategoryKey, string> = {
   carbide: imgCarbide,
   metal: imgMetal,
   nano: imgNano,
-  battery: imgOthers,
+  battery: imgBattery,
   others: imgOthers,
 };
 
