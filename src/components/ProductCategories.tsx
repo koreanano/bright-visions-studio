@@ -97,9 +97,6 @@ const ProductCategories = () => {
               <h3 className="mb-3 text-3xl font-semibold tracking-tight text-ink">
                 전체 제품<br />보기
               </h3>
-              <p className="text-sm text-ink/70">
-                ※ 파트너사 전 제품 공급 가능 — 목록에 없는 소재도 문의해 주세요.
-              </p>
             </div>
           </Link>
         </div>

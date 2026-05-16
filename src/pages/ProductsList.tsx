@@ -39,7 +39,7 @@ const ProductsList = () => {
               {q ? `"${q}" 검색결과` : category ? category.kr : "전체 제품"}
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
-              총 {items.length}개 제품 · 파트너사 전 제품 공급 가능 — 목록에 없는 소재도 문의해 주세요.
+              총 {items.length}개 제품
             </p>
           </div>
         </div>
