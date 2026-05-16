@@ -45,7 +45,7 @@ const ProductCategories = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {CATEGORIES.map((c, i) => (
             <Link
               key={c.key}
