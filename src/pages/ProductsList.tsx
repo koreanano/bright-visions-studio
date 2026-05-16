@@ -1,5 +1,5 @@
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CategoryNav from "@/components/CategoryNav";
@@ -47,7 +47,7 @@ const ProductsList = () => {
 
       <section className="pb-28">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5">
             {items.map((p, i) => {
               const cat = (p as any)._cat;
               const img = getProductImage(p.name);
@@ -55,43 +55,16 @@ const ProductsList = () => {
                 <Link
                   key={`${cat.key}-${i}-${p.name}`}
                   to={`/products/${cat.key}/${slugify(p.name)}`}
-                  className="group flex overflow-hidden border border-border bg-background transition-all hover:border-accent hover:shadow-[0_18px_40px_rgba(34,211,238,0.18)]"
+                  className="group flex flex-col overflow-hidden border border-border bg-background transition-all hover:border-accent hover:shadow-[0_18px_40px_rgba(34,211,238,0.18)]"
                 >
-                  {/* Left: text */}
-                  <div className="flex w-1/2 flex-col p-5">
-                    <span className="mb-2 font-mono text-[10px] font-semibold uppercase tracking-widest text-accent">
-                      {cat.kr}
-                    </span>
-                    <h3 className="mb-1.5 text-base font-semibold leading-snug text-ink">
-                      {p.name}
-                    </h3>
-                    <div className="mb-3 font-mono text-xs text-muted-foreground">{p.formula}</div>
-                    <p className="mb-4 line-clamp-3 text-xs leading-relaxed text-ink/70">
-                      {p.desc}
-                    </p>
-                    <div className="mt-auto flex items-end justify-between gap-2">
-                      <div className="flex flex-wrap gap-1">
-                        {p.tags.slice(0, 2).map((t) => (
-                          <span
-                            key={t}
-                            className="bg-muted px-2 py-0.5 text-[10px] font-medium text-accent"
-                          >
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                      <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-accent" />
-                    </div>
-                  </div>
-                  {/* Right: image (half) */}
-                  <div className="relative w-1/2 overflow-hidden bg-white">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-white">
                     {img ? (
                       <img
                         src={img}
                         alt={p.name}
                         loading="lazy"
                         width={400}
-                        height={400}
+                        height={300}
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
@@ -99,6 +72,31 @@ const ProductsList = () => {
                         {p.formula}
                       </div>
                     )}
+                  </div>
+                  <div className="flex flex-1 flex-col p-4">
+                    <span className="mb-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-accent">
+                      {cat.kr}
+                    </span>
+                    <h3 className="mb-1 text-sm font-semibold leading-snug text-ink">
+                      {p.name}
+                    </h3>
+                    <div className="mb-2 font-mono text-[10px] text-muted-foreground">{p.formula}</div>
+                    <p className="mb-3 line-clamp-2 text-xs leading-relaxed text-ink/70">
+                      {p.desc}
+                    </p>
+                    <div className="mt-auto flex items-end justify-between gap-2">
+                      <div className="flex flex-wrap gap-1">
+                        {p.tags.slice(0, 2).map((t) => (
+                          <span
+                            key={t}
+                            className="bg-muted px-1.5 py-0.5 text-[10px] font-medium text-accent"
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                    </div>
                   </div>
                 </Link>
               );
