@@ -116,6 +116,7 @@ export const CATEGORIES: Category[] = [
       { name: "나노 실리카 / Nano Silica", cat: "나노소재", formula: "nano-SiO₂", desc: "초미세 실리카 분말. 고분자 강화·도료 첨가·절연 소재 등 광범위하게 활용.", tags: ["실리카", "절연"], apps: ["치과용 레진 필러", "초발수/방오 유리 코팅재", "CMP 슬러리(반도체 연마)", "고기능성 타이어 트레드"] },
       { name: "나노 YSZ / Nano Yttria-Stabilized Zirconia", cat: "나노소재", formula: "nano-YSZ", desc: "나노 스케일 YSZ 분말. 연료전지 전해질·열차폐 코팅·정밀 세라믹 소결용.", tags: ["SOFC", "열차폐"], apps: ["초소형 마이크로 펌프 기어", "수소 센서 전극 소재", "가스터빈 TBC 코팅용액", "치과용 초투명 수복물"] },
     ],
+  },
   {
     key: "battery",
     kr: "이차전지",
