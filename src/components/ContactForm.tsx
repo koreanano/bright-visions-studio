@@ -67,8 +67,8 @@ const ContactForm = () => {
           <div className="mb-4 text-sm font-semibold tracking-wider text-ink">
             문의하기 / CONTACT
           </div>
-          <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            제품 문의를<br />남겨주세요
+          <h2 className="text-balance text-2xl font-semibold leading-tight tracking-tight text-white md:text-3xl">
+            프로젝트의 시작과 끝을<br />함께 합니다.
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-white/70">
             제품 사양·견적·샘플 요청 등 어떤 문의든 환영합니다.
