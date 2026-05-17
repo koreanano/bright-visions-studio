@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
 import HeroSlider from "@/components/HeroSlider";
-import TrustMarquee from "@/components/TrustMarquee";
+import CompanyIntro from "@/components/CompanyIntro";
 import ProductCategories from "@/components/ProductCategories";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
@@ -11,7 +11,7 @@ const Index = () => {
       <Navigation />
       <div id="top" />
       <HeroSlider />
-      <TrustMarquee />
+      <CompanyIntro />
       <ProductCategories />
       <ContactForm />
       <Footer />
