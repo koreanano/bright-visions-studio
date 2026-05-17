@@ -25,9 +25,12 @@ function generateToken(): string {
     .join('')
 }
 
-// Auth note: this function uses verify_jwt = true in config.toml, so Supabase's
-// gateway validates the caller's JWT (anon or service_role) before the request
-// reaches this code. No in-function auth check is needed.
+function isAuthorized(req: Request, serviceKey: string): boolean {
+  const authHeader = req.headers.get('Authorization') || ''
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : ''
+  const apiKey = req.headers.get('apikey') || ''
+  return bearerToken === serviceKey || apiKey === serviceKey
+}
 
 Deno.serve(async (req) => {
   // Handle CORS preflight
@@ -47,6 +50,13 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     )
+  }
+
+  if (!isAuthorized(req, supabaseServiceKey)) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    })
   }
 
   // Parse request body

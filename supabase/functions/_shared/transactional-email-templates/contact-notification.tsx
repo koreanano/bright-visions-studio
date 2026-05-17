@@ -55,7 +55,7 @@ export const template = {
   component: ContactNotificationEmail,
   subject: (d: Record<string, any>) =>
     `[NANOKOREA 문의] ${d.company || ''} - ${d.name || ''}`,
-  to: 'nanokorea2019@gmail.com',
+  to: 'cscomm@naver.com',
   displayName: '문의 접수 알림',
   previewData: {
     company: '샘플(주)',
