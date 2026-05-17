@@ -63,7 +63,7 @@ const ProductCategories = () => {
                 <div className="mb-3 font-sans text-lg font-bold tracking-tight text-ink">
                   {c.en}
                 </div>
-                <h3 className="mb-3 pl-3 text-xl font-semibold tracking-tight text-ink">
+                <h3 className="mb-3 text-base font-medium tracking-tight text-muted-foreground">
                   {c.kr}
                 </h3>
                 <div className="mt-auto flex w-full items-end justify-between pt-4">
