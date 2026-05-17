@@ -60,7 +60,7 @@ const ProductCategories = () => {
                 </div>
               </div>
             <div className="flex flex-1 flex-col items-start p-6">
-                <div className="mb-3 inline-flex w-fit items-center rounded-full border-2 border-accent bg-background px-3 py-1 font-sans text-sm font-bold tracking-tight text-accent">
+                <div className="mb-3 font-sans text-lg font-bold tracking-tight text-ink">
                   {c.en}
                 </div>
                 <h3 className="mb-3 pl-3 text-xl font-semibold tracking-tight text-ink">
