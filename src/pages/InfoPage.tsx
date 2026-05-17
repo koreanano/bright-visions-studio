@@ -187,7 +187,7 @@ const AboutPage = () => (
           <div className="mt-8 space-y-5">
             <div className="border-l-2 border-accent pl-4">
               <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Headquarters</div>
-              <div className="mt-1 text-base text-ink">경기도 화성시 남양읍 수작이길 55, 2층</div>
+              <div className="mt-1 text-base text-ink">경기도 화성시 남양읍 화성로 1196</div>
               <div className="text-sm text-muted-foreground">주식회사 디솔루션</div>
             </div>
             <div className="border-l-2 border-accent pl-4">
