@@ -12,7 +12,6 @@ const Index = () => {
       <div id="top" />
       <HeroSlider />
       <TrustMarquee />
-      <StatsBand />
       <ProductCategories />
       <ContactForm />
       <Footer />
