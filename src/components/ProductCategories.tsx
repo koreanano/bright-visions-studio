@@ -60,20 +60,19 @@ const ProductCategories = () => {
                 </div>
               </div>
               <div className="flex flex-1 flex-col p-6">
-                <div className="mb-3 inline-flex w-fit items-center rounded-full border-2 border-accent bg-background px-3 py-1 font-sans text-sm font-bold tracking-tight text-accent">
+              <div className="mb-3 inline-flex w-fit items-center justify-center rounded-full border-2 border-accent bg-background px-3 py-1 font-sans text-sm font-bold tracking-tight text-accent">
                   {c.en}
                 </div>
-                <h3 className="mb-3 text-xl font-semibold tracking-tight text-ink">
+                <h3 className="mb-3 text-center text-xl font-semibold tracking-tight text-ink">
                   {c.kr}
                 </h3>
-                <div className="mt-auto flex items-end justify-between pt-4">
+                <div className="mt-auto flex items-end justify-center pt-4">
                   <div className="flex items-baseline gap-1.5">
                     <span className="text-2xl font-semibold text-ink">
                       {String(c.items.length).padStart(2, "0")}
                     </span>
                     <span className="text-xs text-muted-foreground">products</span>
                   </div>
-                  <ArrowUpRight className="h-5 w-5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                 </div>
               </div>
             </Link>
