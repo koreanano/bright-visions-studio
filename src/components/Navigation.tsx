@@ -105,7 +105,9 @@ const Navigation = () => {
 
         <div className="flex items-center gap-2">
           <button
-            className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink hover:border-accent hover:text-accent"
+            className={`md:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border hover:border-accent hover:text-accent ${
+              transparent ? "border-white/40 text-white" : "border-border text-ink"
+            }`}
             onClick={() => setSearchOpen((s) => !s)}
             aria-label="제품 검색"
           >
@@ -113,12 +115,14 @@ const Navigation = () => {
           </button>
           <a
             href="/#contact"
-            className="hidden bg-ink px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-accent md:inline-block"
+            className={`hidden px-5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all hover:bg-accent md:inline-block ${
+              transparent ? "bg-white/15 backdrop-blur text-white hover:text-ink" : "bg-ink text-white"
+            }`}
           >
             문의하기
           </a>
           <button
-            className="md:hidden"
+            className={`md:hidden ${transparent ? "text-white" : "text-ink"}`}
             onClick={() => setMobile(!mobile)}
             aria-label="menu"
           >
