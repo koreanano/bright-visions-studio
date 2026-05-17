@@ -115,7 +115,11 @@ const HeroSlider = () => {
               </span>
             </div>
 
-            <h1 className="mb-6 text-balance text-5xl font-medium leading-[1.05] tracking-tight text-white md:text-6xl lg:text-[5.25rem]">
+            <h1 className={`mb-6 text-balance font-medium leading-[1.05] tracking-tight text-white ${
+              current.id === "03"
+                ? "text-3xl md:text-4xl lg:text-5xl"
+                : "text-5xl md:text-6xl lg:text-[5.25rem]"
+            }`}>
               {current.titleEn}{" "}
               <span className="relative inline-block">
                 <span className="gradient-text-prism">{current.highlight}</span>
@@ -123,11 +127,15 @@ const HeroSlider = () => {
               {current.titleEnEnd}
             </h1>
 
-            <h2 className="mb-6 text-base font-medium tracking-wide text-white/80 md:text-lg">
+            <h2 className={`mb-6 font-medium tracking-wide text-white/80 ${
+              current.id === "03" ? "text-sm md:text-base" : "text-base md:text-lg"
+            }`}>
               {current.subtitleKr}
             </h2>
 
-            <p className="mb-12 max-w-[55ch] text-pretty text-base leading-relaxed text-white/70 md:text-lg">
+            <p className={`mb-12 max-w-[55ch] text-pretty leading-relaxed text-white/70 ${
+              current.id === "03" ? "text-sm md:text-base" : "text-base md:text-lg"
+            }`}>
               {current.description}
             </p>
 
