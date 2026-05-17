@@ -61,14 +61,19 @@ const ContactForm = () => {
         backgroundPosition: "center",
       }}
     >
+      <div className="mx-auto mb-10 max-w-[1280px] px-6 lg:px-12">
+        <div className="text-center text-sm font-semibold tracking-[0.2em] text-white/80">
+          첨단소재 공급기업 · 나노코리아
+        </div>
+      </div>
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-6 lg:grid-cols-2 lg:gap-16 lg:px-12">
         {/* LEFT — info */}
         <div className="text-white">
-          <div className="mb-4 font-mono text-sm font-semibold tracking-wider text-ink">
+          <div className="mb-4 text-sm font-semibold tracking-wider text-ink">
             문의하기 / CONTACT
           </div>
-          <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            제품 문의를<br />남겨주세요
+          <h2 className="text-balance text-2xl font-semibold leading-tight tracking-tight text-white md:text-3xl">
+            프로젝트의 시작과 끝을<br />함께 합니다.
           </h2>
           <p className="mt-6 max-w-md text-base leading-relaxed text-white/70">
             제품 사양·견적·샘플 요청 등 어떤 문의든 환영합니다.
@@ -114,7 +119,7 @@ const ContactForm = () => {
                 중국 주소 (CHINA)
               </div>
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center bg-accent/15 font-mono text-xs font-bold text-ink">
+                <div className="grid h-11 w-11 shrink-0 place-items-center bg-accent/15 text-xs font-bold text-ink">
                   CN
                 </div>
                 <div>
@@ -177,6 +182,11 @@ const ContactForm = () => {
               )}
             </div>
           </form>
+        </div>
+      </div>
+      <div className="mx-auto mt-12 max-w-[1280px] px-6 lg:px-12">
+        <div className="border-t border-white/10 pt-6 text-center text-sm font-semibold tracking-[0.2em] text-white/80">
+          첨단소재 공급기업 · 나노코리아
         </div>
       </div>
     </section>

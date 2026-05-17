@@ -32,7 +32,7 @@ const ProductsList = () => {
       <section className="pt-10 pb-8">
         <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+            <span className="text-xs font-semibold uppercase tracking-[0.25em] text-ink">
               {q ? "Search Results" : category ? category.en : "All Products"}
             </span>
             <h1 className="text-balance text-3xl font-medium tracking-tight text-ink md:text-4xl">
@@ -68,19 +68,19 @@ const ProductsList = () => {
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center font-mono text-xs text-muted-foreground">
+                      <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">
                         {p.formula}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-1 flex-col p-4">
-                    <span className="mb-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-ink">
+                    <span className="mb-1.5 text-[10px] font-semibold uppercase tracking-widest text-ink">
                       {cat.kr}
                     </span>
                     <h3 className="mb-1 text-sm font-semibold leading-snug text-ink">
                       {p.name}
                     </h3>
-                    <div className="mb-2 font-mono text-[10px] text-muted-foreground">{p.formula}</div>
+                    <div className="mb-2 text-[10px] text-muted-foreground">{p.formula}</div>
                     <p className="mb-3 line-clamp-2 text-xs leading-relaxed text-ink/70">
                       {p.desc}
                     </p>
