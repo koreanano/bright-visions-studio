@@ -45,14 +45,25 @@ Deno.serve(async (req) => {
 
     // 2) Send notification email via transactional template
     try {
-      const { error: mailErr } = await supabase.functions.invoke("send-transactional-email", {
-        body: {
+      const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+      const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+      const resp = await fetch(`${supabaseUrl}/functions/v1/send-transactional-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${serviceKey}`,
+          "apikey": serviceKey,
+        },
+        body: JSON.stringify({
           templateName: "contact-notification",
           idempotencyKey: `contact-${inserted.id}`,
           templateData: { company, name, email, phone: phone || "", category: category || "", message },
-        },
+        }),
       });
-      if (mailErr) console.warn("Email enqueue failed:", mailErr);
+      if (!resp.ok) {
+        const t = await resp.text();
+        console.warn("Email enqueue failed:", resp.status, t);
+      }
     } catch (e) {
       console.warn("Email send error:", e);
     }
