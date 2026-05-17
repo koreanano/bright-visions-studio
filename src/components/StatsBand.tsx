@@ -1,9 +1,4 @@
-import { LifeBuoy, BookOpen } from "lucide-react";
-
-const stats = [
-  { value: "100", unit: "nm↓", label: "Particle Scale", caption: "Particle Scale" },
-  { value: "B2B", unit: "", label: "Enterprise Supply", caption: "Enterprise Supply" },
-];
+import partnershipImg from "@/assets/partnership-trust.jpg";
 
 const StatsBand = () => {
   return (
@@ -11,51 +6,29 @@ const StatsBand = () => {
       <div className="absolute inset-0 grid-bg opacity-[0.04]" />
       <div className="absolute inset-0" style={{ background: "var(--gradient-glow)" }} />
 
-      <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-px bg-white/10 px-6 md:grid-cols-3 lg:px-12">
-        {/* First stat */}
-        <div className="bg-ink p-8 lg:p-10">
-          <div className="mb-6 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-ink">
-            01 · {stats[0].caption}
-          </div>
-          <div className="mb-4 flex items-baseline gap-2">
-            <span className="text-5xl font-medium tracking-tight text-white lg:text-6xl">
-              {stats[0].value}
-            </span>
-            <span className="text-2xl font-light text-ink">{stats[0].unit}</span>
-          </div>
-          <div className="text-sm text-white/60">{stats[0].label}</div>
+      <div className="relative mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-6 md:grid-cols-2 lg:px-12">
+        <div className="overflow-hidden">
+          <img
+            src={partnershipImg}
+            alt="신뢰 기반 비즈니스 파트너십"
+            className="h-full w-full object-cover"
+            loading="lazy"
+            width={1280}
+            height={1024}
+          />
         </div>
 
-        {/* Tech Support + Reference Access — featured card (English, simple) */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-accent/15 via-ink to-ink p-8 lg:p-10">
-          <div className="mb-6 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-ink">
-            02 · R&D Material Support
+        <div>
+          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-white/50">
+            About · 회사 소개
           </div>
-          <div className="mb-5 flex items-center gap-3">
-            <div className="grid h-11 w-11 place-items-center rounded-sm bg-accent/15 text-ink">
-              <LifeBuoy className="h-5 w-5" />
-            </div>
-            <span className="text-2xl font-semibold text-white">+</span>
-            <div className="grid h-11 w-11 place-items-center rounded-sm bg-accent/15 text-ink">
-              <BookOpen className="h-5 w-5" />
-            </div>
-          </div>
-          <h3 className="text-xl font-semibold tracking-tight text-white">
-            Tech Support &<br />Reference Access
-          </h3>
-        </div>
-
-        {/* B2B */}
-        <div className="bg-ink p-8 lg:p-10">
-          <div className="mb-6 font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-ink">
-            03 · {stats[1].caption}
-          </div>
-          <div className="mb-4 flex items-baseline gap-2">
-            <span className="text-5xl font-medium tracking-tight text-white lg:text-6xl">
-              {stats[1].value}
-            </span>
-          </div>
-          <div className="text-sm text-white/60">{stats[1].label}</div>
+          <h2 className="mt-4 text-3xl font-medium leading-tight tracking-tight text-white md:text-4xl">
+            신뢰로 잇는<br />안정적인 비즈니스 파트너
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-white/70 md:text-lg">
+            NANOKOREA는 글로벌 첨단소재 공급 파트너로서, 검증된 품질과 안정적인
+            공급망을 바탕으로 고객과 함께 성장하는 신뢰받는 기업을 지향합니다.
+          </p>
         </div>
       </div>
     </section>
