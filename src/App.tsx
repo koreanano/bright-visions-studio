@@ -12,6 +12,7 @@ import InfoPage from "./pages/InfoPage.tsx";
 import NewsList from "./pages/NewsList.tsx";
 import NewsNew from "./pages/NewsNew.tsx";
 import NewsDetail from "./pages/NewsDetail.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 import HashScroller from "./components/HashScroller.tsx";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/news" element={<NewsList />} />
           <Route path="/news/new" element={<NewsNew />} />
           <Route path="/news/:id" element={<NewsDetail />} />
+          <Route path="/unsubscribe" element={<Unsubscribe />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

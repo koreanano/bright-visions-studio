@@ -5,8 +5,6 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-const RECIPIENT = "nanokorea2019@gmail.com";
-
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -27,12 +25,16 @@ Deno.serve(async (req) => {
     );
 
     // 1) Persist
-    const { error: dbErr } = await supabase.from("contact_submissions").insert({
-      company, name, email,
-      phone: phone || null,
-      category: category || null,
-      message,
-    });
+    const { data: inserted, error: dbErr } = await supabase
+      .from("contact_submissions")
+      .insert({
+        company, name, email,
+        phone: phone || null,
+        category: category || null,
+        message,
+      })
+      .select("id")
+      .single();
     if (dbErr) {
       console.error("DB insert error", dbErr);
       return new Response(JSON.stringify({ error: "저장에 실패했습니다." }), {
@@ -41,32 +43,18 @@ Deno.serve(async (req) => {
       });
     }
 
-    // 2) Try email via Lovable transactional email (if email domain configured)
+    // 2) Send notification email via transactional template
     try {
-      const html = `
-<h2>새로운 문의가 접수되었습니다</h2>
-<table style="border-collapse:collapse">
-  <tr><td><b>회사명</b></td><td>${escapeHtml(company)}</td></tr>
-  <tr><td><b>담당자</b></td><td>${escapeHtml(name)}</td></tr>
-  <tr><td><b>이메일</b></td><td>${escapeHtml(email)}</td></tr>
-  <tr><td><b>연락처</b></td><td>${escapeHtml(phone || "-")}</td></tr>
-  <tr><td><b>관심 카테고리</b></td><td>${escapeHtml(category || "-")}</td></tr>
-</table>
-<h3>문의 내용</h3>
-<p style="white-space:pre-wrap">${escapeHtml(message)}</p>`;
-
-      await supabase.functions.invoke("send-transactional-email", {
+      const { error: mailErr } = await supabase.functions.invoke("send-transactional-email", {
         body: {
-          to: RECIPIENT,
-          subject: `[NANOKOREA 문의] ${company} - ${name}`,
-          html,
-          purpose: "transactional",
-          idempotency_key: crypto.randomUUID(),
-          reply_to: email,
+          templateName: "contact-notification",
+          idempotencyKey: `contact-${inserted.id}`,
+          templateData: { company, name, email, phone: phone || "", category: category || "", message },
         },
       });
+      if (mailErr) console.warn("Email enqueue failed:", mailErr);
     } catch (e) {
-      console.warn("Email send skipped or failed (domain may not be configured):", e);
+      console.warn("Email send error:", e);
     }
 
     return new Response(JSON.stringify({ ok: true }), {
@@ -81,11 +69,3 @@ Deno.serve(async (req) => {
     });
   }
 });
-
-function escapeHtml(s: string) {
-  return String(s)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-}
