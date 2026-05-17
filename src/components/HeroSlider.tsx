@@ -162,7 +162,7 @@ const HeroSlider = () => {
         <div className="relative z-10 mt-auto">
           <div className="flex items-end justify-between gap-8">
             <div className="flex items-center gap-5">
-              <span className="font-mono text-sm font-semibold text-white">{current.id}</span>
+              <span className="text-sm font-semibold text-white">{current.id}</span>
               <div className="flex items-center gap-2">
                 {slides.map((s, i) => (
                   <button
@@ -181,11 +181,11 @@ const HeroSlider = () => {
                   </button>
                 ))}
               </div>
-              <span className="font-mono text-xs text-white/40">/ 0{slides.length}</span>
+              <span className="text-xs text-white/40">/ 0{slides.length}</span>
             </div>
 
             <div className="hidden items-center gap-3 md:flex">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/40">
+              <span className="text-[10px] uppercase tracking-[0.25em] text-white/40">
                 Now Viewing
               </span>
               <span className="text-sm font-medium text-white/80">{current.titleEn} {current.highlight}</span>

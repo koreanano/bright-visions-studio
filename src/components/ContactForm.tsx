@@ -64,7 +64,7 @@ const ContactForm = () => {
       <div className="mx-auto grid max-w-[1280px] grid-cols-1 gap-10 px-6 lg:grid-cols-2 lg:gap-16 lg:px-12">
         {/* LEFT — info */}
         <div className="text-white">
-          <div className="mb-4 font-mono text-sm font-semibold tracking-wider text-ink">
+          <div className="mb-4 text-sm font-semibold tracking-wider text-ink">
             문의하기 / CONTACT
           </div>
           <h2 className="text-balance text-4xl font-semibold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
@@ -114,7 +114,7 @@ const ContactForm = () => {
                 중국 주소 (CHINA)
               </div>
               <div className="flex items-start gap-4">
-                <div className="grid h-11 w-11 shrink-0 place-items-center bg-accent/15 font-mono text-xs font-bold text-ink">
+                <div className="grid h-11 w-11 shrink-0 place-items-center bg-accent/15 text-xs font-bold text-ink">
                   CN
                 </div>
                 <div>

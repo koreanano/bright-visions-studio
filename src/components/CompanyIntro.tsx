@@ -24,7 +24,7 @@ const CompanyIntro = () => {
         </div>
 
         <div>
-          <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
             About · 회사 소개
           </div>
           <h2 className="mt-4 text-2xl font-medium leading-tight tracking-tight text-ink md:text-3xl">

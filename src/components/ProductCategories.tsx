@@ -55,7 +55,7 @@ const ProductCategories = () => {
                   height={500}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute left-4 top-4 bg-background/85 px-2.5 py-1 font-mono text-[10px] font-semibold tracking-widest text-ink backdrop-blur">
+                <div className="absolute left-4 top-4 bg-background/85 px-2.5 py-1 text-[10px] font-semibold tracking-widest text-ink backdrop-blur">
                   {String(i + 1).padStart(2, "0")}
                 </div>
               </div>
@@ -84,7 +84,7 @@ const ProductCategories = () => {
             className="group flex min-h-[260px] flex-col justify-between gradient-prism p-8 transition-all hover:opacity-90"
           >
             <div className="flex items-start justify-between">
-              <span className="font-mono text-xs font-semibold tracking-widest text-ink/70">
+              <span className="text-xs font-semibold tracking-widest text-ink/70">
                 ALL
               </span>
               <ArrowUpRight className="h-5 w-5 text-ink transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />

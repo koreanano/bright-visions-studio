@@ -77,7 +77,7 @@ const AboutPage = () => (
       />
       <div className="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/30 to-ink/80" />
       <div className="relative z-10 mx-auto flex h-full max-w-[1200px] flex-col justify-end px-6 pb-16 lg:px-12">
-        <div className="font-mono text-xs font-semibold uppercase tracking-[0.3em] text-ink">
+        <div className="text-xs font-semibold uppercase tracking-[0.3em] text-ink">
           About · 회사소개
         </div>
         <h1 className="mt-4 max-w-3xl text-balance text-4xl font-medium leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
@@ -94,7 +94,7 @@ const AboutPage = () => (
     <section className="py-24">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-12 px-6 lg:grid-cols-12 lg:px-12">
         <div className="lg:col-span-4">
-          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-ink">
             Our Story
           </div>
           <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
@@ -129,7 +129,7 @@ const AboutPage = () => (
     <section className="border-y border-border bg-muted/40 py-24">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-12">
         <div className="mb-12 max-w-2xl">
-          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-ink">
             Our Values
           </div>
           <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
@@ -155,7 +155,7 @@ const AboutPage = () => (
             },
           ].map((p) => (
             <div key={p.n} className="flex flex-col gap-4 bg-background p-8 md:p-10">
-              <div className="font-mono text-xs font-semibold tracking-[0.2em] text-ink">{p.n}</div>
+              <div className="text-xs font-semibold tracking-[0.2em] text-ink">{p.n}</div>
               <h3 className="text-xl font-semibold text-ink">{p.h}</h3>
               <p className="text-sm leading-relaxed text-ink/70">{p.b}</p>
             </div>
@@ -178,7 +178,7 @@ const AboutPage = () => (
           />
         </div>
         <div>
-          <div className="font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+          <div className="text-xs font-semibold uppercase tracking-[0.25em] text-ink">
             Global Network
           </div>
           <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
@@ -224,7 +224,7 @@ const InfoPage = ({ kind }: { kind: Kind }) => {
       <Navigation />
       <section className="pt-32 pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-12">
-          <div className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+          <div className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-ink">
             {c.eyebrow}
           </div>
           <h1 className="text-balance text-4xl font-medium leading-tight tracking-tight text-ink md:text-5xl">

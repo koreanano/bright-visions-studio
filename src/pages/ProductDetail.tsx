@@ -39,13 +39,13 @@ const ProductDetail = () => {
 
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-start">
             <div>
-              <div className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.25em] text-ink">
+              <div className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-ink">
                 {category.en} · {product.cat}
               </div>
               <h1 className="text-balance text-4xl font-medium tracking-tight text-ink md:text-5xl">
                 {product.name}
               </h1>
-              <div className="mt-3 font-mono text-base text-muted-foreground">{product.formula}</div>
+              <div className="mt-3 text-base text-muted-foreground">{product.formula}</div>
             </div>
             {getProductImage(product.name) && (
               <div className="overflow-hidden border border-border bg-white">
