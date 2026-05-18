@@ -1166,6 +1166,9 @@ export const CATEGORIES: Category[] = [
           ],
         },
       },
+      // 나노소재 미러링 (희토류 관련)
+      PROD_Nano_RareEarth,
+      PROD_Nano_PolishingPowder,
     ],
   },
 
