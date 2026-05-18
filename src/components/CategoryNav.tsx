@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { Home, Search } from "lucide-react";
+import { ArrowLeft, ArrowRight, Search } from "lucide-react";
 import { useState } from "react";
 import { CATEGORIES, getCategory, slugify, type CategoryKey } from "@/data/products";
 import {
@@ -81,14 +81,22 @@ const CategoryNav = () => {
 
         {/* Pills + search */}
         <div className="flex items-center gap-2 overflow-x-auto py-3 scrollbar-hide">
-          <Link
-            to="/products"
-            aria-label="제품 카테고리 홈"
-            className="flex shrink-0 items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-xs font-semibold text-ink transition hover:border-accent hover:text-accent"
+          <button
+            type="button"
+            onClick={() => navigate(-1)}
+            aria-label="이전 페이지"
+            className="flex shrink-0 items-center justify-center rounded-full border border-border bg-background p-1.5 text-ink transition hover:border-accent hover:text-accent"
           >
-            <Home className="h-3.5 w-3.5" />
-            홈
-          </Link>
+            <ArrowLeft className="h-3.5 w-3.5" />
+          </button>
+          <button
+            type="button"
+            onClick={() => navigate(1)}
+            aria-label="다음 페이지"
+            className="flex shrink-0 items-center justify-center rounded-full border border-border bg-background p-1.5 text-ink transition hover:border-accent hover:text-accent"
+          >
+            <ArrowRight className="h-3.5 w-3.5" />
+          </button>
           <Link
             to="/products"
             className={`shrink-0 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
