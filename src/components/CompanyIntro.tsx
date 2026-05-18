@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import networkImg from "@/assets/global-network.jpg";
+import networkImg from "@/assets/about-global.jpg";
 
 const statements = [
   "전문성과 신뢰로 산업의 한계를 극복합니다.",
