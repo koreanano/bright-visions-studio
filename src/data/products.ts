@@ -279,34 +279,8 @@ export const CATEGORIES: Category[] = [
     ],
   },
 
-  // 2. 이차전지 (관련 품목 미러링)
-  {
-    key: "battery",
-    kr: "이차전지",
-    en: "Secondary Battery",
-    title: "이차전지 / Secondary Battery",
-    items: [
-      PROD_Li2CO3,
-      PROD_LiF,
-      PROD_Mn3O4,
-      PROD_Mn,
-      {
-        name: "흑연 분말 (음극재용) / Graphite Powder (Anode Grade)",
-        cat: "음극재",
-        formula: "C",
-        desc: "리튬이온 이차전지 음극재용 고순도 흑연 분말(천연·인조). 우수한 전도성과 가역 용량(372 mAh/g)으로 EV·ESS·소형 IT 디바이스에 광범위 적용됩니다.",
-        tags: ["음극재", "EV·ESS"],
-        apps: ["전기차 배터리 음극재", "ESS 대용량 음극재", "도전재(Conductive Additive)", "리튬-황·전고체 전지 첨가제"],
-        details: {
-          features: [
-            { title: "고전도성·고가역 용량", points: ["이론 용량 372 mAh/g", "장기 사이클 안정성 우수"] },
-            { title: "구형화·코팅 처리", points: ["구형 흑연(SPG)으로 탭밀도 향상", "탄소 코팅으로 SEI 안정화"] },
-            { title: "저불순물 관리", points: ["Fe·S·Ash 관리 등급", "셀 자가방전 최소화"] },
-          ],
-        },
-      },
-    ],
-  },
+  // 이차전지는 아래(마지막)로 이동되었습니다.
+
 
   // 3. 탄산염
   {
@@ -901,7 +875,37 @@ export const CATEGORIES: Category[] = [
       },
     ],
   },
+
+  // 14. 이차전지 (마지막 위치 - 관련 품목 미러링)
+  {
+    key: "battery",
+    kr: "이차전지",
+    en: "Secondary Battery",
+    title: "이차전지 / Secondary Battery",
+    items: [
+      PROD_Li2CO3,
+      PROD_LiF,
+      PROD_Mn3O4,
+      PROD_Mn,
+      {
+        name: "흑연 분말 (음극재용) / Graphite Powder (Anode Grade)",
+        cat: "음극재",
+        formula: "C",
+        desc: "리튬이온 이차전지 음극재용 고순도 흑연 분말(천연·인조). 우수한 전도성과 가역 용량(372 mAh/g)으로 EV·ESS·소형 IT 디바이스에 광범위 적용됩니다.",
+        tags: ["음극재", "EV·ESS"],
+        apps: ["전기차 배터리 음극재", "ESS 대용량 음극재", "도전재(Conductive Additive)", "리튬-황·전고체 전지 첨가제"],
+        details: {
+          features: [
+            { title: "고전도성·고가역 용량", points: ["이론 용량 372 mAh/g", "장기 사이클 안정성 우수"] },
+            { title: "구형화·코팅 처리", points: ["구형 흑연(SPG)으로 탭밀도 향상", "탄소 코팅으로 SEI 안정화"] },
+            { title: "저불순물 관리", points: ["Fe·S·Ash 관리 등급", "셀 자가방전 최소화"] },
+          ],
+        },
+      },
+    ],
+  },
 ];
+
 
 export const getCategory = (key: string) => CATEGORIES.find((c) => c.key === key);
 export const findProduct = (catKey: string, slug: string) => {

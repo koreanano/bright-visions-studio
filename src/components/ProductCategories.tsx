@@ -4,25 +4,29 @@ import { CATEGORIES, type CategoryKey } from "@/data/products";
 import imgQuartz from "@/assets/cat-quartz.jpg";
 import imgRareearth from "@/assets/cat-rareearth.jpg";
 import imgZirconia from "@/assets/cat-zirconia.jpg";
-import imgAlumina from "@/assets/cat-alumina.jpg";
 import imgCarbide from "@/assets/cat-carbide.jpg";
 import imgMetal from "@/assets/cat-metal.jpg";
-import imgNano from "@/assets/cat-nano.jpg";
 import imgBattery from "@/assets/cat-battery.jpg";
 import imgOthers from "@/assets/cat-others.jpg";
+import imgCarbonate from "@/assets/products/carbonate-srmgba.jpg";
+import imgFluorite from "@/assets/products/fluorite.jpg";
+import imgAln from "@/assets/products/aln.jpg";
+import imgHpa from "@/assets/products/alumina-hpa.jpg";
+import imgFusedAlumina from "@/assets/products/alumina-fused.jpg";
+import imgManganese from "@/assets/products/manganese.jpg";
 
 const CAT_IMG: Record<CategoryKey, string> = {
   quartz: imgQuartz,
   battery: imgBattery,
-  carbonates: imgOthers,
-  fluorides: imgNano,
+  carbonates: imgCarbonate,
+  fluorides: imgFluorite,
   oxides: imgZirconia,
-  nitrides: imgAlumina,
+  nitrides: imgAln,
   carbides: imgCarbide,
-  hpa: imgAlumina,
-  corundum: imgAlumina,
+  hpa: imgHpa,
+  corundum: imgFusedAlumina,
   metals: imgMetal,
-  manganese: imgMetal,
+  manganese: imgManganese,
   others: imgOthers,
   rareearth: imgRareearth,
 };

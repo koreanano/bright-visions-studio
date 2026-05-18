@@ -68,8 +68,10 @@ const ProductsList = () => {
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">
-                        {p.formula}
+                      <div className="flex h-full w-full items-center justify-center bg-muted/40 p-4">
+                        <span className="text-center text-2xl font-black tracking-tight text-ink sm:text-3xl">
+                          {p.formula}
+                        </span>
                       </div>
                     )}
                   </div>

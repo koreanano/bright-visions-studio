@@ -47,7 +47,7 @@ const ProductDetail = () => {
               </h1>
               <div className="mt-3 text-base text-muted-foreground">{product.formula}</div>
             </div>
-            {getProductImage(product.name) && (
+            {getProductImage(product.name) ? (
               <div className="overflow-hidden border border-border bg-white">
                 <img
                   src={getProductImage(product.name)}
@@ -56,6 +56,12 @@ const ProductDetail = () => {
                   height={800}
                   className="h-full w-full object-cover"
                 />
+              </div>
+            ) : (
+              <div className="flex aspect-square items-center justify-center overflow-hidden border border-border bg-muted/40 p-8">
+                <span className="text-balance text-center text-6xl font-black tracking-tight text-ink md:text-7xl lg:text-8xl">
+                  {product.formula}
+                </span>
               </div>
             )}
           </div>
