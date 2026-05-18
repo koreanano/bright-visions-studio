@@ -82,6 +82,90 @@ const ProductDetail = () => {
             </ul>
           </div>
 
+          {product.details?.features && (
+            <div className="mt-14 border-t border-border pt-10">
+              <h2 className="mb-8 text-2xl font-medium text-ink">제품 특성</h2>
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                {product.details.features.map((f, i) => (
+                  <article key={f.title} className="rounded-2xl border border-border bg-muted/40 p-6">
+                    <div className="mb-3 flex items-baseline gap-3">
+                      <span className="text-xs font-semibold text-accent">0{i + 1}</span>
+                      <h3 className="text-base font-medium text-ink">{f.title}</h3>
+                    </div>
+                    <ul className="space-y-2 text-sm leading-relaxed text-ink/75">
+                      {f.points.map((p) => (
+                        <li key={p} className="flex gap-2">
+                          <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-ink/40" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {product.details?.appSections && (
+            <div className="mt-14 border-t border-border pt-10">
+              <h2 className="mb-8 text-2xl font-medium text-ink">분야별 활용</h2>
+              <div className="space-y-8">
+                {product.details.appSections.map((sec) => (
+                  <section key={sec.title}>
+                    <h3 className="mb-3 text-base font-medium text-ink">{sec.title}</h3>
+                    <div className="overflow-hidden rounded-xl border border-border">
+                      <table className="w-full text-sm">
+                        <thead className="bg-muted/60 text-left text-xs uppercase tracking-wider text-ink/70">
+                          <tr>
+                            <th className="w-1/3 px-4 py-3 font-medium">적용 예</th>
+                            <th className="px-4 py-3 font-medium">분말 역할</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {sec.rows.map((r) => (
+                            <tr key={r.use} className="border-t border-border">
+                              <td className="px-4 py-3 align-top text-ink">{r.use}</td>
+                              <td className="px-4 py-3 align-top text-ink/75">{r.role}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {product.details?.sizingTable && (
+            <div className="mt-14 border-t border-border pt-10">
+              <h2 className="mb-3 text-2xl font-medium text-ink">{product.details.sizingTable.title}</h2>
+              {product.details.sizingTable.intro && (
+                <p className="mb-6 text-sm text-ink/70">{product.details.sizingTable.intro}</p>
+              )}
+              <div className="overflow-x-auto rounded-xl border border-border">
+                <table className="w-full text-sm">
+                  <thead className="bg-muted/60 text-left text-xs uppercase tracking-wider text-ink/70">
+                    <tr>
+                      {product.details.sizingTable.headers.map((h) => (
+                        <th key={h} className="px-4 py-3 font-medium">{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.details.sizingTable.rows.map((row, i) => (
+                      <tr key={i} className="border-t border-border">
+                        {row.map((c, j) => (
+                          <td key={j} className={`px-4 py-3 align-top ${j === 0 ? "font-medium text-ink whitespace-nowrap" : "text-ink/75"}`}>{c}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+
           <div className="mt-14 flex flex-col items-start justify-between gap-6 border border-border bg-muted/40 p-8 md:flex-row md:items-center">
             <div>
               <div className="text-xs font-semibold uppercase tracking-widest text-ink">Inquiry</div>
