@@ -95,6 +95,12 @@ export const PRODUCT_IMAGES: Record<string, string> = {
   "근청석 / Cordierite": cordierite,
   "규산지르코늄 / Zirconium Silicate": zrsio4,
   "산화마그네슘 / Magnesium Oxide": magnesiumOxide,
+  // 이차전지 카테고리 매핑 (기존 자산 재활용)
+  "탄산리튬 / Lithium Carbonate": carbonateCaLi,
+  "불화리튬 / Lithium Fluoride": fluorite,
+  "전해 망간 금속 플레이크 / Electrolytic Manganese Metal Flakes": manganese,
+  "흑연 분말 (음극재용) / Graphite Powder (Anode Grade)": graphite,
+
 };
 
 export const getProductImage = (name: string) => PRODUCT_IMAGES[name];
