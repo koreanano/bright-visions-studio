@@ -70,18 +70,6 @@ const ProductDetail = () => {
 
           <p className="mt-10 text-lg leading-relaxed text-ink/80">{product.desc}</p>
 
-          <div className="mt-14 border-t border-border pt-10">
-            <h2 className="mb-6 text-2xl font-medium text-ink">주요 적용 분야</h2>
-            <ul className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
-              {product.apps.map((a) => (
-                <li key={a} className="flex items-start gap-3 bg-background p-5 text-sm text-ink/80">
-                  <span className="mt-0.5 text-ink">→</span>
-                  <span>{a}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {product.details?.features && (
             <div className="mt-14 border-t border-border pt-10">
               <h2 className="mb-8 text-2xl font-medium text-ink">제품 특성</h2>
@@ -165,6 +153,19 @@ const ProductDetail = () => {
               </div>
             </div>
           )}
+
+          <div className="mt-14 border-t border-border pt-10">
+            <h2 className="mb-6 text-2xl font-medium text-ink">주요 적용 분야</h2>
+            <ul className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2">
+              {product.apps.map((a) => (
+                <li key={a} className="flex items-start gap-3 bg-background p-5 text-sm text-ink/80">
+                  <span className="mt-0.5 text-ink">→</span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
 
           <div className="mt-14 flex flex-col items-start justify-between gap-6 border border-border bg-muted/40 p-8 md:flex-row md:items-center">
             <div>
