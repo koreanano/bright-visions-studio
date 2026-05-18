@@ -2,30 +2,31 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { CATEGORIES, type CategoryKey } from "@/data/products";
 import imgQuartz from "@/assets/cat-quartz.jpg";
-import imgRareearth from "@/assets/cat-rareearth.jpg";
 import imgZirconia from "@/assets/cat-zirconia.jpg";
 import imgCarbide from "@/assets/cat-carbide.jpg";
 import imgMetal from "@/assets/cat-metal.jpg";
 import imgBattery from "@/assets/cat-battery.jpg";
 import imgOthers from "@/assets/cat-others.jpg";
 import imgCarbonate from "@/assets/products/carbonate-srmgba.jpg";
-import imgFluorite from "@/assets/products/fluorite.jpg";
-import imgAln from "@/assets/products/aln.jpg";
 import imgHpa from "@/assets/products/alumina-hpa.jpg";
-import imgFusedAlumina from "@/assets/products/alumina-fused.jpg";
-import imgManganese from "@/assets/products/manganese.jpg";
 import imgNano from "@/assets/cat-nano.jpg";
+// User-provided category hero images
+import imgFluoride from "@/assets/hero-fluoride.jpg";
+import imgRareearth from "@/assets/hero-rareearth.jpg";
+import imgCorundum from "@/assets/hero-corundum.jpg";
+import imgNitride from "@/assets/hero-nitride.jpg";
+import imgManganese from "@/assets/hero-mn.jpg";
 
 const CAT_IMG: Record<CategoryKey, string> = {
   quartz: imgQuartz,
   nano: imgNano,
   carbonates: imgCarbonate,
-  fluorides: imgFluorite,
+  fluorides: imgFluoride,
   oxides: imgZirconia,
-  nitrides: imgAln,
+  nitrides: imgNitride,
   carbides: imgCarbide,
   hpa: imgHpa,
-  corundum: imgFusedAlumina,
+  corundum: imgCorundum,
   metals: imgMetal,
   manganese: imgManganese,
   others: imgOthers,

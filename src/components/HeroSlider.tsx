@@ -1,10 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { ChevronRight, Play } from "lucide-react";
-import heroMn from "@/assets/hero-mn.jpg";
-import heroFluoride from "@/assets/hero-fluoride.jpg";
-import heroRareearth from "@/assets/hero-rareearth.jpg";
-import heroCorundum from "@/assets/hero-corundum.jpg";
-import heroNitride from "@/assets/hero-nitride.jpg";
+import hero1 from "@/assets/hero-1-cleanroom.jpg";
+import hero2 from "@/assets/hero-2-particles.jpg";
+import hero3 from "@/assets/hero-3-powder.jpg";
 
 type Slide = {
   id: string;
@@ -22,62 +20,38 @@ const slides: Slide[] = [
   {
     id: "01",
     type: "image",
-    src: heroMn,
-    eyebrow: "Electrolytic Manganese · 이차전지 핵심소재",
-    titleEn: "Powering the Next",
-    highlight: "Battery",
-    titleEnEnd: "Generation.",
-    subtitleKr: "전해 망간 플레이크 · 고순도 이차전지 원료",
+    src: hero1,
+    eyebrow: "Advanced Materials · 첨단 무기소재",
+    titleEn: "Engineering",
+    highlight: "Precision",
+    titleEnEnd: "Materials.",
+    subtitleKr: "정밀 무기소재 · 고순도 원료 전문",
     description:
-      "나노코리아는 NCM·NCA 양극재용 고순도 전해 망간 플레이크를 안정적으로 공급합니다.",
+      "나노코리아는 반도체·디스플레이·이차전지 산업에 필요한 고순도 첨단 무기소재를 글로벌 제조사와 협력하여 안정적으로 공급합니다.",
   },
   {
     id: "02",
     type: "image",
-    src: heroFluoride,
-    eyebrow: "Fluorides · CaF₂ · LiF",
-    titleEn: "High-Purity",
-    highlight: "Fluoride",
-    titleEnEnd: "Compounds.",
-    subtitleKr: "형석 · 불화칼슘 · 불화리튬",
+    src: hero2,
+    eyebrow: "High-Purity Powders · 초미립 분말",
+    titleEn: "Particles that",
+    highlight: "Define",
+    titleEnEnd: "Performance.",
+    subtitleKr: "고순도 분말 · 입도 정밀 제어",
     description:
-      "광학·제련·이차전지 전해질용 고순도 불화물 화합물을 글로벌 제조사와 협력하여 공급합니다.",
+      "나노스케일 입도 제어와 99.99% 이상의 고순도 그레이드로 첨단 공정의 품질 한계를 끌어올립니다.",
   },
   {
     id: "03",
     type: "image",
-    src: heroRareearth,
-    eyebrow: "Rare Earth Elements · 17종 전 라인업",
-    titleEn: "Critical",
-    highlight: "Rare Earth",
-    titleEnEnd: "Materials.",
-    subtitleKr: "산화물 · 금속 · 합금 · 영구자석 분말",
+    src: hero3,
+    eyebrow: "Global Supply Chain · 안정적 공급망",
+    titleEn: "Trusted",
+    highlight: "Supply",
+    titleEnEnd: "Partner.",
+    subtitleKr: "검증된 글로벌 공급망 파트너",
     description:
-      "Y·Ce·La·Nd·Pr·Sm·Eu·Gd·Tb·Dy 등 희토류 17종 전 라인업을 단일 창구로 공급합니다.",
-  },
-  {
-    id: "04",
-    type: "image",
-    src: heroCorundum,
-    eyebrow: "Corundum · Al₂O₃",
-    titleEn: "Engineered",
-    highlight: "Corundum",
-    titleEnEnd: "Abrasives.",
-    subtitleKr: "코런덤 · 용융 알루미나 · 연마재",
-    description:
-      "WFA·BFA 용융 알루미나와 코런덤 원료를 입도별로 정밀 분급하여 공급합니다.",
-  },
-  {
-    id: "05",
-    type: "image",
-    src: heroNitride,
-    eyebrow: "Advanced Nitrides · AlN · Si₃N₄ · BN",
-    titleEn: "Next-Gen",
-    highlight: "Nitride",
-    titleEnEnd: "Ceramics.",
-    subtitleKr: "질화알루미늄 · 질화규소 · 질화붕소",
-    description:
-      "방열기판·절연·반도체 공정용 첨단 질화물 세라믹 분말을 고순도 그레이드로 제공합니다.",
+      "희토류·고순도 알루미나·질화물·전해 망간 등 핵심 무기소재를 단일 창구로 신뢰성 있게 공급합니다.",
   },
 ];
 
@@ -141,11 +115,7 @@ const HeroSlider = () => {
               </span>
             </div>
 
-            <h1 className={`mb-6 text-balance font-medium leading-[1.05] tracking-tight text-white ${
-              current.id === "03"
-                ? "text-3xl md:text-4xl lg:text-5xl"
-                : "text-5xl md:text-6xl lg:text-[5.25rem]"
-            }`}>
+            <h1 className="mb-6 text-balance text-5xl md:text-6xl lg:text-[5.25rem] font-medium leading-[1.05] tracking-tight text-white">
               {current.titleEn}{" "}
               <span className="relative inline-block">
                 <span className="gradient-text-prism">{current.highlight}</span>
@@ -153,15 +123,11 @@ const HeroSlider = () => {
               {current.titleEnEnd}
             </h1>
 
-            <h2 className={`mb-6 font-medium tracking-wide text-white/80 ${
-              current.id === "03" ? "text-sm md:text-base" : "text-base md:text-lg"
-            }`}>
+            <h2 className="mb-6 text-base md:text-lg font-medium tracking-wide text-white/80">
               {current.subtitleKr}
             </h2>
 
-            <p className={`mb-12 max-w-[55ch] text-pretty leading-relaxed text-white/70 ${
-              current.id === "03" ? "text-sm md:text-base" : "text-base md:text-lg"
-            }`}>
+            <p className="mb-12 max-w-[55ch] text-pretty text-base md:text-lg leading-relaxed text-white/70">
               {current.description}
             </p>
 
