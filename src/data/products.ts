@@ -1,7 +1,8 @@
 export type ProductFeature = { title: string; points: string[] };
 export type ProductAppSection = {
   title: string;
-  rows: { use: string; role: string }[];
+  intro?: string;
+  rows: { use: string; role: string; note?: string }[];
 };
 export type ProductSizingTable = {
   title: string;
