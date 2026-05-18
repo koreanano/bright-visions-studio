@@ -13,14 +13,18 @@ import imgOthers from "@/assets/cat-others.jpg";
 
 const CAT_IMG: Record<CategoryKey, string> = {
   quartz: imgQuartz,
-  rareearth: imgRareearth,
-  zirconia: imgZirconia,
-  alumina: imgAlumina,
-  carbide: imgCarbide,
-  metal: imgMetal,
-  nano: imgNano,
   battery: imgBattery,
+  carbonates: imgOthers,
+  fluorides: imgNano,
+  oxides: imgZirconia,
+  nitrides: imgAlumina,
+  carbides: imgCarbide,
+  hpa: imgAlumina,
+  corundum: imgAlumina,
+  metals: imgMetal,
+  manganese: imgMetal,
   others: imgOthers,
+  rareearth: imgRareearth,
 };
 
 const ProductCategories = () => {
