@@ -38,12 +38,12 @@ const ProductCategories = () => {
     <section id="products" className="relative bg-background py-28 lg:py-36">
       <div className="mx-auto max-w-[1440px] px-6 lg:px-12">
         <div className="mb-16 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl md:pl-16 lg:pl-24">
             <h2 className="text-balance text-2xl font-medium leading-[1.1] tracking-tight text-ink md:text-3xl lg:text-4xl">
               Product Categories
             </h2>
           </div>
-          <p className="max-w-md text-base leading-relaxed text-muted-foreground">
+          <p className="max-w-md text-base leading-relaxed text-muted-foreground md:-ml-8 lg:-ml-16">
             카테고리를 선택하면 해당 제품 목록을 확인할 수 있습니다. 글로벌 첨단소재
             제조사와 협력하여 검증된 원료를 안정적으로 공급합니다.
           </p>
