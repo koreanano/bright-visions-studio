@@ -81,7 +81,7 @@ const HeroSlider = () => {
     return () => clearInterval(tick);
   }, [active]);
 
-  const current = slides[active];
+  const current = slides[active % slides.length] ?? slides[0];
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-background">
