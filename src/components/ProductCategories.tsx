@@ -14,10 +14,11 @@ import imgAln from "@/assets/products/aln.jpg";
 import imgHpa from "@/assets/products/alumina-hpa.jpg";
 import imgFusedAlumina from "@/assets/products/alumina-fused.jpg";
 import imgManganese from "@/assets/products/manganese.jpg";
+import imgNano from "@/assets/cat-nano.jpg";
 
 const CAT_IMG: Record<CategoryKey, string> = {
   quartz: imgQuartz,
-  battery: imgBattery,
+  nano: imgNano,
   carbonates: imgCarbonate,
   fluorides: imgFluorite,
   oxides: imgZirconia,
@@ -29,6 +30,7 @@ const CAT_IMG: Record<CategoryKey, string> = {
   manganese: imgManganese,
   others: imgOthers,
   rareearth: imgRareearth,
+  battery: imgBattery,
 };
 
 const ProductCategories = () => {
