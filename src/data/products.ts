@@ -28,14 +28,18 @@ export type Product = {
 
 export type CategoryKey =
   | "quartz"
-  | "rareearth"
-  | "zirconia"
-  | "alumina"
-  | "carbide"
-  | "metal"
-  | "nano"
   | "battery"
-  | "others";
+  | "carbonates"
+  | "fluorides"
+  | "oxides"
+  | "nitrides"
+  | "carbides"
+  | "hpa"
+  | "corundum"
+  | "metals"
+  | "manganese"
+  | "others"
+  | "rareearth";
 
 export type Category = {
   key: CategoryKey;
@@ -45,7 +49,115 @@ export type Category = {
   items: Product[];
 };
 
+// ──────────────── 공통 제품 정의 (이차전지에 미러링되는 항목들은 const로 분리) ────────────────
+
+const PROD_Li2CO3: Product = {
+  name: "탄산리튬 / Lithium Carbonate",
+  cat: "탄산염",
+  formula: "Li₂CO₃",
+  desc: "탄산리튬(Li₂CO₃)은 리튬이온 이차전지 양극재(LCO·NCM·LFP·LMO) 원료 및 의약·유리 산업의 핵심 무기염입니다. 순도 99~99.99%(배터리·전자급) 등급으로 안정 생산되며, 백색 분말 형태로 균일한 입도와 낮은 자성 불순물(Fe, Cr, Ni)이 요구됩니다.",
+  tags: ["배터리급", "양극재 전구체", "99.99%"],
+  apps: [
+    "리튬이온 배터리 양극재 (LCO·NCM·LFP·LMO)",
+    "내열·내화학 유리·세라믹 유약",
+    "의약품(조울증 치료제) 원료",
+    "알루미늄 전해 제련 첨가제",
+    "시멘트 응결 촉진제",
+  ],
+  details: {
+    features: [
+      { title: "고순도 정제 – 배터리급 품질", points: ["순도 99.0% / 99.5% / 99.9% / 99.99% 등급 제공", "자성 불순물(Fe·Cr·Ni·Zn) ppb 수준 관리"] },
+      { title: "균일한 입도 분포", points: ["평균 입도 D50 5~15 µm 제어 가능", "양극재 합성 시 반응성과 균일성 동시 확보"] },
+      { title: "낮은 수분·이산화탄소 흡습", points: ["밀폐 포장으로 흡습 최소화", "장기 보관 시에도 품질 유지"] },
+      { title: "안정적 결정구조", points: ["단사정계(Monoclinic) 결정구조", "고온 소성 시 일정한 분해 거동"] },
+    ],
+    appSections: [
+      { title: "🔋 리튬이온 배터리", intro: "양극재 합성의 핵심 리튬 소스로 가장 많이 사용됩니다.", rows: [
+        { use: "LCO (LiCoO₂)", role: "리튬 소스", note: "모바일·소형 IT 디바이스" },
+        { use: "NCM / NCA", role: "리튬 소스 + 결합제", note: "전기차·ESS 고에너지밀도" },
+        { use: "LFP (LiFePO₄)", role: "리튬 소스", note: "고안전성 EV·ESS" },
+        { use: "LMO (LiMn₂O₄)", role: "리튬 소스", note: "전동공구·전기버스" },
+      ]},
+      { title: "🏭 산업 및 의약", rows: [
+        { use: "내열 유리 (Pyroceram)", role: "융제 + 열팽창 저감", note: "오븐웨어·내화 유리" },
+        { use: "의약품 (조울증)", role: "API 원료" },
+        { use: "알루미늄 제련", role: "전해질 첨가제", note: "에너지 소비 절감" },
+      ]},
+    ],
+  },
+};
+
+const PROD_LiF: Product = {
+  name: "불화리튬 / Lithium Fluoride",
+  cat: "불화물",
+  formula: "LiF",
+  desc: "불화리튬(LiF)은 리튬이온 배터리 전해액 첨가제(LiPF₆ 합성 원료) 및 차세대 전고체 전지 SEI 형성층의 핵심 소재입니다. 99.0~99.99% 순도로 공급되며 광학(IR 윈도우)·세라믹 융제 용도로도 사용됩니다.",
+  tags: ["배터리 전해액", "LiPF₆ 전구체", "99.99%"],
+  apps: ["리튬 배터리 전해액(LiPF₆) 원료", "전고체 전지 SEI 안정화 첨가제", "IR 광학 윈도우", "세라믹 유약 융제", "방사선 선량계 (TLD)"],
+  details: {
+    features: [
+      { title: "전기화학적 안정성", points: ["넓은 전기화학 윈도우(>5V vs Li/Li⁺)", "고전압 양극 소재와 호환"] },
+      { title: "광학 투과성", points: ["진공 자외선(VUV) ~ 적외선(IR)까지 광범위 투과", "프리즘·렌즈·창 소재로 활용"] },
+      { title: "고순도 제어", points: ["수분·SO₄·중금속 불순물 ppm 이하 관리", "배터리 grade 99.99%↑ 공급"] },
+    ],
+  },
+};
+
+const PROD_Mn3O4: Product = {
+  name: "사산화삼망간 / Trimanganese Tetraoxide",
+  cat: "산화물",
+  formula: "Mn₃O₄",
+  desc: "사산화삼망간(Mn₃O₄)은 리튬이온 배터리 양극재(LMFP·LNMO·LMO) 전구체 및 소프트 페라이트 자성 재료의 핵심 산화물입니다. 고순도 저자성 불순물 등급으로 안정 생산됩니다.",
+  tags: ["배터리 전구체", "페라이트", "Mn₃O₄"],
+  apps: ["LMFP / LNMO / LMO 배터리 양극재 전구체", "소프트 페라이트 자성 재료(MnZn 페라이트)", "유기물 분해 촉매", "PTC 서미스터 / NTC 센서"],
+  details: {
+    features: [
+      { title: "고순도 망간 산화물", points: ["Mn 함량 70%↑, 저자성 불순물(Fe·Cr·Ni·Cu) 관리", "양극재 사이클 수명 향상"] },
+      { title: "균일한 입자 분포", points: ["분말 입도 D50 1~10 µm 가능", "전구체 균일 합성"] },
+      { title: "전기화학적 활성", points: ["Mn²⁺/Mn³⁺/Mn⁴⁺ 다중 산화 상태", "고전압·고용량 양극재에 적합"] },
+    ],
+  },
+};
+
+const PROD_Mn: Product = {
+  name: "전해 망간 금속 플레이크 / Electrolytic Manganese Metal Flakes",
+  cat: "전해 망간",
+  formula: "Mn ≥99.8%",
+  desc: "전해법으로 제조된 고순도(99.8%↑) 망간 금속 플레이크로, 한 면은 광택의 백색, 반대면은 청회색을 띠는 경질 취성 재료입니다. 합금 첨가제, 리튬망간계 배터리 소재(LMO·NCM), 특수 강재, 화학 환원제로 광범위 활용됩니다.",
+  tags: ["99.8%↑", "배터리", "합금"],
+  apps: [
+    "리튬망간(LMO)·NCM 배터리 전구체",
+    "고장력 강판·스테인리스 합금 첨가",
+    "알루미늄 합금 탈산제",
+    "특수 용접봉 피복재",
+    "유기화학 환원제",
+  ],
+  details: {
+    features: [
+      { title: "순도 ≥ 99.8% – 초저 불순물", points: ["S·P·C·Se 등 강재 유해 원소 ppm 단위 관리", "고급 합금·배터리 전구체로 사용 가능"] },
+      { title: "강한 항산화성", points: ["산화 피막 형성으로 보관 안정", "장기 운송에도 변색 최소"] },
+      { title: "독특한 외관과 형태", points: ["한 면 광택·반대면 거친 표면", "경질 취성 플레이크 → 분쇄 시 은회색 분말"] },
+      { title: "반도체적 특성", points: ["저전압 영역에서 반도체 거동", "전자/촉매 응용 가능"] },
+    ],
+    appSections: [
+      { title: "⚙️ 합금 / 강재", rows: [
+        { use: "고장력 강판(HSLA)", role: "강도·인성 향상" },
+        { use: "스테인리스강", role: "오스테나이트 안정화", note: "Ni 일부 대체" },
+        { use: "알루미늄 합금", role: "탈산제·결정 미세화" },
+      ]},
+      { title: "🔋 배터리", rows: [
+        { use: "LMO (LiMn₂O₄)", role: "Mn 소스" },
+        { use: "NCM 양극재", role: "Mn 함량 조절" },
+        { use: "이차전지 전구체", role: "MnSO₄ → 전구체 합성" },
+      ]},
+    ],
+  },
+};
+
+// ──────────────── 카테고리 정의 ────────────────
+
 export const CATEGORIES: Category[] = [
+  // 1. 용융실리카 (유지)
   {
     key: "quartz",
     kr: "용융실리카",
@@ -166,6 +278,504 @@ export const CATEGORIES: Category[] = [
       { name: "용융석영사 A·B·C / Fused Quartz Sand A·B·C", cat: "용융석영사", formula: "SiO₂", desc: "60~0.075mm 규격 과립·석영사. 정밀주조 및 내화 캐스터블.", tags: ["석영사", "주조"], apps: ["석영 도가니 제조", "정밀 주조용 쉘 몰드", "내산성 콘크리트 첨가제", "고온로 단열재"] },
     ],
   },
+
+  // 2. 이차전지 (관련 품목 미러링)
+  {
+    key: "battery",
+    kr: "이차전지",
+    en: "Secondary Battery",
+    title: "이차전지 / Secondary Battery",
+    items: [
+      PROD_Li2CO3,
+      PROD_LiF,
+      PROD_Mn3O4,
+      PROD_Mn,
+      {
+        name: "흑연 분말 (음극재용) / Graphite Powder (Anode Grade)",
+        cat: "음극재",
+        formula: "C",
+        desc: "리튬이온 이차전지 음극재용 고순도 흑연 분말(천연·인조). 우수한 전도성과 가역 용량(372 mAh/g)으로 EV·ESS·소형 IT 디바이스에 광범위 적용됩니다.",
+        tags: ["음극재", "EV·ESS"],
+        apps: ["전기차 배터리 음극재", "ESS 대용량 음극재", "도전재(Conductive Additive)", "리튬-황·전고체 전지 첨가제"],
+        details: {
+          features: [
+            { title: "고전도성·고가역 용량", points: ["이론 용량 372 mAh/g", "장기 사이클 안정성 우수"] },
+            { title: "구형화·코팅 처리", points: ["구형 흑연(SPG)으로 탭밀도 향상", "탄소 코팅으로 SEI 안정화"] },
+            { title: "저불순물 관리", points: ["Fe·S·Ash 관리 등급", "셀 자가방전 최소화"] },
+          ],
+        },
+      },
+    ],
+  },
+
+  // 3. 탄산염
+  {
+    key: "carbonates",
+    kr: "탄산염",
+    en: "Carbonates",
+    title: "탄산염 / Carbonates",
+    items: [
+      {
+        name: "탄산스트론튬 / Strontium Carbonate",
+        cat: "탄산염",
+        formula: "SrCO₃",
+        desc: "탄산스트론튬(SrCO₃)은 페라이트 자석, 컬러 TV 음극선관(CRT) 유리, 적색 불꽃, 도자기 유약 등에 사용되는 백색 분말입니다. 순도 80~99.9% 등급으로 공급됩니다.",
+        tags: ["페라이트", "유리", "80~99.9%"],
+        apps: ["페라이트 영구자석", "특수 광학·전자 유리", "도자기 유약·세라믹 안료", "적색 불꽃·신호탄", "PTC 서미스터"],
+        details: {
+          features: [
+            { title: "고순도 백색 분말", points: ["SrO 환산 함량 ≥ 69%", "철·Ba 등 색상 영향 불순물 관리"] },
+            { title: "안정한 결정 구조", points: ["사방정계 결정", "850°C 이상에서 SrO로 분해 후 반응"] },
+          ],
+        },
+      },
+      {
+        name: "경질 탄산마그네슘 / Light Magnesium Carbonate",
+        cat: "탄산염",
+        formula: "MgCO₃",
+        desc: "경질 탄산마그네슘은 낮은 겉보기 밀도와 큰 비표면적을 가진 백색 분말로, 고무 가황 보강제, 의약품 제산제, 화장품 흡유제 등에 사용됩니다.",
+        tags: ["고무", "의약", "화장품"],
+        apps: ["고무 보강·충전재", "의약품 제산제·완하제", "치약·화장품 흡유제", "고급 인쇄잉크·잠열재"],
+        details: {
+          features: [
+            { title: "낮은 겉보기 밀도", points: ["벌크밀도 0.1~0.3 g/cm³", "고무 보강 효과 우수"] },
+            { title: "고흡유성·큰 비표면적", points: ["BET 비표면적 큼", "화장품·치약 흡유 기능"] },
+          ],
+        },
+      },
+      {
+        name: "중질 탄산마그네슘 / Heavy Magnesium Carbonate",
+        cat: "탄산염",
+        formula: "MgCO₃",
+        desc: "중질 탄산마그네슘은 입자가 크고 밀도가 높은 백색 분말로, 내화재·세라믹·플라스틱 충전재 등에 활용됩니다.",
+        tags: ["내화", "세라믹"],
+        apps: ["내화벽돌·내화재 원료", "세라믹·유리 융제", "플라스틱·고무 충전재", "사료·비료 첨가제"],
+      },
+      {
+        name: "경질 탄산바륨 / Light Barium Carbonate",
+        cat: "탄산염",
+        formula: "BaCO₃",
+        desc: "경질 탄산바륨은 광학 유리, 페라이트, 도자기 유약, 벽돌 백화 방지제 등에 사용되는 고순도 백색 분말입니다.",
+        tags: ["페라이트", "광학유리"],
+        apps: ["광학·전자 유리", "Ba 페라이트 자석", "도자기 유약", "방사선 차폐 콘크리트", "벽돌 백화 방지"],
+      },
+      {
+        name: "중질 탄산바륨 / Heavy Barium Carbonate",
+        cat: "탄산염",
+        formula: "BaCO₃",
+        desc: "중질 탄산바륨은 입도가 균일하고 밀도가 높은 백색 분말로, 광학 유리·세라믹·산업 화학 분야에 사용됩니다.",
+        tags: ["광학유리", "산업화학"],
+        apps: ["광학 유리·CRT 유리", "도자기 유약", "BaCl₂·Ba(OH)₂ 등 바륨염 원료", "정유·화학 촉매"],
+      },
+      {
+        name: "탄산칼슘 / Calcium Carbonate",
+        cat: "탄산염",
+        formula: "CaCO₃",
+        desc: "탄산칼슘(CaCO₃)은 건축·제지·플라스틱·고무·식품·제약 등 모든 산업에서 가장 광범위하게 사용되는 백색 무기 충전재입니다. 80~99.99% 다양한 순도와 다양한 입도(GCC·PCC)로 공급됩니다.",
+        tags: ["충전재", "GCC·PCC", "80~99.99%"],
+        apps: ["제지 충전·코팅", "플라스틱·고무 충전재", "건축 자재·페인트", "식품·제약(칼슘 보충제)", "환경(탈황·중화제)"],
+        details: {
+          features: [
+            { title: "광범위 등급 제공", points: ["중질(GCC)·경질(PCC) 모두 공급", "순도 80~99.99% 선택 가능"] },
+            { title: "입도 제어", points: ["1 µm 이하 나노급부터 수십 µm까지", "용도별 최적 입도 매칭"] },
+          ],
+        },
+      },
+      PROD_Li2CO3,
+    ],
+  },
+
+  // 4. 불화물
+  {
+    key: "fluorides",
+    kr: "불화물",
+    en: "Fluorides",
+    title: "불화물 / Fluorides",
+    items: [
+      {
+        name: "형석 분말 / Fluorite Powder",
+        cat: "불화물",
+        formula: "CaF₂",
+        desc: "형석(CaF₂) 분말은 제강·알루미늄 제련의 융제(Flux), HF·불화알루미늄 등 화학 원료, 광학 렌즈, 세라믹 유약 등에 사용되는 핵심 불화물 원료입니다. 순도 80~99.99% 등급으로 공급됩니다.",
+        tags: ["제강 융제", "HF 원료", "80~99.99%"],
+        apps: ["제강·알루미늄 융제(Flux)", "HF·AlF₃·CaF₂ 화학 합성", "광학·증착 코팅 원료", "세라믹 유약·법랑", "용접봉 피복재"],
+      },
+      {
+        name: "고순도 불화칼슘 / High Purity Calcium Fluoride",
+        cat: "불화물",
+        formula: "CaF₂ 99.99%↑",
+        desc: "광학·반도체급(99.99%↑) 고순도 불화칼슘. 자외선~적외선까지 넓은 투과 범위로 광학 렌즈, 엑시머 레이저 윈도우, 반도체 식각 가스 원료로 활용됩니다.",
+        tags: ["광학급", "99.99%↑"],
+        apps: ["엑시머 레이저(DUV) 광학", "고급 카메라·천체 망원경 렌즈", "반도체 식각 가스(SF₆·CF₄) 원료", "신틸레이터(방사선 검출기)"],
+        details: {
+          features: [
+            { title: "초고순도 광학급", points: ["순도 99.99%↑, 금속 불순물 ppm 이하", "DUV·VUV 광학에 적합"] },
+            { title: "광범위 투과 파장", points: ["0.13 ~ 10 µm 광범위 투과", "굴절률 안정"] },
+          ],
+        },
+      },
+      PROD_LiF,
+    ],
+  },
+
+  // 5. 산화물
+  {
+    key: "oxides",
+    kr: "산화물",
+    en: "Oxides",
+    title: "산화물 / Oxides",
+    items: [
+      {
+        name: "흄드 실리카 / Fumed Silica (SiO₂)",
+        cat: "산화물",
+        formula: "SiO₂",
+        desc: "기상법으로 제조된 초미세 비결정질 실리카로, 비표면적이 매우 크고 흡습·요변·보강 효과가 뛰어나 실리콘 고무, 도료, 접착제, 화장품에 광범위 사용됩니다.",
+        tags: ["나노", "요변제", "보강제"],
+        apps: ["실리콘 고무 보강재", "도료·잉크 요변·침강방지제", "접착제·실란트 점도 조절", "화장품·치약 흡유제", "VIP 진공 단열재 심재"],
+        details: {
+          features: [
+            { title: "초미세 1차 입자", points: ["7~40 nm 1차 입자", "BET 50~400 m²/g"] },
+            { title: "강력한 요변성", points: ["수소결합 네트워크 형성", "도료·실란트 처짐 방지"] },
+          ],
+        },
+      },
+      {
+        name: "침전 실리카 / Precipitated Silica",
+        cat: "산화물",
+        formula: "SiO₂",
+        desc: "침전법으로 제조된 백색 다공성 실리카로, 그린타이어 트레드, 사료 항결착제, 치약 연마제 등 친환경·기능성 첨가제로 사용됩니다.",
+        tags: ["그린타이어", "친환경"],
+        apps: ["저연비(그린) 타이어 트레드", "사료·식품 항결착제", "치약 연마제", "신발 밑창·고무 보강"],
+      },
+      {
+        name: "산화하프늄 / Hafnium Oxide",
+        cat: "산화물",
+        formula: "HfO₂",
+        desc: "산화하프늄(HfO₂)은 차세대 반도체 High-K 게이트 절연막의 핵심 소재이며, 광학 코팅과 원자력 산업에도 사용됩니다. 99~99.99% 등급으로 공급됩니다.",
+        tags: ["반도체", "High-K", "99.99%"],
+        apps: ["DRAM·로직 반도체 High-K 게이트", "광학 다층막 코팅(고굴절층)", "원자력 제어봉", "내열·내방사 세라믹"],
+        details: {
+          features: [
+            { title: "High-K 유전체", points: ["유전상수 ~25 (SiO₂의 6배)", "10nm 이하 공정 표준 절연막"] },
+            { title: "초고온 안정성", points: ["융점 2,758°C", "단사정→정방정→입방정 상전이"] },
+          ],
+        },
+      },
+      {
+        name: "사염화하프늄 / Hafnium Tetrachloride",
+        cat: "산화물",
+        formula: "HfCl₄",
+        desc: "ALD(원자층 증착)용 하프늄 전구체. 반도체 High-K 박막 증착의 핵심 화학 원료입니다.",
+        tags: ["ALD 전구체", "반도체"],
+        apps: ["반도체 ALD/CVD 전구체", "HfO₂ 박막 증착", "유기금속 합성 출발물질"],
+      },
+      PROD_Mn3O4,
+      {
+        name: "삼산화몰리브덴 / Molybdenum Trioxide",
+        cat: "산화물",
+        formula: "MoO₃",
+        desc: "삼산화몰리브덴(MoO₃)은 석유 정제 탈황 촉매, 안료, OLED 정공수송층, 강철 합금 원료 등에 사용되는 다용도 산화물입니다.",
+        tags: ["촉매", "OLED", "합금"],
+        apps: ["석유 정제 HDS 촉매", "OLED 정공주입층(HIL)", "안료·도료(몰리브덴 오렌지)", "스테인리스·공구강 합금"],
+      },
+      {
+        name: "산화마그네슘 / Magnesium Oxide",
+        cat: "산화물",
+        formula: "MgO (99.9%)",
+        desc: "고순도(99.9%) 산화마그네슘은 약 2,800°C의 초고융점을 가진 백색 분말로 내화물·세라믹·의약·환경·전자 등 광범위하게 활용됩니다.",
+        tags: ["고순도", "내화", "다용도"],
+        apps: ["내화벽돌·도가니·노 라이닝", "제산제·완하제·Mg 보충제", "마그네시아 시멘트", "산성 폐수·배연 중화", "전선 절연재·PDP 보호막"],
+      },
+    ],
+  },
+
+  // 6. 질화물
+  {
+    key: "nitrides",
+    kr: "질화물",
+    en: "Nitrides",
+    title: "질화물 / Nitrides",
+    items: [
+      {
+        name: "질화알루미늄 / Aluminum Nitride (AlN)",
+        cat: "질화물",
+        formula: "AlN",
+        desc: "질화알루미늄(AlN)은 우수한 열전도율(170~230 W/m·K)과 전기 절연성을 동시에 갖춘 첨단 세라믹으로, EV 전력모듈·LED·반도체 패키징의 핵심 방열 소재입니다.",
+        tags: ["방열", "전력반도체", "99.99%"],
+        apps: ["고출력 LED·LD 방열 기판", "전기차 SiC/IGBT 전력모듈", "반도체 정전척(ESC) / 히터", "고주파 통신 기판", "5G 안테나"],
+        details: {
+          features: [
+            { title: "초고열전도·고절연 양립", points: ["열전도 170~230 W/m·K (Al₂O₃의 5~7배)", "체적저항 >10¹⁴ Ω·cm"] },
+            { title: "낮은 열팽창계수", points: ["CTE 4.5 ×10⁻⁶/°C", "Si 웨이퍼와 매칭"] },
+            { title: "내플라즈마성", points: ["반도체 ESC·히터 환경 적합"] },
+          ],
+        },
+      },
+      {
+        name: "질화규소 / Silicon Nitride (Si₃N₄)",
+        cat: "질화물",
+        formula: "Si₃N₄",
+        desc: "질화규소(Si₃N₄)는 고강도·고인성·내열충격성을 갖춘 구조용 세라믹으로, 베어링·터보차저·EV 전력모듈 기판·풍력 발전기 베어링 등에 사용됩니다.",
+        tags: ["구조세라믹", "베어링", "99.999%"],
+        apps: ["하이브리드·풍력 베어링", "자동차 터보차저 로터", "EV 파워모듈 방열 기판", "절삭공구 인서트", "고온 가스터빈 부품"],
+        details: {
+          features: [
+            { title: "고강도·고인성", points: ["굽힘강도 800~1,000 MPa", "파괴인성 6~8 MPa·m¹/²"] },
+            { title: "우수한 내열충격성", points: ["ΔT 800°C 이상", "급랭 조건에서도 균열 적음"] },
+          ],
+        },
+      },
+      {
+        name: "질화붕소 / Boron Nitride (h-BN)",
+        cat: "질화물",
+        formula: "h-BN",
+        desc: "육방정 질화붕소(h-BN)는 흑연과 유사한 층상구조의 백색 윤활 세라믹으로, 고온 윤활제, 방열 필러, 화장품 진주광택재로 활용됩니다.",
+        tags: ["윤활", "방열", "절연"],
+        apps: ["5G·EV 통신 기판 방열 필러", "고온 고체 윤활제", "화장품 진주광택 파우더", "도가니 이형제", "용융 알루미늄·유리 용기 코팅"],
+      },
+      {
+        name: "질화티타늄 / Titanium Nitride (TiN)",
+        cat: "질화물",
+        formula: "TiN",
+        desc: "질화티타늄(TiN)은 황금색의 초경도 세라믹으로, 절삭공구·금형·의료용 임플란트·장식용 코팅에 PVD/CVD 방식으로 적용됩니다.",
+        tags: ["PVD 코팅", "절삭공구"],
+        apps: ["드릴·엔드밀·인서트 PVD 코팅", "사출 금형 표면처리", "의료용 임플란트 코팅", "장식용 골드 코팅", "반도체 배선층"],
+      },
+      {
+        name: "질화지르코늄 / Zirconium Nitride (ZrN)",
+        cat: "질화물",
+        formula: "ZrN",
+        desc: "질화지르코늄(ZrN)은 밝은 황금색 초경도 코팅 소재로, 의료용 인공관절·항공기 부품·절삭공구의 PVD 코팅에 사용됩니다.",
+        tags: ["PVD 코팅", "의료"],
+        apps: ["의료 인공관절 코팅", "항공기 부품 표면처리", "고급 시계·악세서리 골드 코팅", "초경 인서트 코팅"],
+      },
+    ],
+  },
+
+  // 7. 탄화물
+  {
+    key: "carbides",
+    kr: "탄화물",
+    en: "Carbides",
+    title: "탄화물 / Carbides",
+    items: [
+      {
+        name: "흑색 탄화규소 / Black Silicon Carbide (SiC)",
+        cat: "탄화물",
+        formula: "SiC (Black)",
+        desc: "흑색 탄화규소(C·SiC)는 모스경도 9.2의 초경도 연마재이자 고온 구조재로, 연마·내화물·전력반도체(SiC 웨이퍼) 원료로 사용됩니다. 순도 80~99.9999% 등급 공급.",
+        tags: ["연마재", "내화", "전력반도체"],
+        apps: ["정밀 연마재·연마휠", "내화 벽돌·도가니", "SiC 전력반도체 원료", "내마모 코팅", "발열체"],
+      },
+      {
+        name: "녹색 탄화규소 / Green Silicon Carbide (SiC)",
+        cat: "탄화물",
+        formula: "SiC (Green)",
+        desc: "녹색 탄화규소는 흑색 SiC보다 순도가 높고 입자가 예리하여 초경 공구·실리콘 웨이퍼 연마·광학 부품 가공 등 고정밀 분야에 사용됩니다.",
+        tags: ["초경연마", "광학가공"],
+        apps: ["실리콘 웨이퍼 정밀 연마", "초경합금 공구 연삭", "광학 유리 폴리싱", "세라믹 가공"],
+      },
+      {
+        name: "탄화텅스텐 / Tungsten Carbide (WC)",
+        cat: "탄화물",
+        formula: "WC",
+        desc: "탄화텅스텐(WC)은 다이아몬드 다음의 초경도(모스 9)를 가진 금속 탄화물로, 초경합금 절삭공구·광산 공구·금형·내마모 부품의 핵심 원료입니다.",
+        tags: ["초경합금", "절삭공구"],
+        apps: ["선반·밀링 인서트", "광산·석유시추 비트", "신선 다이스·금형", "내마모 노즐", "탄도 침투체"],
+      },
+      {
+        name: "탄화티타늄 / Titanium Carbide (TiC)",
+        cat: "탄화물",
+        formula: "TiC",
+        desc: "탄화티타늄(TiC)은 가볍고 단단한 흑색 분말로 초경합금, 코팅, 서멧, 우주항공 합금에 사용됩니다.",
+        tags: ["서멧", "우주항공"],
+        apps: ["서멧(Cermet) 절삭공구", "고온 합금 첨가", "CVD/PVD 코팅", "우주항공 경량 합금"],
+      },
+      {
+        name: "탄화붕소 / Boron Carbide (B₄C)",
+        cat: "탄화물",
+        formula: "B₄C",
+        desc: "탄화붕소(B₄C)는 다이아몬드·CBN 다음으로 단단한 초경 세라믹으로, 군용 방탄 세라믹과 원자로 제어봉, 정밀 연마재로 사용됩니다.",
+        tags: ["방탄세라믹", "원자로"],
+        apps: ["군용 방탄 플레이트", "원자로 중성자 흡수 제어봉", "샌드블라스팅 노즐", "고정밀 연마분"],
+      },
+    ],
+  },
+
+  // 8. 고순도 알루미나
+  {
+    key: "hpa",
+    kr: "고순도 알루미나",
+    en: "High Purity Alumina",
+    title: "고순도 알루미나 / High Purity Alumina (HPA)",
+    items: [
+      {
+        name: "HPA 4N / High Purity Alumina 4N",
+        cat: "HPA",
+        formula: "α-Al₂O₃ 99.99%",
+        desc: "순도 99.99%(4N) 고순도 알루미나(HPA). 리튬배터리 분리막 코팅, 형광체, LED 사파이어 잉곳, 투명 세라믹의 핵심 소재입니다.",
+        tags: ["99.99%", "분리막", "LED"],
+        apps: ["리튬배터리 분리막 코팅", "LED 사파이어 잉곳 원료", "고급 형광체 호스트", "투명 세라믹·치과용 블록"],
+        details: {
+          features: [
+            { title: "초저 불순물", points: ["Na·Si·Fe·Ca 각 < 10 ppm", "이차전지 안전성 강화"] },
+            { title: "α-상 알루미나", points: ["고결정성 α-Al₂O₃", "융점 ~2,050°C, 모스경도 9"] },
+          ],
+        },
+      },
+      {
+        name: "HPA 5N / High Purity Alumina 5N",
+        cat: "HPA",
+        formula: "α-Al₂O₃ 99.999%",
+        desc: "순도 99.999%(5N) 초고순도 알루미나. 마이크로 LED, 단결정 사파이어, OLED 봉지층, 고출력 레이저 소재용으로 사용됩니다.",
+        tags: ["99.999%", "마이크로LED"],
+        apps: ["마이크로 LED 기판", "단결정 사파이어 성장", "OLED 봉지 보호층", "고출력 레이저 호스트"],
+      },
+      {
+        name: "고순도 알루미늄 원료 / High Purity Aluminum",
+        cat: "HPA",
+        formula: "Al 99.998%",
+        desc: "HPA 합성용 99.998% 고순도 알루미늄 원료. 가수분해법(HPA) 공정의 출발 물질로 사용됩니다.",
+        tags: ["99.998%", "HPA 전구체"],
+        apps: ["HPA 합성용 출발 원료", "초고순도 합금", "스퍼터링 타겟"],
+      },
+    ],
+  },
+
+  // 9. 코런덤 (용융 알루미나)
+  {
+    key: "corundum",
+    kr: "코런덤",
+    en: "Corundum",
+    title: "코런덤(용융 알루미나) / Corundum (Fused Alumina)",
+    items: [
+      {
+        name: "백색 용융 알루미나 (WFA) / White Fused Alumina",
+        cat: "코런덤",
+        formula: "Al₂O₃ ≥99%",
+        desc: "백색 용융 알루미나(WFA)는 고순도(≥99%) 전기 용융 산화알루미늄으로, 정밀 연마재, 고급 내화재, 세라믹 원료로 사용됩니다.",
+        tags: ["연마", "내화"],
+        apps: ["정밀 연삭휠·샌드페이퍼", "고급 내화벽돌", "정밀 주조 몰드", "치과·의료용 연마"],
+      },
+      {
+        name: "갈색 용융 알루미나 (BFA) / Brown Fused Alumina",
+        cat: "코런덤",
+        formula: "Al₂O₃ 95~97%",
+        desc: "갈색 용융 알루미나(BFA)는 보크사이트를 전기 용융하여 제조된 갈색 결정으로, 경제적인 가격과 우수한 인성으로 일반 연마·샌드블라스팅·내화재에 광범위 사용됩니다.",
+        tags: ["샌드블라스팅", "연삭"],
+        apps: ["샌드블라스팅 그리트", "연삭휠·연마지", "캐스터블 내화재", "비활성 미끄럼 방지재"],
+      },
+      {
+        name: "흑색 용융 알루미나 / Black Fused Alumina",
+        cat: "코런덤",
+        formula: "Al₂O₃ + Fe₂O₃",
+        desc: "흑색 용융 알루미나는 산화철을 함유한 흑색 결정으로, 폴리싱·샌드블라스팅·도료 첨가에 사용됩니다.",
+        tags: ["폴리싱", "샌드블라스팅"],
+        apps: ["스테인리스 폴리싱", "건축자재 미끄럼 방지", "특수 도료 충전재"],
+      },
+      {
+        name: "판상 알루미나 / Tabular Alumina",
+        cat: "코런덤",
+        formula: "α-Al₂O₃ ≥99%",
+        desc: "판상 알루미나는 1,800°C 이상에서 소결된 거대 판상 α-Al₂O₃ 결정으로, 우수한 열충격 안정성과 강도로 고급 내화재·촉매 담체에 사용됩니다.",
+        tags: ["내화", "촉매담체"],
+        apps: ["제강용 슬라이딩 노즐", "석유화학 촉매 담체", "고온 가마용 내화물", "가스 정제 필터"],
+      },
+    ],
+  },
+
+  // 10. 금속 분말
+  {
+    key: "metals",
+    kr: "금속 분말",
+    en: "Metal Powders",
+    title: "고순도 금속 분말 / Metal Powders",
+    items: [
+      {
+        name: "규소 분말 / Silicon Powder",
+        cat: "금속 분말",
+        formula: "Si",
+        desc: "고순도 규소 분말. 태양광·반도체·차세대 실리콘 음극재·내화재 원료. 융점 약 1,414°C, 저불순물 등급 공급.",
+        tags: ["태양광", "음극재"],
+        apps: ["차세대 실리콘 음극재(Si-C)", "태양광 잉곳·웨이퍼 원료", "Si₃N₄·SiC 합성 원료", "Al 합금 첨가제"],
+      },
+      {
+        name: "니켈 분말 / Nickel Powder",
+        cat: "금속 분말",
+        formula: "Ni",
+        desc: "고전도·강자성 고순도 니켈 분말. MLCC 내부전극, 수소 연료전지 촉매, 분말야금에 사용됩니다. 융점 1,455°C.",
+        tags: ["MLCC", "촉매"],
+        apps: ["MLCC 내부 전극(BME)", "수소 연료전지 촉매", "분말야금 소결 부품", "전자파 차폐"],
+      },
+      {
+        name: "흑연 분말 / Graphite Powder",
+        cat: "금속 분말",
+        formula: "C",
+        desc: "고전도·고열전도·윤활성을 갖춘 흑연 분말. 배터리 음극재, 윤활제, 도전재, 내화재 등으로 광범위 사용.",
+        tags: ["배터리", "윤활"],
+        apps: ["전기차 배터리 음극재", "고온로 흑연 도가니", "금속 주조 이형제", "전도성 분리판"],
+      },
+    ],
+  },
+
+  // 11. 전해 망간
+  {
+    key: "manganese",
+    kr: "전해 망간",
+    en: "Electrolytic Manganese",
+    title: "전해 망간 금속 플레이크 / Electrolytic Manganese Metal Flakes",
+    items: [PROD_Mn],
+  },
+
+  // 12. 기타 무기염
+  {
+    key: "others",
+    kr: "기타 무기염",
+    en: "Other Inorganic Salts",
+    title: "기타 무기염 / Other Inorganic Salts",
+    items: [
+      {
+        name: "티탄산바륨 / Barium Titanate",
+        cat: "기타 무기염",
+        formula: "BaTiO₃",
+        desc: "티탄산바륨(BaTiO₃)은 강유전성·압전성을 갖춘 핵심 전자 세라믹으로, MLCC, 압전 센서, PTC 서미스터의 주원료입니다.",
+        tags: ["MLCC", "압전"],
+        apps: ["고용량 MLCC 유전체", "초음파 진동자·소나 센서", "PTC 정온 발열체", "압전 액추에이터"],
+        details: {
+          features: [
+            { title: "강유전성·압전성", points: ["페로브스카이트 결정구조", "큐리온도 ~120°C"] },
+            { title: "고유전상수", points: ["εr 1,000~10,000", "MLCC 소형·고용량화"] },
+          ],
+        },
+      },
+      {
+        name: "수소화알루미늄리튬 / Lithium Aluminium Hydride (LAH)",
+        cat: "기타 무기염",
+        formula: "LiAlH₄",
+        desc: "강력한 환원제인 LiAlH₄는 유기합성·의약품 합성·수소 저장·차세대 배터리 소재로 사용됩니다.",
+        tags: ["환원제", "수소저장"],
+        apps: ["신약·정밀화학 환원제", "고체 수소 저장 합금", "에스터·아미드 환원", "차세대 배터리 첨가제"],
+      },
+      {
+        name: "마그네슘 비드/그레인 / Magnesium Beads & Granules",
+        cat: "기타 무기염",
+        formula: "Mg",
+        desc: "경량·고반응성 마그네슘 과립. 합금 제조·화학 환원제·생분해성 의료용 임플란트에 활용됩니다.",
+        tags: ["합금", "환원제"],
+        apps: ["티타늄 제련 환원제", "생분해성 의료 임플란트", "초경량 항공기 합금", "수처리 탈질제"],
+      },
+      {
+        name: "코디어라이트 / Cordierite",
+        cat: "기타 무기염",
+        formula: "Mg₂Al₄Si₅O₁₈",
+        desc: "코디어라이트는 매우 낮은 열팽창계수와 고융점을 가진 세라믹으로, 자동차 촉매 담체와 고주파 통신 기판에 사용됩니다.",
+        tags: ["자동차 촉매", "전자기판"],
+        apps: ["자동차 배기가스 촉매 담체(허니콤)", "초저열팽창 피자 가마판", "고주파 통신 세라믹 기판", "적외선 가스 버너 패널"],
+      },
+    ],
+  },
+
+  // 13. 희토류 (마지막 위치 - 추후 확장 예정)
   {
     key: "rareearth",
     kr: "희토류",
@@ -289,100 +899,6 @@ export const CATEGORIES: Category[] = [
           ],
         },
       },
-    ],
-  },
-  {
-    key: "zirconia",
-    kr: "지르코니아",
-    en: "Zirconia",
-    title: "지르코니아 / Zirconia",
-    items: [
-      { name: "치과용 지르코니아 분말 / Dental Zirconia Powder", cat: "지르코니아", formula: "ZrO₂", desc: "치과 보철 블록 제조에 최적화된 고순도 지르코니아 분말. 높은 투명도와 강도.", tags: ["치과", "바이오"], apps: ["치과용 임플란트 지대주", "투명 교정 블록", "인공 치아 보철물", "치과용 밀링 디스크"] },
-      { name: "산업용 지르코니아 분말 / Industrial Zirconia Powder", cat: "지르코니아", formula: "ZrO₂", desc: "고내열성·내마모성이 요구되는 산업용 세라믹 부품 제조용 분말.", tags: ["산업용", "내마모"], apps: ["고강도 세라믹 베어링", "정밀 펌프 씰(Seal)", "방탄 세라믹 펠릿", "내마모 밸브"] },
-      { name: "ATZ 분말 / Alumina Toughened Zirconia", cat: "지르코니아", formula: "Al₂O₃-ZrO₂", desc: "알루미나로 강화된 지르코니아(ATZ). 치과 및 정밀 부품 고성능 소재.", tags: ["복합소재", "고강도"], apps: ["초정밀 절삭 공구", "고응력 마모 부품", "고급 임플란트 재료", "와이어 드로잉 다이스"] },
-      { name: "ZTA 분말 / Zirconia Toughened Alumina", cat: "지르코니아", formula: "ZrO₂-Al₂O₃", desc: "지르코니아로 강화된 알루미나(ZTA). 우수한 파괴인성과 경도를 실현.", tags: ["복합소재", "고인성"], apps: ["방탄 장갑판", "고속 밀링 커터", "정형외과용 인공 관절", "석유 시추 장비 부품"] },
-      { name: "지르코니아 그라인딩 비드 / Zirconia Grinding Beads", cat: "지르코니아", formula: "ZrO₂", desc: "고효율 습식 분쇄·분산에 사용되는 세라믹 비드. 0.05mm~50mm.", tags: ["분쇄", "분산"], apps: ["전자재료 초미립 분쇄", "MLCC 페이스트 분산", "화장품/제약 나노 분쇄", "잉크 및 도료 밀링"] },
-    ],
-  },
-  {
-    key: "alumina",
-    kr: "알루미나",
-    en: "Alumina",
-    title: "알루미나 / Alumina",
-    items: [
-      { name: "산화알루미늄 D99 / Aluminum Oxide D99", cat: "알루미나", formula: "Al₂O₃", desc: "99% 이상 순도의 알루미나 분말. 사출 성형·소결용으로 최적화.", tags: ["사출성형", "소결"], apps: ["CIM(세라믹 사출 성형)", "고온 소결 세라믹", "고압 애자(Insulator)", "방열 기판"] },
-      { name: "고순도 알파 알루미나 / High-Purity Alpha Alumina", cat: "알루미나", formula: "α-Al₂O₃", desc: "전자 기판·LED·반도체 패키징 분야에 사용되는 고순도 알파 알루미나.", tags: ["반도체", "전자부품"], apps: ["LED 사파이어 잉곳 원료", "반도체 식각 장비 부품", "고열전도 방열 패드", "고휘도 형광체"] },
-      { name: "초고순도 알루미나 (HPA) / High Purity Alumina", cat: "초고순도 알루미나", formula: "Al₂O₃ (99.99%)", desc: "순도 99.99% 이상의 HPA. LED·리튬배터리 분리막·투명 세라믹용.", tags: ["LED", "배터리"], apps: ["리튬배터리 분리막 코팅", "초박형 투명 세라믹", "카메라 사파이어 글래스", "마이크로 LED 기판"] },
-      { name: "용융 알루미나 (WFA/BFA) / Fused Alumina (WFA/BFA)", cat: "커런덤", formula: "Al₂O₃", desc: "백색/갈색/흑색 용융 알루미나. 정밀 연삭·연마·내화물·샌드블라스팅용.", tags: ["연마", "내화물"], apps: ["초정밀 연삭 및 래핑", "고급 내화 벽돌", "산업용 샌드블라스팅", "연마재 휠 제조"] },
-      { name: "판상 알루미나 / Tabular Alumina", cat: "커런덤", formula: "Al₂O₃", desc: "고순도·고열충격 안정성의 판상 알루미나. 내화물·세라믹·촉매 담체.", tags: ["내화물", "촉매"], apps: ["제강용 슬라이딩 노즐", "석유화학 촉매 담체", "고온 가마용 내화물", "가스 정제 필터"] },
-    ],
-  },
-  {
-    key: "carbide",
-    kr: "탄화물·질화물",
-    en: "Carbide & Nitride",
-    title: "탄화물·질화물 / Carbide & Nitride",
-    items: [
-      { name: "탄화규소 분말 / Silicon Carbide Powder", cat: "탄화물", formula: "SiC", desc: "흑색/녹색 탄화규소. 반도체·광학·내화물·연마재에 사용되는 뛰어난 열전도성 분말.", tags: ["반도체", "연마재"], apps: ["전력 반도체(웨이퍼)", "고온로 발열체(히터)", "우주항공용 광학 거울", "차세대 전기차 인버터"] },
-      { name: "탄화텅스텐 / 탄화붕소 / Tungsten Carbide & Boron Carbide", cat: "탄화물", formula: "WC / B₄C", desc: "절삭공구·내마모 부품·방탄 소재로 활용되는 초경도 탄화물 분말.", tags: ["절삭공구", "방탄소재"], apps: ["초경합금 절삭 공구", "군사용 방탄 복합재", "원자로 제어봉(B₄C)", "초고온 내마모 코팅"] },
-      { name: "질화붕소 분말 / Boron Nitride Powder", cat: "질화물", formula: "h-BN", desc: "고절연성·고열전도성을 갖는 BN 분말. 방열 필러·윤활제·세라믹 용도.", tags: ["방열", "절연"], apps: ["5G/6G 통신 기판 방열", "고온 고체 윤활제", "화장품 진주광택 파우더", "도가니 이형제"] },
-      { name: "질화알루미늄 분말 / Aluminum Nitride Powder", cat: "질화물", formula: "AlN", desc: "높은 열전도율과 우수한 전기 절연성을 갖는 AlN. LED·파워모듈 기판 소재.", tags: ["LED", "파워모듈"], apps: ["고출력 LED 방열 기판", "전기차 전력 모듈", "반도체 정전척(ESC)", "레이저 다이오드 마운트"] },
-      { name: "질화규소 분말 / Silicon Nitride Powder", cat: "질화물", formula: "Si₃N₄", desc: "고강도·고온 내식성을 갖춘 구조용 세라믹 분말. 베어링·엔진 부품·내마모재.", tags: ["베어링", "엔진부품"], apps: ["고속 하이브리드 베어링", "자동차 터보차저 로터", "고온 가스터빈 부품", "반도체 절단 블레이드"] },
-      { name: "질화티타늄 / 질화지르코늄 / Titanium Nitride & Zirconium Nitride", cat: "질화물", formula: "TiN / ZrN", desc: "높은 경도와 우수한 내마모성을 지닌 질화물 소재. 코팅 및 장식용.", tags: ["코팅", "절삭공구"], apps: ["황금색 장식용 PVD 코팅", "드릴/엔드밀 수명 연장", "의료용 임플란트 표면처리", "초경질 내마모 코팅층"] },
-    ],
-  },
-  {
-    key: "metal",
-    kr: "고순도 금속 분말",
-    en: "Metal Powder",
-    title: "고순도 금속 분말 / Metal Powder",
-    items: [
-      { name: "전해 망간 플레이크 / Electrolytic Manganese Flake", cat: "금속 분말", formula: "Mn", desc: "고순도 전해 망간 금속 플레이크. 합금 첨가제·배터리 소재·화학 원료.", tags: ["합금", "배터리"], apps: ["고장력 강판 합금 첨가제", "리튬망간(LMO) 전구체", "알루미늄 합금 탈산제", "특수 용접봉 피복재"] },
-      { name: "구리 분말 / Copper Powder", cat: "금속 분말", formula: "Cu", desc: "고순도 구리 분말. 전도성 페이스트·방열 소재·분말 야금 분야에 사용.", tags: ["전도성", "방열"], apps: ["MLCC 전도성 페이스트", "분말 야금 소결 부품", "다이아몬드 공구 결합재", "전자파 차폐 코팅"] },
-      { name: "아연 분말 / Zinc Powder", cat: "금속 분말", formula: "Zn", desc: "방청 코팅·고무 가황·배터리 전극 소재로 활용되는 고순도 아연 분말.", tags: ["방청", "코팅"], apps: ["선박/해양 방청 도료", "아연-공기 배터리 음극재", "의약품 화학 환원 촉매", "타이어 가황 촉진제"] },
-      { name: "크롬 분말 / Chromium Powder", cat: "금속 분말", formula: "Cr", desc: "스테인리스강·내열합금·용사 코팅용 고순도 크롬 분말. 우수한 내산화성.", tags: ["합금", "용사"], apps: ["초내열합금(Superalloy) 첨가", "플라즈마 용사 코팅", "항공기 엔진 터빈 블레이드", "스테인리스 스틸 표면 개질"] },
-      { name: "실리콘 / 니켈 분말 / Silicon & Nickel Powder", cat: "금속 분말", formula: "Si / Ni", desc: "전자·태양광·배터리·도금 산업에 사용되는 고순도 실리콘 및 니켈 분말.", tags: ["태양광", "배터리"], apps: ["차세대 실리콘 음극재(Si)", "태양광 패널 원료(Si)", "MLCC 내부 전극(Ni)", "수소연료전지 촉매(Ni)"] },
-      { name: "흑연 분말 / Graphite Powder", cat: "금속 분말", formula: "C", desc: "배터리 음극재·윤활제·도전성 소재·내화물에 사용되는 고전도성 흑연 분말.", tags: ["배터리", "윤활"], apps: ["전기차 배터리 음극재", "고온로 흑연 도가니", "금속 주조 이형제", "수소차 전도성 분리판"] },
-    ],
-  },
-  {
-    key: "nano",
-    kr: "나노소재",
-    en: "Nano Materials",
-    title: "나노소재 / Nano Materials",
-    items: [
-      { name: "나노 알루미나 / Nano Alumina", cat: "나노소재", formula: "nano-Al₂O₃", desc: "수십 나노미터 크기의 알루미나 분말. 고분자 복합재·코팅 강화 소재.", tags: ["나노", "복합재"], apps: ["스크래치 복원 컴파운드", "폴리머 복합재 강도 향상", "정밀 광학 렌즈 폴리싱", "배터리 전해액 첨가제"] },
-      { name: "나노 지르코니아 / Nano Zirconia", cat: "나노소재", formula: "nano-ZrO₂", desc: "나노 스케일 지르코니아 분말. 의치·코팅·광학 소재 분야 핵심 소재.", tags: ["나노", "광학"], apps: ["광통신 페룰(Ferrule)", "스마트폰 세라믹 백커버", "초박형 열차폐 코팅막", "고강도 치과용 시멘트"] },
-      { name: "나노 산화아연 / Nano Zinc Oxide", cat: "나노소재", formula: "nano-ZnO", desc: "자외선 차단·항균·반도체 용도의 나노 ZnO 분말. 화장품 및 코팅 산업 다수 적용.", tags: ["UV차단", "항균"], apps: ["프리미엄 자외선 차단제", "병원용 항균 코팅 필름", "가스 센서 감지 물질", "투명 전도성 필름(TCO)"] },
-      { name: "나노 실리카 / Nano Silica", cat: "나노소재", formula: "nano-SiO₂", desc: "초미세 실리카 분말. 고분자 강화·도료 첨가·절연 소재 등 광범위하게 활용.", tags: ["실리카", "절연"], apps: ["치과용 레진 필러", "초발수/방오 유리 코팅재", "CMP 슬러리(반도체 연마)", "고기능성 타이어 트레드"] },
-      { name: "나노 YSZ / Nano Yttria-Stabilized Zirconia", cat: "나노소재", formula: "nano-YSZ", desc: "나노 스케일 YSZ 분말. 연료전지 전해질·열차폐 코팅·정밀 세라믹 소결용.", tags: ["SOFC", "열차폐"], apps: ["초소형 마이크로 펌프 기어", "수소 센서 전극 소재", "가스터빈 TBC 코팅용액", "치과용 초투명 수복물"] },
-    ],
-  },
-  {
-    key: "battery",
-    kr: "이차전지",
-    en: "Secondary Battery",
-    title: "이차전지 / Secondary Battery",
-    items: [],
-  },
-  {
-    key: "others",
-    kr: "기타 첨단 소재",
-    en: "Advanced Materials",
-    title: "기타 첨단 소재 / Advanced Materials",
-    items: [
-      { name: "탄산염 (Sr/Mg/Ba) / Strontium·Magnesium·Barium Carbonate", cat: "탄산염", formula: "Sr/Mg/Ba-CO₃", desc: "유리·전자·도자기·코팅 산업에 광범위하게 사용되는 탄산염 분말 소재.", tags: ["유리", "전자"], apps: ["OLED/LCD 디스플레이 유리", "고급 세라믹 유약", "PTC 서미스터", "스포츠 미끄럼 방지제"] },
-      { name: "탄산칼슘 / 탄산리튬 / Calcium Carbonate & Lithium Carbonate", cat: "탄산염", formula: "CaCO₃ / Li₂CO₃", desc: "건설·제약·환경 분야 및 이차전지에 활용되는 고순도 탄산염 분말.", tags: ["배터리", "제약"], apps: ["리튬 배터리 양극재(Li₂CO₃)", "바이오 플라스틱 필러", "제약용 칼슘 보충제", "건축용 고강도 실런트"] },
-      { name: "형석 / 불화칼슘 / 불화리튬 / Fluorite, Calcium Fluoride & Lithium Fluoride", cat: "불화물", formula: "CaF₂ / LiF", desc: "야금·화학·광학·세라믹·배터리 분야에 사용되는 불화물 소재.", tags: ["야금", "광학"], apps: ["고급 카메라 렌즈(CaF₂)", "제강용 융제(Flux)", "알루미늄 전해 제련 첨가제", "리튬 배터리 전해액"] },
-      { name: "실리카 (이산화규소) / Silica (Silicon Dioxide)", cat: "산화물", formula: "SiO₂", desc: "고분자 강화·도료 첨가·절연 소재로 활용되는 실리카 분말(흄드/침강).", tags: ["실리카", "절연"], apps: ["실리콘 고무 보강재", "도료/잉크 점도 조절제", "진공 단열재(VIP) 심재", "식품용 항결착제"] },
-      { name: "산화하프늄 / 산화몰리브덴 / Hafnium Oxide & Molybdenum Oxide", cat: "산화물", formula: "HfO₂ / MoO₃", desc: "반도체·전자·촉매·코팅 분야에 사용되는 고순도 산화물 소재.", tags: ["반도체", "촉매"], apps: ["High-K 게이트 절연막(HfO₂)", "석유 정제 탈황 촉매(MoO₃)", "우주선 단열 코팅", "초전도체 원료"] },
-      { name: "사산화삼망간 / Trimanganese Tetraoxide", cat: "산화물", formula: "Mn₃O₄", desc: "리튬이온 배터리·촉매·전자 소재로 활용. 환경 촉매 분야 핵심 산화물.", tags: ["배터리", "촉매"], apps: ["소프트 페라이트 자성 재료", "LMFP 배터리 소재", "유기물 분해 촉매", "서미스터 센서"] },
-      { name: "티탄산바륨 / Barium Titanate", cat: "특수 무기염", formula: "BaTiO₃", desc: "압전 특성을 갖는 핵심 소재. MLCC·센서·압전 소자에 광범위하게 사용.", tags: ["MLCC", "센서"], apps: ["고용량 MLCC", "초음파 진동자 센서", "소나(Sonar) 마이크로폰", "정온 발열체(PTC 히터)"] },
-      { name: "수소화알루미늄리튬 / Lithium Aluminum Hydride", cat: "특수 무기염", formula: "LiAlH₄", desc: "강력한 환원제. 유기합성·수소 발생원·차세대 배터리 소재로 활용.", tags: ["유기합성", "수소"], apps: ["신약 개발 유기 합성", "고체 수소 저장 합금", "첨단 폴리머 촉매", "스테로이드 제제 합성"] },
-      { name: "마그네슘 비드/그레인 / Magnesium Beads & Granules", cat: "특수 무기염", formula: "Mg", desc: "경량·고반응성의 마그네슘 과립. 합금 제조·화학 환원제 분야 활용.", tags: ["합금", "환원제"], apps: ["티타늄 제련 환원제", "의료용 생분해성 임플란트", "초경량 항공기 합금", "수처리기법 탈질제"] },
-      { name: "근청석 / Cordierite", cat: "특수 무기염", formula: "Mg₂Al₄Si₅O₁₈", desc: "낮은 열팽창계수·고융점의 세라믹 소재. 자동차 촉매 및 전자 기판.", tags: ["자동차", "전자기판"], apps: ["자동차 배기가스 촉매 담체", "초저열팽창 피자 가마판", "고주파 통신 세라믹 기판", "적외선 가스 버너 패널"] },
-      { name: "규산지르코늄 / Zirconium Silicate", cat: "특수 무기염", formula: "ZrSiO₄", desc: "도자기·유리·코팅 산업에 광범위하게 사용되는 지르콘 실리케이트 분말.", tags: ["도자기", "코팅"], apps: ["고급 위생도기 불투명 유약", "초고온 주조 몰드", "마찰재(브레이크 패드)", "특수 세라믹 타일"] },
-      { name: "산화마그네슘 / Magnesium Oxide", cat: "산화물", formula: "MgO (99.9%)", desc: "고순도(99.9%) 산화마그네슘 분말. 약 2,800°C의 초고융점을 바탕으로 내화물·세라믹부터 의약·건축·환경·전자에 이르기까지 폭넓게 활용되는 다용도 소재입니다.", tags: ["고순도", "내화물", "다용도"], apps: ["내화벽돌·도가니·노 라이닝 (철강·유리·시멘트 가마)", "제산제·완하제·마그네슘 보충제 원료", "마그네시아 시멘트·내화 보드 등 건축 자재", "산성 폐수·배연 중화, 토양 개량, 사료 첨가제", "산업용 히터·전선 절연재, PDP 보호막", "고무·플라스틱 난연성 충전재", "분광 광도계 백색 기준 물질·광학 반사경"] },
     ],
   },
 ];
