@@ -98,29 +98,35 @@ const ProductDetail = () => {
             <div className="mt-14 border-t border-border pt-10">
               <h2 className="mb-8 text-2xl font-medium text-ink">분야별 활용</h2>
               <div className="space-y-8">
-                {product.details.appSections.map((sec) => (
-                  <section key={sec.title}>
-                    <h3 className="mb-3 text-base font-medium text-ink">{sec.title}</h3>
-                    <div className="overflow-hidden rounded-xl border border-border">
-                      <table className="w-full text-sm">
-                        <thead className="bg-muted/60 text-left text-xs uppercase tracking-wider text-ink/70">
-                          <tr>
-                            <th className="w-1/3 px-4 py-3 font-medium">적용 예</th>
-                            <th className="px-4 py-3 font-medium">분말 역할</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {sec.rows.map((r) => (
-                            <tr key={r.use} className="border-t border-border">
-                              <td className="px-4 py-3 align-top text-ink">{r.use}</td>
-                              <td className="px-4 py-3 align-top text-ink/75">{r.role}</td>
+                {product.details.appSections.map((sec) => {
+                  const hasNote = sec.rows.some((r) => r.note);
+                  return (
+                    <section key={sec.title}>
+                      <h3 className="mb-2 text-base font-medium text-ink">{sec.title}</h3>
+                      {sec.intro && <p className="mb-3 text-sm text-ink/65">{sec.intro}</p>}
+                      <div className="overflow-x-auto rounded-xl border border-border">
+                        <table className="w-full text-sm">
+                          <thead className="bg-muted/60 text-left text-xs uppercase tracking-wider text-ink/70">
+                            <tr>
+                              <th className="w-1/3 px-4 py-3 font-medium">적용 분야</th>
+                              <th className="px-4 py-3 font-medium">역할</th>
+                              {hasNote && <th className="px-4 py-3 font-medium">비고</th>}
                             </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </section>
-                ))}
+                          </thead>
+                          <tbody>
+                            {sec.rows.map((r) => (
+                              <tr key={r.use} className="border-t border-border">
+                                <td className="px-4 py-3 align-top text-ink">{r.use}</td>
+                                <td className="px-4 py-3 align-top text-ink/75">{r.role}</td>
+                                {hasNote && <td className="px-4 py-3 align-top text-ink/65">{r.note ?? ""}</td>}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  );
+                })}
               </div>
             </div>
           )}
