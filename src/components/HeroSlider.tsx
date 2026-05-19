@@ -39,7 +39,7 @@ const slides: Slide[] = [
     titleEnEnd: "Performance.",
     subtitleKr: "고순도 분말 · 입도 정밀 제어",
     description:
-      "나노스케일 입도 제어와 99.99% 이상의 고순도 그레이드로 첨단 공정의 품질 한계를 끌어올립니다.",
+      "나노코리아는 산업 공정에 필요한 고순도 첨단 소재를 안정적으로 공급합니다.",
   },
   {
     id: "03",

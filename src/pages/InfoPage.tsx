@@ -98,7 +98,7 @@ const AboutPage = () => (
             Our Story
           </div>
           <h2 className="mt-3 text-3xl font-medium leading-tight text-ink md:text-4xl">
-            구조적 한계를<br />합리적으로 극복합니다.
+            구조적 한계를<br />안정적인 공급망으로 극복합니다.
           </h2>
         </div>
         <div className="space-y-6 text-base leading-relaxed text-ink/75 lg:col-span-8 lg:text-lg">
