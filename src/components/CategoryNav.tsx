@@ -42,12 +42,14 @@ const CategoryNav = () => {
             <SelectTrigger className="h-9 w-[200px] text-xs font-semibold">
               <SelectValue placeholder="카테고리 선택" />
             </SelectTrigger>
-            <SelectContent>
-              {CATEGORIES.map((c) => (
-                <SelectItem key={c.key} value={c.key} className="text-xs">
-                  {c.kr} · {c.en}
-                </SelectItem>
-              ))}
+            <SelectContent className="max-h-[80vh] w-[min(720px,90vw)]">
+              <div className="grid grid-cols-2 gap-x-2 md:grid-cols-3">
+                {CATEGORIES.map((c) => (
+                  <SelectItem key={c.key} value={c.key} className="text-xs">
+                    {c.kr} · {c.en}
+                  </SelectItem>
+                ))}
+              </div>
             </SelectContent>
           </Select>
 
