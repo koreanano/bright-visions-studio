@@ -58,27 +58,27 @@ const Navigation = () => {
               제품 카테고리 <ChevronDown className="h-3.5 w-3.5" />
             </button>
             {open && (
-              <div className="absolute left-1/2 top-full w-64 -translate-x-1/2 pt-2">
-                <ul className="border border-border bg-background shadow-lg">
-                  <li>
-                    <Link
-                      to="/products"
-                      className="block border-b border-border px-4 py-3 text-sm font-semibold text-ink hover:bg-muted hover:text-accent"
-                    >
-                      전체 제품 보기
-                    </Link>
-                  </li>
-                  {CATEGORIES.map((c) => (
-                    <li key={c.key}>
+              <div className="absolute left-1/2 top-full w-[min(820px,92vw)] -translate-x-1/2 pt-2">
+                <div className="border border-border bg-background shadow-lg">
+                  <Link
+                    to="/products"
+                    className="block border-b border-border px-5 py-3 text-sm font-semibold text-ink hover:bg-muted hover:text-accent"
+                  >
+                    전체 제품 보기
+                  </Link>
+                  <div className="grid grid-cols-2 gap-x-2 p-2 md:grid-cols-3">
+                    {CATEGORIES.map((c) => (
                       <Link
+                        key={c.key}
                         to={`/products/${c.key}`}
-                        className="block px-4 py-2.5 text-sm text-ink/80 hover:bg-muted hover:text-accent"
+                        className="block rounded px-3 py-2 text-sm text-ink/80 hover:bg-muted hover:text-accent"
                       >
-                        {c.kr} <span className="text-xs text-muted-foreground">/ {c.en}</span>
+                        <span className="font-medium">{c.kr}</span>
+                        <span className="ml-1 text-[11px] text-muted-foreground">/ {c.en}</span>
                       </Link>
-                    </li>
-                  ))}
-                </ul>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
