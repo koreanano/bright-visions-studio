@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import HeroSlider from "@/components/HeroSlider";
 import CompanyIntro from "@/components/CompanyIntro";
