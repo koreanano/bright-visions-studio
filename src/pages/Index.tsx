@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Navigation from "@/components/Navigation";
 import HeroSlider from "@/components/HeroSlider";
 import CompanyIntro from "@/components/CompanyIntro";
@@ -8,6 +9,9 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <main className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://nano-korea.co.kr/" />
+      </Helmet>
       <Navigation />
       <div id="top" />
       <HeroSlider />
