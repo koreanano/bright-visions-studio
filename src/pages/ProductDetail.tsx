@@ -26,11 +26,30 @@ const ProductDetail = () => {
     );
   }
 
+  const parts = product.name.split("/").map((s) => s.trim());
+  const titleName = parts.length > 1 ? `${parts[0]} (${parts.slice(1).join(" / ")})` : product.name;
+  const pageTitle = `${titleName} | 나노코리아`;
+  const rawDesc = product.desc.replace(/\s+/g, " ").trim();
+  const metaDesc = rawDesc.length > 158 ? rawDesc.slice(0, 157) + "…" : rawDesc;
+  const canonical = `https://nano-korea.co.kr/products/${category.key}/${slugify(product.name)}`;
+
   return (
     <main className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={metaDesc} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={metaDesc} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:type" content="product" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={metaDesc} />
+      </Helmet>
       <Navigation />
       <CategoryNav />
       <section className="pt-10 pb-20">
+
         <div className="mx-auto max-w-5xl px-6 lg:px-12">
           <Link
             to={`/products/${category.key}`}
