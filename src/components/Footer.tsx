@@ -42,6 +42,19 @@ const Footer = () => {
 
         <div className="hidden lg:block lg:w-[120px]" />
       </div>
+
+      {/* Business registration info */}
+      <div className="border-t border-border">
+        <div className="mx-auto flex max-w-[1440px] flex-col items-center justify-center gap-1 px-6 py-4 text-xs text-muted-foreground lg:flex-row lg:gap-6 lg:px-12">
+          <span>사업자등록번호 725-87-03238</span>
+          <span className="hidden lg:inline text-border">|</span>
+          <span>주식회사디솔루션</span>
+          <span className="hidden lg:inline text-border">|</span>
+          <span>T. 031-356-5682</span>
+          <span className="hidden lg:inline text-border">|</span>
+          <span>대표자 최은성</span>
+        </div>
+      </div>
     </footer>
   );
 };
