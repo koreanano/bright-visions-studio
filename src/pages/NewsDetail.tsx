@@ -149,7 +149,7 @@ const NewsDetail = () => {
               {news.image_url && (
                 <img
                   src={news.image_url}
-                  alt={news.title}
+                  alt={`나노코리아 ${news.title}`}
                   className="mb-6 max-h-[600px] w-auto rounded border border-border object-contain"
                   loading="lazy"
                 />
