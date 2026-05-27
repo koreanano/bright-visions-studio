@@ -32,7 +32,7 @@ const CompanyIntro = () => {
             <div className="overflow-hidden rounded-2xl">
               <img
                 src={networkImg}
-                alt="글로벌 공급 네트워크"
+                alt="나노코리아 글로벌 공급 네트워크"
                 className="h-full w-full object-cover"
                 loading="lazy"
               />
