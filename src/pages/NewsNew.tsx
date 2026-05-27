@@ -122,7 +122,7 @@ const NewsNew = () => {
             {imagePreview && (
               <img
                 src={imagePreview}
-                alt="미리보기"
+                alt="나노코리아 게시글 이미지 미리보기"
                 className="mt-2 max-h-64 w-auto rounded border border-border object-contain"
               />
             )}
