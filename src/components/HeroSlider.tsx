@@ -91,7 +91,7 @@ const HeroSlider = () => {
           <img
             key={s.id}
             src={s.src}
-            alt={`나노코리아 ${s.id ? s.id : "첨단세라믹 및 무기화합물"}`}
+            alt={`나노코리아 ${s.subtitleKr}`}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${
               i === active ? "opacity-100 animate-ken-burns" : "opacity-0"
             }`}
