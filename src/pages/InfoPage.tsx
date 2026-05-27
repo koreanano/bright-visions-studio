@@ -71,7 +71,7 @@ const AboutPage = () => (
     <section className="relative h-[60vh] min-h-[440px] w-full overflow-hidden">
       <img
         src={aboutHero}
-        alt="NANOKOREA 첨단소재 연구 환경"
+        alt="나노코리아 첨단소재 연구 환경"
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}
         height={1080}
