@@ -164,7 +164,7 @@ const AboutPage = () => (
         <div className="overflow-hidden">
           <img
             src={aboutGlobal}
-            alt="글로벌 공급 네트워크"
+            alt="나노코리아 글로벌 공급 네트워크"
             className="h-full w-full object-cover"
             loading="lazy"
             width={1920}
