@@ -79,7 +79,7 @@ const ProductsList = () => {
                     {img ? (
                       <img
                         src={img}
-                        alt={p.name}
+                        alt={`나노코리아 ${p.name}`}
                         loading="lazy"
                         width={400}
                         height={300}
