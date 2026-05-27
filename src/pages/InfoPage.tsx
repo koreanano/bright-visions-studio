@@ -202,10 +202,30 @@ const AboutPage = () => (
   </>
 );
 
+const SEO_MAP: Record<Kind, { name: string; detail: string; path: string }> = {
+  about: {
+    name: "회사소개",
+    detail: "글로벌 첨단소재 공급 파트너 나노코리아의 비전·연혁·글로벌 네트워크를 확인하세요.",
+    path: "/about",
+  },
+  service: {
+    name: "서비스",
+    detail: "맞춤 입도 주문 제작, 엔지니어 기술지원, 레퍼런스 자료 제공 등 나노코리아의 전문 서비스 안내.",
+    path: "/service",
+  },
+  faq: {
+    name: "자주 묻는 질문",
+    detail: "MOQ, 샘플, 납기, 품질 보증 등 나노코리아 제품 공급에 대한 자주 묻는 질문을 확인하세요.",
+    path: "/faq",
+  },
+};
+
 const InfoPage = ({ kind }: { kind: Kind }) => {
+  const seo = SEO_MAP[kind];
   if (kind === "about") {
     return (
       <main className="min-h-screen bg-background">
+        <SEO pageName={seo.name} detail={seo.detail} path={seo.path} />
         <Navigation />
         <AboutPage />
         <Footer />
@@ -215,6 +235,7 @@ const InfoPage = ({ kind }: { kind: Kind }) => {
   const c = kind === "service" ? SERVICE : FAQ;
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName={seo.name} detail={seo.detail} path={seo.path} />
       <Navigation />
       <section className="pt-32 pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-12">
