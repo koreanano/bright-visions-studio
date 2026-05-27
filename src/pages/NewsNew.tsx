@@ -94,6 +94,7 @@ const NewsNew = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName="새 글 작성" detail="나노코리아 게시판에 새 글을 작성합니다." path="/news/new" />
       <Navigation />
       <section className="mx-auto max-w-[760px] px-6 pb-20 pt-28 lg:px-12">
         <div className="mb-8 border-b border-border pb-5">
