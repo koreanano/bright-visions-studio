@@ -74,6 +74,12 @@ const NewsDetail = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO
+        pageName={news?.title || "게시판"}
+        detail={news ? (news.content || "").slice(0, 120) : "나노코리아 게시판 글입니다."}
+        path={id ? `/news/${id}` : "/news"}
+        type="article"
+      />
       <Navigation />
       <article className="mx-auto max-w-[820px] px-6 pb-20 pt-28 lg:px-12">
         <Link to="/news" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-accent">
