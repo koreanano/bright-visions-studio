@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CategoryNav from "@/components/CategoryNav";
+import SEO from "@/components/SEO";
 import { CATEGORIES, getCategory, slugify } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
 
