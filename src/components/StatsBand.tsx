@@ -10,7 +10,7 @@ const StatsBand = () => {
         <div className="overflow-hidden">
           <img
             src={partnershipImg}
-            alt="신뢰 기반 비즈니스 파트너십"
+            alt="나노코리아 신뢰 기반 비즈니스 파트너십"
             className="h-full w-full object-cover"
             loading="lazy"
             width={1280}
