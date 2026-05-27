@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import aboutHero from "@/assets/about-hero.jpg";
 import aboutGlobal from "@/assets/global-network.jpg";
@@ -70,7 +71,7 @@ const AboutPage = () => (
     <section className="relative h-[60vh] min-h-[440px] w-full overflow-hidden">
       <img
         src={aboutHero}
-        alt="NANOKOREA 첨단소재 연구 환경"
+        alt="나노코리아 첨단소재 연구 환경"
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}
         height={1080}
@@ -163,7 +164,7 @@ const AboutPage = () => (
         <div className="overflow-hidden">
           <img
             src={aboutGlobal}
-            alt="글로벌 공급 네트워크"
+            alt="나노코리아 글로벌 공급 네트워크"
             className="h-full w-full object-cover"
             loading="lazy"
             width={1920}
@@ -201,10 +202,30 @@ const AboutPage = () => (
   </>
 );
 
+const SEO_MAP: Record<Kind, { name: string; detail: string; path: string }> = {
+  about: {
+    name: "회사소개",
+    detail: "글로벌 첨단소재 공급 파트너 나노코리아의 비전·연혁·글로벌 네트워크를 확인하세요.",
+    path: "/about",
+  },
+  service: {
+    name: "서비스",
+    detail: "맞춤 입도 주문 제작, 엔지니어 기술지원, 레퍼런스 자료 제공 등 나노코리아의 전문 서비스 안내.",
+    path: "/service",
+  },
+  faq: {
+    name: "자주 묻는 질문",
+    detail: "MOQ, 샘플, 납기, 품질 보증 등 나노코리아 제품 공급에 대한 자주 묻는 질문을 확인하세요.",
+    path: "/faq",
+  },
+};
+
 const InfoPage = ({ kind }: { kind: Kind }) => {
+  const seo = SEO_MAP[kind];
   if (kind === "about") {
     return (
       <main className="min-h-screen bg-background">
+        <SEO pageName={seo.name} detail={seo.detail} path={seo.path} />
         <Navigation />
         <AboutPage />
         <Footer />
@@ -214,6 +235,7 @@ const InfoPage = ({ kind }: { kind: Kind }) => {
   const c = kind === "service" ? SERVICE : FAQ;
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName={seo.name} detail={seo.detail} path={seo.path} />
       <Navigation />
       <section className="pt-32 pb-24">
         <div className="mx-auto max-w-3xl px-6 lg:px-12">

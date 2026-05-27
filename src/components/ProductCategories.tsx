@@ -66,7 +66,7 @@ const ProductCategories = () => {
               <div className="relative aspect-[16/10] overflow-hidden bg-white">
                 <img
                   src={CAT_IMG[c.key]}
-                  alt={`${c.kr} ${c.en}`}
+                  alt={`나노코리아 ${c.kr} ${c.en}`}
                   loading="lazy"
                   width={800}
                   height={500}

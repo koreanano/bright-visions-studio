@@ -2,6 +2,7 @@ import termsText from "@/data/terms.txt?raw";
 import privacyText from "@/data/privacy.txt?raw";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 type Props = { kind: "terms" | "privacy" };
 
@@ -12,6 +13,11 @@ const LegalPage = ({ kind }: Props) => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO
+        pageName={title}
+        detail={`나노코리아 ${title} 안내 페이지입니다.`}
+        path={isTerms ? "/terms" : "/privacy"}
+      />
       <Navigation />
       <section className="pt-32 pb-20">
         <div className="mx-auto max-w-3xl px-6 lg:px-12">

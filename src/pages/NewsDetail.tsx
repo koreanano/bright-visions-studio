@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { Calendar, User, ArrowLeft, Trash2, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -73,6 +74,12 @@ const NewsDetail = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO
+        pageName={news?.title || "게시판"}
+        detail={news ? (news.content || "").slice(0, 120) : "나노코리아 게시판 글입니다."}
+        path={id ? `/news/${id}` : "/news"}
+        type="article"
+      />
       <Navigation />
       <article className="mx-auto max-w-[820px] px-6 pb-20 pt-28 lg:px-12">
         <Link to="/news" className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-accent">
@@ -142,7 +149,7 @@ const NewsDetail = () => {
               {news.image_url && (
                 <img
                   src={news.image_url}
-                  alt={news.title}
+                  alt={`나노코리아 ${news.title}`}
                   className="mb-6 max-h-[600px] w-auto rounded border border-border object-contain"
                   loading="lazy"
                 />

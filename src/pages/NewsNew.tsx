@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { z } from "zod";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -93,6 +94,7 @@ const NewsNew = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName="새 글 작성" detail="나노코리아 게시판에 새 글을 작성합니다." path="/news/new" />
       <Navigation />
       <section className="mx-auto max-w-[760px] px-6 pb-20 pt-28 lg:px-12">
         <div className="mb-8 border-b border-border pb-5">
@@ -120,7 +122,7 @@ const NewsNew = () => {
             {imagePreview && (
               <img
                 src={imagePreview}
-                alt="미리보기"
+                alt="나노코리아 게시글 이미지 미리보기"
                 className="mt-2 max-h-64 w-auto rounded border border-border object-contain"
               />
             )}

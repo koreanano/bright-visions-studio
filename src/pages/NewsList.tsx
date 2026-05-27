@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Plus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -29,6 +30,7 @@ const NewsList = () => {
 
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName="게시판" detail="나노코리아 공지사항·업계 소식·기술 정보 게시판입니다." path="/news" />
       <Navigation />
       <section className="mx-auto max-w-[1100px] px-6 pb-16 pt-28 lg:px-12">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">

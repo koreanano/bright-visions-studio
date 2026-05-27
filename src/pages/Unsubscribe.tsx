@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import SEO from "@/components/SEO";
 
 type State = "loading" | "valid" | "already" | "invalid" | "done" | "error" | "submitting";
 
@@ -47,6 +48,7 @@ const Unsubscribe = () => {
 
   return (
     <main className="min-h-screen bg-background flex items-center justify-center px-6">
+      <SEO pageName="이메일 수신 거부" detail="나노코리아 알림 이메일 수신을 거부합니다." path="/unsubscribe" />
       <div className="max-w-md w-full rounded-2xl border border-border bg-card p-8 text-center shadow-lg">
         <h1 className="text-2xl font-bold text-foreground">이메일 수신 거부</h1>
         <div className="mt-6 text-sm text-muted-foreground">

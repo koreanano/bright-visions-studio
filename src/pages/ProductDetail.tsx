@@ -1,10 +1,10 @@
 import { Link, useParams } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { ArrowLeft } from "lucide-react";
 import { slugify } from "@/data/products";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CategoryNav from "@/components/CategoryNav";
+import SEO from "@/components/SEO";
 import { findProduct, getCategory } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
 
@@ -28,24 +28,13 @@ const ProductDetail = () => {
 
   const parts = product.name.split("/").map((s) => s.trim());
   const titleName = parts.length > 1 ? `${parts[0]} (${parts.slice(1).join(" / ")})` : product.name;
-  const pageTitle = `${titleName} | 나노코리아`;
   const rawDesc = product.desc.replace(/\s+/g, " ").trim();
-  const metaDesc = rawDesc.length > 158 ? rawDesc.slice(0, 157) + "…" : rawDesc;
-  const canonical = `https://nano-korea.co.kr/products/${category.key}/${slugify(product.name)}`;
+  const detail = `${product.name}${product.formula ? ` (${product.formula})` : ""} - ${rawDesc}`;
+  const path = `/products/${category.key}/${slugify(product.name)}`;
 
   return (
     <main className="min-h-screen bg-background">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={metaDesc} />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={metaDesc} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="product" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={metaDesc} />
-      </Helmet>
+      <SEO pageName={titleName} detail={detail} path={path} type="product" />
       <Navigation />
       <CategoryNav />
       <section className="pt-10 pb-20">
@@ -72,7 +61,7 @@ const ProductDetail = () => {
               <div className="overflow-hidden border border-border bg-white">
                 <img
                   src={getProductImage(product.name)}
-                  alt={product.name}
+                  alt={`나노코리아 ${product.name}`}
                   width={800}
                   height={800}
                   className="h-full w-full object-cover"

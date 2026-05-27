@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import CategoryNav from "@/components/CategoryNav";
+import SEO from "@/components/SEO";
 import { CATEGORIES, getCategory, slugify } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
 
@@ -24,8 +25,25 @@ const ProductsList = () => {
       )
     : base;
 
+  const pageName = q
+    ? `"${q}" 검색결과`
+    : category
+    ? `${category.kr} (${category.en})`
+    : "전체 제품";
+  const path = q
+    ? `/products?q=${encodeURIComponent(q)}`
+    : category
+    ? `/products/${category.key}`
+    : "/products";
+  const detail = category
+    ? `${category.kr} 카테고리의 주요 제품과 사양을 확인하세요.`
+    : q
+    ? `"${q}" 키워드와 관련된 제품 정보를 확인하세요.`
+    : "탄산염·불화물·산화물·질화물·희토류 등 전체 제품 라인업을 확인하세요.";
+
   return (
     <main className="min-h-screen bg-background">
+      <SEO pageName={pageName} detail={detail} path={path} />
       <Navigation />
       <CategoryNav />
 
@@ -61,7 +79,7 @@ const ProductsList = () => {
                     {img ? (
                       <img
                         src={img}
-                        alt={p.name}
+                        alt={`나노코리아 ${p.name}`}
                         loading="lazy"
                         width={400}
                         height={300}
