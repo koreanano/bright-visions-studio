@@ -16,6 +16,8 @@ type Props = {
   image?: string;
   /** og:type (기본 website) */
   type?: string;
+  /** 검색 색인 제외가 필요한 페이지 */
+  noIndex?: boolean;
 };
 
 const clip = (s: string, n = 158) => {
@@ -23,7 +25,7 @@ const clip = (s: string, n = 158) => {
   return t.length > n ? t.slice(0, n - 1) + "…" : t;
 };
 
-const SEO = ({ pageName, detail, path = "/", image, type = "website" }: Props) => {
+const SEO = ({ pageName, detail, path = "/", image, type = "website", noIndex = false }: Props) => {
   const title = pageName ? `${pageName} | ${BRAND}` : BRAND;
   const tail = detail
     ? ` ${detail}`
@@ -37,6 +39,7 @@ const SEO = ({ pageName, detail, path = "/", image, type = "website" }: Props) =
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={canonical} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
