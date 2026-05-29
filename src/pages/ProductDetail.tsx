@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { slugify } from "@/data/products";
 import Navigation from "@/components/Navigation";
@@ -8,36 +8,26 @@ import SEO from "@/components/SEO";
 import { findProduct, getCategory } from "@/data/products";
 import { getProductImage } from "@/data/productImages";
 
-const legacyMissingProductRedirects: Record<string, string> = {
-  alumina: "/products/corundum",
-  zirconia: "/products/oxides",
-  carbide: "/products/carbides",
-  metal: "/products/metals",
-};
-
 const ProductDetail = () => {
   const { categoryKey, slug } = useParams();
+  const location = useLocation();
   const category = categoryKey ? getCategory(categoryKey) : null;
   const product = categoryKey && slug ? findProduct(categoryKey, slug) : null;
 
   if (!category || !product) {
-    const fallbackPath = categoryKey && legacyMissingProductRedirects[categoryKey]
-      ? legacyMissingProductRedirects[categoryKey]
-      : "/products";
-
     return (
       <main className="min-h-screen bg-background">
         <SEO
           pageName="삭제된 제품 페이지"
           detail="현재 등록된 제품이 없는 이전 주소입니다. 전체 제품 목록에서 최신 제품 정보를 확인하세요."
-          path={fallbackPath}
+          path={location.pathname}
           noIndex
         />
         <Navigation />
         <section className="pt-32 pb-32 text-center">
           <h1 className="text-4xl font-medium text-ink">404</h1>
           <p className="mt-4 text-muted-foreground">삭제되었거나 현재 등록되지 않은 제품 페이지입니다.</p>
-          <Link to={fallbackPath} className="mt-4 inline-block text-ink underline underline-offset-4">
+          <Link to="/products" className="mt-4 inline-block text-ink underline underline-offset-4">
             현재 제품 목록 보기
           </Link>
         </section>

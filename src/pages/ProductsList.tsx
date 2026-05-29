@@ -1,4 +1,4 @@
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,6 +9,7 @@ import { getProductImage } from "@/data/productImages";
 
 const ProductsList = () => {
   const { categoryKey } = useParams();
+  const location = useLocation();
   const [params] = useSearchParams();
   const q = (params.get("q") || "").trim().toLowerCase();
   const category = categoryKey ? getCategory(categoryKey) : null;
@@ -19,7 +20,7 @@ const ProductsList = () => {
         <SEO
           pageName="삭제된 제품 카테고리"
           detail="현재 등록된 제품이 없는 이전 카테고리 주소입니다. 전체 제품 목록에서 최신 제품 정보를 확인하세요."
-          path="/products"
+          path={location.pathname}
           noIndex
         />
         <Navigation />
