@@ -13,6 +13,28 @@ const ProductsList = () => {
   const q = (params.get("q") || "").trim().toLowerCase();
   const category = categoryKey ? getCategory(categoryKey) : null;
 
+  if (categoryKey && !category) {
+    return (
+      <main className="min-h-screen bg-background">
+        <SEO
+          pageName="삭제된 제품 카테고리"
+          detail="현재 등록된 제품이 없는 이전 카테고리 주소입니다. 전체 제품 목록에서 최신 제품 정보를 확인하세요."
+          path="/products"
+          noIndex
+        />
+        <Navigation />
+        <section className="pt-32 pb-32 text-center">
+          <h1 className="text-4xl font-medium text-ink">404</h1>
+          <p className="mt-4 text-muted-foreground">삭제되었거나 현재 사용하지 않는 제품 카테고리입니다.</p>
+          <Link to="/products" className="mt-4 inline-block text-ink underline underline-offset-4">
+            전체 제품 보기
+          </Link>
+        </section>
+        <Footer />
+      </main>
+    );
+  }
+
   const base = category
     ? category.items.map((p) => ({ ...p, _cat: category }))
     : CATEGORIES.flatMap((c) => c.items.map((p) => ({ ...p, _cat: c })));
