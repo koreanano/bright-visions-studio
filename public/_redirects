@@ -1,1 +1,10 @@
+ /products/alumina/*    /products/corundum   301
+ /products/alumina      /products/corundum   301
+ /products/zirconia/*   /products/oxides     301
+ /products/zirconia     /products/oxides     301
+ /products/carbide/*    /products/carbides   301
+ /products/carbide      /products/carbides   301
+ /products/metal/*      /products/metals     301
+ /products/metal        /products/metals     301
+
 /*    /index.html   200
