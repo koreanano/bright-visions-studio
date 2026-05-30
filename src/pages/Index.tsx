@@ -11,7 +11,8 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       <SEO
         path="/"
-        detail="반도체·디스플레이·이차전지용 고순도 첨단 무기소재 공급 전문, 글로벌 공급망 기반."
+        title="나노코리아 | 첨단나노소재 B2B 전문공급"
+        description="첨단세라믹, 나노소재, 무기화합물 B2B 전문 공급업체 나노코리아. 반도체·배터리·항공 산업용 소재를 공급합니다."
       />
       <Navigation />
       <div id="top" />

@@ -30,7 +30,11 @@ const NewsList = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      <SEO pageName="게시판" detail="나노코리아 공지사항·업계 소식·기술 정보 게시판입니다." path="/news" />
+      <SEO
+        title="뉴스 & 공지사항 | 나노코리아"
+        description="나노코리아의 최신 뉴스, 공지사항, 제품 업데이트를 확인하세요."
+        path="/news"
+      />
       <Navigation />
       <section className="mx-auto max-w-[1100px] px-6 pb-16 pt-28 lg:px-12">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
