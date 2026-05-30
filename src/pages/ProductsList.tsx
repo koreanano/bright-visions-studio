@@ -48,6 +48,81 @@ const ProductsList = () => {
       )
     : base;
 
+  const CATEGORY_SEO: Record<string, { title: string; description: string }> = {
+    carbonates: {
+      title: "탄산염 (Carbonates) | 나노코리아",
+      description: "고순도 탄산염 나노소재. 탄산리튬, 탄산칼슘 등 산업용 탄산염 소재를 공급합니다.",
+    },
+    fluorides: {
+      title: "불화물 (Fluorides) | 나노코리아",
+      description: "고순도 불화물 나노소재. 불화리튬, 불화칼슘 등 산업용 불화물 소재를 공급합니다.",
+    },
+    manganese: {
+      title: "망간 소재 (Manganese) | 나노코리아",
+      description: "고순도 망간 나노소재. 배터리 및 전자 산업용 망간 소재를 공급합니다.",
+    },
+    battery: {
+      title: "배터리 소재 (Battery Materials) | 나노코리아",
+      description: "2차전지·배터리용 나노소재. 양극재, 음극재 등 배터리 핵심 소재를 공급합니다.",
+    },
+    corundum: {
+      title: "코런덤 (Corundum) | 나노코리아",
+      description: "고순도 코런덤(산화알루미늄) 나노소재. 반도체·광학 산업용 소재를 공급합니다.",
+    },
+    carbides: {
+      title: "탄화물 (Carbides) | 나노코리아",
+      description: "고순도 탄화물 나노소재. 탄화규소, 탄화붕소 등 산업용 탄화물 소재를 공급합니다.",
+    },
+    nitrides: {
+      title: "질화물 (Nitrides) | 나노코리아",
+      description: "고순도 질화물 나노소재. 질화규소, 질화붕소 등 산업용 질화물 소재를 공급합니다.",
+    },
+    metals: {
+      title: "금속 분말 (Metals) | 나노코리아",
+      description: "고순도 금속 나노분말. 구리, 니켈, 은 등 산업용 금속 나노소재를 공급합니다.",
+    },
+    rareearth: {
+      title: "희토류 (Rare Earth) | 나노코리아",
+      description: "고순도 희토류 나노소재. 산화세륨, 산화란타넘 등 희토류 소재를 공급합니다.",
+    },
+    quartz: {
+      title: "쿼츠 (Quartz) | 나노코리아",
+      description: "고순도 쿼츠(석영) 소재. 반도체·광학 산업용 쿼츠 제품을 공급합니다.",
+    },
+    hpa: {
+      title: "고순도 알루미나 (HPA) | 나노코리아",
+      description: "99.99% 이상 고순도 알루미나(HPA). LED·배터리·반도체 산업용 소재를 공급합니다.",
+    },
+    nano: {
+      title: "나노소재 (Nano Materials) | 나노코리아",
+      description: "다양한 나노소재 제품군. 산화물, 복합소재 등 첨단 나노소재를 공급합니다.",
+    },
+    others: {
+      title: "기타 제품 (Others) | 나노코리아",
+      description: "나노코리아의 기타 특수 소재 제품군. 다양한 산업용 특수 소재를 공급합니다.",
+    },
+    oxides: {
+      title: "산화물 (Oxides) | 나노코리아",
+      description: "고순도 산화물 나노소재. 산업별 맞춤형 산화물 원료를 공급합니다.",
+    },
+    silicagel: {
+      title: "실리카겔 (Silica Gel) | 나노코리아",
+      description: "고순도 실리카겔 소재. 다양한 산업 응용을 위한 실리카겔 제품을 공급합니다.",
+    },
+  };
+
+  const explicitSeo = category ? CATEGORY_SEO[category.key] : undefined;
+  const pageTitle = q
+    ? `"${q}" 검색결과 | 나노코리아`
+    : !category
+    ? "전체 제품 목록 | 나노코리아"
+    : explicitSeo?.title;
+  const pageDescription = q
+    ? `나노코리아에서 "${q}" 키워드와 관련된 제품 정보를 확인하세요.`
+    : !category
+    ? "나노코리아의 전체 제품 카테고리를 확인하세요. 탄산염, 불화물, 배터리소재, 희토류 등 다양한 나노소재를 공급합니다."
+    : explicitSeo?.description;
+
   const pageName = q
     ? `"${q}" 검색결과`
     : category
@@ -66,7 +141,13 @@ const ProductsList = () => {
 
   return (
     <main className="min-h-screen bg-background">
-      <SEO pageName={pageName} detail={detail} path={path} />
+      <SEO
+        title={pageTitle}
+        description={pageDescription}
+        pageName={pageName}
+        detail={detail}
+        path={path}
+      />
       <Navigation />
       <CategoryNav />
 
