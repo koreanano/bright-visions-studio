@@ -10,12 +10,16 @@ const LegalPage = ({ kind }: Props) => {
   const isTerms = kind === "terms";
   const title = isTerms ? "이용약관" : "개인정보처리방침";
   const content = isTerms ? termsText : privacyText;
+  const seoTitle = isTerms ? "이용약관 | 나노코리아" : "개인정보처리방침 | 나노코리아";
+  const seoDesc = isTerms
+    ? "나노코리아 웹사이트 이용약관입니다."
+    : "나노코리아의 개인정보 수집·이용·보관에 관한 처리방침입니다.";
 
   return (
     <main className="min-h-screen bg-background">
       <SEO
-        pageName={title}
-        detail={`나노코리아 ${title} 안내 페이지입니다.`}
+        title={seoTitle}
+        description={seoDesc}
         path={isTerms ? "/terms" : "/privacy"}
       />
       <Navigation />

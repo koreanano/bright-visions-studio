@@ -6,7 +6,11 @@ const BASE_DESC =
 const SITE_URL = "https://nano-korea.co.kr";
 
 type Props = {
-  /** 페이지명 또는 제품명. 비우면 브랜드 타이틀만 사용 */
+  /** 완전한 title 직접 지정 (지정 시 brand 템플릿을 사용하지 않음) */
+  title?: string;
+  /** 완전한 description 직접 지정 (지정 시 base 템플릿을 사용하지 않음) */
+  description?: string;
+  /** 페이지명 또는 제품명. title이 없을 때 사용 */
   pageName?: string;
   /** 페이지/제품 상세 보충 설명 (한 문장) */
   detail?: string;
@@ -25,28 +29,40 @@ const clip = (s: string, n = 158) => {
   return t.length > n ? t.slice(0, n - 1) + "…" : t;
 };
 
-const SEO = ({ pageName, detail, path = "/", image, type = "website", noIndex = false }: Props) => {
-  const title = pageName ? `${pageName} | ${BRAND}` : BRAND;
-  const tail = detail
-    ? ` ${detail}`
-    : pageName
-    ? ` ${pageName} 관련 상세 정보를 확인하세요.`
-    : "";
-  const description = clip(`${BASE_DESC}${tail}`);
+const SEO = ({
+  title,
+  description,
+  pageName,
+  detail,
+  path = "/",
+  image,
+  type = "website",
+  noIndex = false,
+}: Props) => {
+  const finalTitle = title ?? (pageName ? `${pageName} | ${BRAND}` : BRAND);
+  const fallbackDesc = (() => {
+    const tail = detail
+      ? ` ${detail}`
+      : pageName
+      ? ` ${pageName} 관련 상세 정보를 확인하세요.`
+      : "";
+    return clip(`${BASE_DESC}${tail}`);
+  })();
+  const finalDescription = description ? clip(description) : fallbackDesc;
   const canonical = `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
 
   return (
     <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <title>{finalTitle}</title>
+      <meta name="description" content={finalDescription} />
       {noIndex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={canonical} />
       <meta property="og:type" content={type} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={finalTitle} />
+      <meta name="twitter:description" content={finalDescription} />
       {image && <meta property="og:image" content={image} />}
       {image && <meta name="twitter:image" content={image} />}
     </Helmet>
